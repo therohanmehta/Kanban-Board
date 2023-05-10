@@ -1,17 +1,25 @@
 //Chandra Bhan
 
-import React from "react";
+import React, { useState } from "react";
 import style from "./AddTodo.module.css";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import AddIcon from "@mui/icons-material/Add";
 import RollerShadesClosedOutlinedIcon from "@mui/icons-material/RollerShadesClosedOutlined";
 function AddTodo() {
+  const [todoname, setTodoName] = useState("To Do");
   return (
     <div>
       <h1>Card</h1>
       <div className={style.mainCardDiv}>
         <header>
-          <div>To Do</div>
+          <div>
+            <input
+              className={style.todoNameField}
+              type="text"
+              value={todoname}
+              onChange={(e) => setTodoName(e.target.value)}
+            />
+          </div>
           <div>
             <MoreHorizIcon color="disabled" />
           </div>
@@ -19,11 +27,11 @@ function AddTodo() {
         <section></section>
         <footer>
           <div>
-            <button>
+            <button className={style.addCardBtn}>
               <AddIcon
                 sx={{ marginBottom: "-5px" }}
                 fontSize="small"
-                color="disabled"
+                color="#B7BCC7"
               />
               Add a card
             </button>
