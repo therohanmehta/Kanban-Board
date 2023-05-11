@@ -1,9 +1,15 @@
 .container{
     border: 1px solid;
     width: 15rem;
-    height: fit-content;    
+    height: 2.5rem;    
     border-radius: 5px;
-    
+    transition: height 0.3s ease-in-out;
+  
+}
+.container.expanded{
+    height: 4.5rem;
+    background-color: rgba(245, 245, 245, 0.462);
+    padding: 5px;
 }
 .btnWrapper{
     background-color: white;
@@ -19,13 +25,36 @@ padding: 0px 10px;
     opacity: 0.3;
 
 }
+.inputWrapper{
+    transition:  0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+}
 .innerDiv{
+    width: auto;
+    height: auto;
 display: flex;
-justify-content: left;
+justify-content: center;
 align-items: center;
 }
 .innerDiv Button{
     padding: 3px 3px;
     width: 6rem;
     text-transform: none;
+    background-color: white;
+    color:black ;
+}
+.innerDiv Button:hover{
+    background-color: whitesmoke;
+}
+.inputField{
+    width: 14rem;
+    height: 2rem;
+    border-radius: 5px;
+    background-color: transparent;
+}
+#closeIcon{
+    cursor: pointer;
 }
