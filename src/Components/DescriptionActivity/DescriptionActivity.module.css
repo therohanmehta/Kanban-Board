@@ -25,3 +25,8 @@
     border-radius: 5px;
     text-align: center; 
  }
+
+ .activityText {
+   font-weight: bold;
+   font-size: 1.2rem;
+ }

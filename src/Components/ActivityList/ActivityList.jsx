@@ -6,7 +6,7 @@ function ActivityList() {
     const detailsHide = useRecoilValue(ShowActivity);
     return (
         <>
-            <div>
+            <div className={style.activityMain}>
                 {
                     detailsHide &&
                     <div className={style.timeContainer}>

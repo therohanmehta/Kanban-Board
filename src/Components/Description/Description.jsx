@@ -17,6 +17,8 @@ import DescriptionTitle from '../DescriptionTitle/DescriptionTitle';
 
 import style from './Description.module.css';
 
+import { Open } from '../../Recoil/DescriptionAtoms/DescriptionAtoms';
+import { useRecoilValue } from 'recoil';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -55,6 +57,7 @@ function BootstrapDialogTitle(props) {
 
 export default function CustomizedDialogs() {
     const [open, setOpen] = React.useState(false);
+    
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -69,8 +72,9 @@ export default function CustomizedDialogs() {
                 <Button variant="outlined" onClick={handleClickOpen}>
                     Open dialog
                 </Button>
+               
 
-                <BootstrapDialog
+              <BootstrapDialog
                     onClose={handleClose}
                     aria-labelledby="customized-dialog-title"
                     open={open}
