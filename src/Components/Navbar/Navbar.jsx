@@ -8,6 +8,8 @@ import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 import BoltIcon from '@mui/icons-material/Bolt';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 
 import style from './Navbar.module.css'
 function Navbar() {
@@ -18,19 +20,21 @@ const [showStar,setShowStar]=useState(true)
 
       <nav className={style.navBar}>
      <div className={style.left}>
-     <Button sx={{color:'white'}} variant='text'>Task Management</Button>
-     {showStar?<Button sx={{color:'white'}} onClick={()=>{setShowStar(!showStar)}}><StarBorderIcon/></Button>:<Button sx={{color:'white'}} onClick={()=>{setShowStar(!showStar)}}><StarIcon/></Button>}
-     <Button sx={{color:'white'}} variant='text' startIcon={<PublicIcon />}>Public</Button>  
-      <Button sx={{color:'white'}} variant='text'>Workspace Visible</Button>
-      <Button sx={{color:'white'}} variant='contained' startIcon={<ViewKanbanOutlinedIcon />}>Board</Button>
-      <Button sx={{color:'white'}} variant='text'><KeyboardArrowDownOutlinedIcon/></Button>
+     <Button  variant='text'>Trello</Button>
+     {showStar?<Button  onClick={()=>{setShowStar(!showStar)}}><StarBorderIcon/></Button>:<Button  onClick={()=>{setShowStar(!showStar)}}><StarIcon/></Button>}
+     <Button sx={{color:'white',textTransform:'none'}} variant='text' startIcon={<PublicIcon />}>Public</Button>  
+      <Button  variant='text'>Workspace Visible</Button>
+      <Button id={style.whiteBtn} variant='contained' startIcon={<ViewKanbanOutlinedIcon />}>Board</Button>
+      <Button  variant='text'><KeyboardArrowDownOutlinedIcon/></Button>
      </div>
      
      <div className={style.right}>
-     <Button sx={{color:'white'}} variant='text' startIcon={<RocketLaunchOutlinedIcon />}>Power-ups</Button>
-      <Button sx={{color:'white'}} variant='text'  startIcon={<BoltIcon />}>Automation</Button>
-      <Button sx={{color:'white'}} variant='text' startIcon={<FilterListIcon />}>Filter</Button>
-      <Button sx={{color:'white'}} variant='text'>Share</Button>
+     <Button  variant='text' startIcon={<RocketLaunchOutlinedIcon />}>Power-ups</Button>
+      <Button  variant='text'  startIcon={<BoltIcon />}>Automation</Button>
+      <Button  variant='text' startIcon={<FilterListIcon />}>Filter</Button>
+      <img className={style.userImg} src="https://sialifehospital.com/wp-content/uploads/2021/04/testimonial-1.png" alt="" />
+      <Button id={style.whiteBtn} variant='contained' startIcon={<PersonAddAltOutlinedIcon />}>Share</Button>
+      <Button  variant='text' startIcon={<MoreHorizOutlinedIcon />}/>
      </div>
         </nav>    
     

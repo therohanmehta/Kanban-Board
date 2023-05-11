@@ -7,3 +7,23 @@
     color: green;
 }
 
+.userImg{
+    height: 29px;
+    margin-right: 10px;
+    /* display: flex; */
+}
+.right{
+    display: flex;
+}
+#whiteBtn{
+background-color: white;
+color: black;
+}
+.left Button{
+    color:white;
+    text-transform: none;
+}
+.right Button{
+    color:white;
+    text-transform: none;
+}
