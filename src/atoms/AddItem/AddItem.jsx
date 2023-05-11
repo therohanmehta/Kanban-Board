@@ -9,8 +9,10 @@ function AddItem({ setAddItem, handleAddCardItem }) {
     setAddItem(false);
   };
   const AddCardItem = () => {
-    handleAddCardItem(titleForCard);
-    setTitleForCard("");
+    if (titleForCard != "") {
+      handleAddCardItem(titleForCard);
+      setTitleForCard("");
+    }
   };
 
   return (

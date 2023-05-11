@@ -53,7 +53,6 @@ function AddTodo() {
 
   return (
     <div>
-      <h1>Card</h1>
       <div className={style.mainCardDiv}>
         <header>
           <div>
