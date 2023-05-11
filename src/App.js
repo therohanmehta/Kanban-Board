@@ -9,9 +9,7 @@ function App() {
     <div className="App">
       <Navbar />
       <AddList />
-      <AddTodo />
       <CustomizedDialogs />
-     
     </div>
   );
 }
