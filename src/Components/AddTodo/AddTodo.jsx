@@ -10,15 +10,16 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { v4 as uuid } from "uuid";
 import Popup from "reactjs-popup";
 
-function AddTodo() {
-  const [todoname, setTodoName] = useState("To Do");
+function AddTodo({ listName }) {
+  const [todoname, setTodoName] = useState(listName);
   const [addItem, setAddItem] = useState(false);
+  const [open, setOpen] = useState(false);
   const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
   const [todoList, setTodoList] = useState([
-    {
-      cardItemId: uuid(),
-      nameOfCardItem: "Dummy Nme",
-    },
+    // {
+    //   cardItemId: uuid(),
+    //   nameOfCardItem: "Dummy Nme",
+    // },
   ]);
   const handleOpenAddItemBox = () => {
     setAddItem(true);
@@ -52,7 +53,7 @@ function AddTodo() {
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: "20px" }}>
       <div className={style.mainCardDiv}>
         <header>
           <div>
@@ -69,8 +70,13 @@ function AddTodo() {
         </header>
         <section>
           {todoList.map((todoList) => (
-            <div className={style.itemOfCardDiv} key={todoList.cardItemId}>
+            <div
+              className={style.itemOfCardDiv}
+              key={todoList.cardItemId}
+              onClick={() => setOpen(true)}
+            >
               <div>{todoList.nameOfCardItem}</div>
+
               <div>
                 <Popup
                   trigger={
