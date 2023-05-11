@@ -1,0 +1,9 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.616);
+    align-items: center;
+    height: 4rem;
+    color: green;
+}
+
