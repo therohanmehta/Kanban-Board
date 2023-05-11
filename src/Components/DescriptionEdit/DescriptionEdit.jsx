@@ -15,12 +15,12 @@ function DescriptionEdit() {
     }
 
     return (
-        <>
+        <div className={style.descriptionContainer}>
             <div className={style.description}>
                 <div>
                     <SubjectIcon />
                 </div>
-                <div>
+                <div className={style.descriptionText}>
                     Description
                 </div>
                 {
@@ -44,7 +44,7 @@ function DescriptionEdit() {
             <div className={style.descriptionContent}>
                 {edit ? "" : description}
             </div>
-        </>
+        </div>
     )
 }
 

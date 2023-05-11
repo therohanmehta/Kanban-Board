@@ -1,12 +1,18 @@
 .descriptionContainer {
     width: 39.3vw;
-    height:130vh;
+    height:100vh;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #F1F2F4;
+    /* gap:2rem */
     
   }
 
   .stackContainer {
-    width:100%;
+    /* width:100%; */
+    /* background-color: #F1F2F4; */
+    width:100vw;
   }
   
  .titleContainer {

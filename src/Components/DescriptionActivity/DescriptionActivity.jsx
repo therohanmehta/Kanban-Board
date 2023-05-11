@@ -20,7 +20,7 @@ function DescriptionActivity() {
                 </div>
                 <div className={style.hideDetails} onClick={() => setDetailsHide(!detailsHide)}>
                     {
-                        detailsHide ? <small>Show Details</small> : <small>Hide Details</small>
+                        detailsHide ? <small>Hide Details</small> : <small>Show Details</small>
                     }
                     
                 </div>

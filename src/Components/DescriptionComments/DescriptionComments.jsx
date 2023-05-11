@@ -9,6 +9,9 @@ function DescriptionComments() {
 
     function handleComments(e) {
         e.preventDefault();
+        if (commentText.trim() === '') {
+            return; // Do not save empty comments
+          }
         let updatedComments = [...comments, commentText];
         setComments(updatedComments);
         console.log(commentText);
@@ -47,7 +50,7 @@ function DescriptionComments() {
                 {/* <div className={style.commentList}> */}
                 {
                     comments.map((comment, index) => (
-                        <>
+                        comment.trim() !== '' &&  <>
                             <div key={index} className={style.eachComment}>
                                 {comment}
                             </div>

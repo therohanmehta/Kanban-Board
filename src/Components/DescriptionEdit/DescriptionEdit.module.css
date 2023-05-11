@@ -3,6 +3,10 @@
     align-items: center;
     gap:1rem;
   }
+
+  .descriptionContainer {
+    margin-bottom: 1.5rem;
+  }
   
   .edit {
     background-color: #E4E6EA;
@@ -26,4 +30,9 @@
 
  .descriptionContent{
     margin-left: 2.5rem;
+ }
+
+ .descriptionText{
+    font-weight: bold;
+    font-size: 1.2rem;
  }
