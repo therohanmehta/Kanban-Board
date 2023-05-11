@@ -19,9 +19,14 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+
+        <Navbar />
+ 
+    
+      <div className="content">
       <AddList />
       <CustomizedDialogs />
+     </div>
     </div>
   );
 }
