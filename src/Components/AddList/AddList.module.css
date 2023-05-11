@@ -1,5 +1,6 @@
 .container{
-    border: 1px solid white;
+
+    background-color: white;
     width: 15rem;
     height: 2.5rem;    
     border-radius: 5px;
@@ -8,12 +9,12 @@
 }
 .container.expanded{
     height: 4.5rem;
-    background-color: rgba(245, 245, 245, 0.462);
+
     padding: 5px;
 }
 .btnWrapper{
-color: white;
- opacity: 0.4;
+
+border-radius: 5px;
     height: 2.5rem;
 padding: 0px 10px;
     display: flex;
@@ -22,39 +23,37 @@ padding: 0px 10px;
     cursor: pointer;
 }
 .btnWrapper:hover{
-    opacity: 0.3;
-
+background-color: whitesmoke;
 }
 .inputWrapper{
     transition:  0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    background-color: white;
     
 }
 .innerDiv{
     width: auto;
     height: auto;
 display: flex;
-justify-content: center;
+justify-content: left;
 align-items: center;
 }
 .innerDiv Button{
     padding: 3px 3px;
     width: 6rem;
     text-transform: none;
-    background-color: white;
-    color:black ;
+
 }
-.innerDiv Button:hover{
-    background-color: whitesmoke;
-}
+
 .inputField{
     width: 14rem;
     height: 2rem;
     border-radius: 5px;
-    background-color: transparent;
+    background-color: white;
 }
 #closeIcon{
     cursor: pointer;
+    padding-left: 5px;
 }

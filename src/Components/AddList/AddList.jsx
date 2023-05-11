@@ -28,6 +28,7 @@ export default function AddList() {
         ListId: uuid(),
         nameOfList: listName,
       };
+      setListName("")
 
       setAddList([...addList, tempList]);
       setListData([...addList, tempList]);
