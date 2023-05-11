@@ -1,6 +1,6 @@
 //Chandra Bhan
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./AddTodo.module.css";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import AddIcon from "@mui/icons-material/Add";
@@ -9,18 +9,24 @@ import AddItem from "../../atoms/AddItem/AddItem";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { v4 as uuid } from "uuid";
 import Popup from "reactjs-popup";
+import CustomizedDialogs from "../Description/Description";
+import {
+  showDialog,
+  nameOfListItem,
+} from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+import { useRecoilState } from "recoil";
+import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 
-function AddTodo({ listName }) {
+function AddTodo({ listName, listId }) {
   const [todoname, setTodoName] = useState(listName);
   const [addItem, setAddItem] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useRecoilState(showDialog);
+  const [nameOfListItem1, setNameOfListItem1] = useRecoilState(nameOfListItem);
   const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
-  const [todoList, setTodoList] = useState([
-    // {
-    //   cardItemId: uuid(),
-    //   nameOfCardItem: "Dummy Nme",
-    // },
-  ]);
+  const [todoList, setTodoList] = useState([]);
+  const [listData, setListData] = useRecoilState(list);
+
   const handleOpenAddItemBox = () => {
     setAddItem(true);
   };
@@ -30,8 +36,20 @@ function AddTodo({ listName }) {
       nameOfCardItem: nameOfCardItem,
       description: "",
     };
+    let tempListData = listData.map((list) => {
+      if (list.ListId == listId) {
+        return {
+          ListId: list.ListId,
+          nameOfList: list.nameOfList,
+          tasks: [...todoList, tempDataOfCard],
+        };
+      }
+      return list;
+    });
 
     setTodoList([...todoList, tempDataOfCard]);
+    setListData([...tempListData]);
+    console.log(listData);
   };
 
   const handleUpdationOfCartItem = (id, close) => {
@@ -73,10 +91,16 @@ function AddTodo({ listName }) {
             <div
               className={style.itemOfCardDiv}
               key={todoList.cardItemId}
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                setIsOpen(true);
+                setNameOfListItem1(todoList.nameOfCardItem);
+              }}
             >
               <div>{todoList.nameOfCardItem}</div>
-
+              <CustomizedDialogs
+                nameCardItem={todoList.nameOfCardItem}
+                isOpen={isOpen}
+              />
               <div>
                 <Popup
                   trigger={

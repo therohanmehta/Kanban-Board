@@ -8,17 +8,18 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import PropTypes from "prop-types";
 
 import ActivityList from "../ActivityList/ActivityList";
 import DescriptionActivity from "../DescriptionActivity/DescriptionActivity";
 import DescriptionComments from "../DescriptionComments/DescriptionComments";
 import DescriptionEdit from "../DescriptionEdit/DescriptionEdit";
 import DescriptionTitle from "../DescriptionTitle/DescriptionTitle";
-
+import { showDialog } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 import style from "./Description.module.css";
 
 import { Open } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -53,27 +54,34 @@ function BootstrapDialogTitle(props) {
   );
 }
 
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
 export default function CustomizedDialogs() {
   const [open, setOpen] = React.useState(false);
+  const [openValue, setOpenValue] = useRecoilState(showDialog);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    setOpenValue(false);
   };
 
   return (
     <Stack spacing={2} sx={{ width: "90vw" }} className={style.stackContainer}>
       <div>
-        <Button variant="outlined" onClick={handleClickOpen}>
+        {/* <Button variant="outlined" onClick={handleClickOpen}>
           Open dialog
-        </Button>
+        </Button> */}
 
         <BootstrapDialog
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
-          open={open}
+          open={openValue}
         >
           <div className={style.descriptionContainer}>
             <BootstrapDialogTitle
