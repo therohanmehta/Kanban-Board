@@ -5,6 +5,8 @@
     align-items: center;
     height: 4rem;
     color: green;
+    position: fixed;
+    width: 100%;
 }
 
 .userImg{
