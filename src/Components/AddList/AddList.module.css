@@ -1,5 +1,5 @@
 .container{
-    border: 1px solid;
+    border: 1px solid white;
     width: 15rem;
     height: 2.5rem;    
     border-radius: 5px;
@@ -12,7 +12,7 @@
     padding: 5px;
 }
 .btnWrapper{
-    background-color: white;
+color: white;
  opacity: 0.4;
     height: 2.5rem;
 padding: 0px 10px;
