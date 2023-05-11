@@ -1,3 +1,6 @@
+
+
+
 # Kanban Board Project :
 
 
@@ -8,6 +11,9 @@
 * In addition to the basic functionality, the project  also included customization options for each board, such as the ability to change the color of the board or add custom tags to tasks. The project will be designed with a user-friendly interface, making it easy for students to navigate and manage their tasks efficiently.
 
 * Overall, the Kanban Board project using React will provide a powerful and flexible tool for students to manage their tasks and assignments effectively, helping them to stay organized and on top of their workload.
+
+### **Deployment Link:**
+
 
 
 ### **Data Structure:**
@@ -56,4 +62,14 @@ Tasks: [
 4. moment
 5. nanoid
 
+### **Collaborators:**
+
+1. Chandra Bhan Prajapati. (fn-nob-38FBL) 
+https://github.com/Chandra-Bhan
+2. Lakshmi Prasanna Narapureddy. (fn-nob-22ZBL) 
+https://github.com/nlprasanna5   
+3. Rohan Kumar. (fn-nob-33SER)  
+https://github.com/therohanmehta
+4. Samad Shahid Rahman. (fn-nob-85UAT)
+https://github.com/SamadSRahman
 
