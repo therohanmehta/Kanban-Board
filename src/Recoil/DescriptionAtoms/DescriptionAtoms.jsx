@@ -15,8 +15,8 @@ export const showDialog = atom({
   default: false,
 });
 
-export const nameOfListItem = atom({
-  key: "nameOfListItem",
+export const uidOfListItem = atom({
+  key: "uidOfListItem",
   default: "",
 });
 
@@ -24,3 +24,13 @@ export const list = atom({
   key: "list",
   default: [],
 });
+
+export const atomListUid = atom({
+  key: "atomListUid",
+  default: '',
+});
+
+export const atomCardName = atom({
+  key: 'atomCardName',
+  default:'',
+})
