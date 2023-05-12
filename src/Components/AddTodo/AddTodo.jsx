@@ -100,8 +100,8 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
               className={style.itemOfCardDiv}
               key={todoList.cardItemId}
               onClick={() => {
-                setIsOpen(true);
-                // navigate(`/task/:${currentListUid}`)
+                // setIsOpen(true);
+                navigate(`/task/:${currentListUid}`)
                 setUidOfListItem1(todoList.cardItemId);
                 setCurrentListUid(listId)
                 setCardName(todoList.nameOfCardItem)
