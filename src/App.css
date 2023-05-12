@@ -5,12 +5,9 @@
     background-position: center;
     background-size:cover;
     background-repeat: repeat-x;
-overflow-y: scroll;
-width: 100vw;
-
-background-repeat:repeat;
-
-
+    overflow-y: scroll;
+    width: 100vw;
+    background-repeat:repeat;
 }
 
 .content{
