@@ -3,11 +3,13 @@
     /* background-image: url('https://cdn.pixabay.com/photo/2017/05/11/11/15/workplace-2303851_1280.jpg'); */
     background-image: url(../public/bcgImg.png);
     background-position: center;
-    background-size: 'cover';
+    background-size:cover;
+    background-repeat: repeat-x;
 overflow-y: scroll;
-width: 200vh;
+width: 100vw;
 
 }
+
 .content{
     position: relative;
     top: 5rem;
