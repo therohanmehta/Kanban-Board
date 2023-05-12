@@ -12,7 +12,9 @@ import Popup from "reactjs-popup";
 import CustomizedDialogs from "../Description/Description";
 import {
   showDialog,
-  nameOfListItem,
+  uidOfListItem,
+  atomListUid,
+  atomCardName
 } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
@@ -22,11 +24,12 @@ function AddTodo({ listName, listId }) {
   const [addItem, setAddItem] = useState(false);
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useRecoilState(showDialog);
-  const [nameOfListItem1, setNameOfListItem1] = useRecoilState(nameOfListItem);
+  const [uidOfListItem1, setUidOfListItem1] = useRecoilState(uidOfListItem);
   const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [listData, setListData] = useRecoilState(list);
-
+  const[ cardName, setCardName] = useRecoilState(atomCardName)
+const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
   const handleOpenAddItemBox = () => {
     setAddItem(true);
   };
@@ -35,9 +38,12 @@ function AddTodo({ listName, listId }) {
       cardItemId: uuid(),
       nameOfCardItem: nameOfCardItem,
       description: "",
+      comment: [],
+      activity:[],
     };
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
+        console.log(listId)
         return {
           ListId: list.ListId,
           nameOfList: list.nameOfList,
@@ -93,7 +99,10 @@ function AddTodo({ listName, listId }) {
               key={todoList.cardItemId}
               onClick={() => {
                 setIsOpen(true);
-                setNameOfListItem1(todoList.nameOfCardItem);
+                setUidOfListItem1(todoList.cardItemId);
+                setCurrentListUid(listId)
+                setCardName(todoList.nameOfCardItem)
+                console.log(cardName)
               }}
             >
               <div>{todoList.nameOfCardItem}</div>

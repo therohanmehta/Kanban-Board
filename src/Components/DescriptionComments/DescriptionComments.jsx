@@ -16,6 +16,7 @@ function DescriptionComments() {
         setComments(updatedComments);
         console.log(commentText);
         console.log(comments);
+        //need to store it inside listData key.
         localStorage.setItem('comments', JSON.stringify(updatedComments))
         setCommentText('')
     }
