@@ -8,12 +8,12 @@ import { v4 as uuid } from "uuid";
 import AddTodo from "../AddTodo/AddTodo";
 import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
-import { getData } from "../../utils/Services";
+import {getData} from '../../utils/Services'
 
-const data = getData();
+
 export default function AddList() {
   const [isVisible, setIsVisible] = useState(true);
-
+  let data = getData()
   console.log(data);
   const [addList, setAddList] = useState(data);
   const [listName, setListName] = useState("");
@@ -28,6 +28,7 @@ export default function AddList() {
         ListId: uuid(),
         nameOfList: listName,
       };
+      setListName("")
 
       setAddList([...addList, tempList]);
       setListData([...addList, tempList]);

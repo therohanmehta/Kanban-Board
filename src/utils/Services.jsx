@@ -3,6 +3,6 @@ export function getData() {
   if (list) {
     return JSON.parse(list);
   } else {
-    return [];
+    return []
   }
 }
