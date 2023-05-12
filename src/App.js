@@ -2,12 +2,14 @@ import AddTodo from "./Components/AddTodo/AddTodo";
 import "./App.css";
 import AddList from "./Components/AddList/AddList";
 import Navbar from "./Components/Navbar/Navbar";
-import CustomizedDialogs from "./Components/Description/Description";
+
 import { list } from "./Recoil/DescriptionAtoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import {BrowserRouter, Routes,Route } from "react-router-dom";
-import DemoDetails from "./DemoDetails";
+// import DemoDetails from "./DemoDetails";
+import DescriptionModel from "./Components/Description/Description";
+
 
 
 
@@ -25,7 +27,8 @@ function App() {
    < BrowserRouter>
       <Routes>
         <Route path="/" element={<Kanban />} />
-        <Route path="/task/:id" element={<DemoDetails />} />
+        {/* <Route path="/task/:id" element={<DemoDetails />} /> */}
+        <Route path="/task" element={<DescriptionModel />} />
     </Routes>
    </BrowserRouter>
   );
@@ -40,7 +43,7 @@ function Kanban() {
       <Navbar />
       <div className="content">
         <AddList />
-        <CustomizedDialogs />
+       
       </div>
     </div>
     </>
