@@ -10,6 +10,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { v4 as uuid } from "uuid";
 import Popup from "reactjs-popup";
 import CustomizedDialogs from "../Description/Description";
+import { useNavigate } from "react-router-dom";
 import {
   showDialog,
   uidOfListItem,
@@ -20,6 +21,7 @@ import { useRecoilState } from "recoil";
 import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 
 function AddTodo({ listName, listId }) {
+  const navigate = useNavigate()
   const [todoname, setTodoName] = useState(listName);
   const [addItem, setAddItem] = useState(false);
   const [open, setOpen] = useState(false);
@@ -99,6 +101,7 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
               key={todoList.cardItemId}
               onClick={() => {
                 setIsOpen(true);
+                // navigate(`/task/:${currentListUid}`)
                 setUidOfListItem1(todoList.cardItemId);
                 setCurrentListUid(listId)
                 setCardName(todoList.nameOfCardItem)
