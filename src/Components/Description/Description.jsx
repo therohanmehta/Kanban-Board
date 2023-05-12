@@ -72,7 +72,7 @@ export default function CustomizedDialogs() {
   };
 
   return (
-    <Stack spacing={2} sx={{ width: "90vw" }} className={style.stackContainer}>
+    <Stack spacing={2} sx={{ width: "0vw" }} className={style.stackContainer}>
       <div>
         {/* <Button variant="outlined" onClick={handleClickOpen}>
           Open dialog
