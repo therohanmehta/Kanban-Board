@@ -8,6 +8,9 @@
 overflow-y: scroll;
 width: 100vw;
 
+background-repeat:repeat;
+
+
 }
 
 .content{
