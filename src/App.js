@@ -28,6 +28,7 @@ function App() {
       <CustomizedDialogs />
      </div>
     </div>
+
   );
 }
 
