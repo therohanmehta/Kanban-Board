@@ -23,18 +23,24 @@ import { useRecoilState, useRecoilValue } from "recoil";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
-    padding: theme.spacing(2),
+    padding: theme.spacing(5),
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
   },
+  "& .MuiDialog-paper": {
+    maxWidth: "80vw", 
+    width: "45vw", 
+  },
+  
 }));
+
 
 function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
 
   return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+    <DialogTitle sx={{ m: 0, p: 5 }} {...other}>
       {children}
       {onClose ? (
         <IconButton

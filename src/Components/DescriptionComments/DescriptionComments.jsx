@@ -55,8 +55,8 @@ function DescriptionComments() {
                                 {comment}
                             </div>
                             <div className={style.updateComment}>
-                                <small>Edit</small>
-                                <small onClick={() => handleDelete(index)}>Delete</small>
+                                <small className={style.modifyComment}>Edit</small>
+                                <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
                             </div>
                         </>
                     ))
