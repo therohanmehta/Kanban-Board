@@ -5,7 +5,8 @@
     background-position: center;
     background-size: 'cover';
 overflow-y: scroll;
-width: 200vh;
+width: 100vw;
+background-repeat:repeat;
 
 }
 .content{
