@@ -27,8 +27,8 @@ function App() {
    < BrowserRouter>
       <Routes>
         <Route path="/" element={<Kanban />} />
-        {/* <Route path="/task/:id" element={<DemoDetails />} /> */}
-        <Route path="/task" element={<DescriptionModel />} />
+        <Route path="/task/:id" element={<DescriptionModel />} />
+        {/* <Route path="/task" element={<DescriptionModel />} /> */}
     </Routes>
    </BrowserRouter>
   );
