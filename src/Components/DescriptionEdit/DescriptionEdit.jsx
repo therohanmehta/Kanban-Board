@@ -8,32 +8,36 @@ import style from './DescriptionEdit.module.css';
 import { useRecoilState } from 'recoil';
 import { atomListUid, list, uidOfListItem } from '../../Recoil/DescriptionAtoms/DescriptionAtoms';
 import { getData } from '../../utils/Services';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
+
 function DescriptionEdit() {
-    const [description, setDescription] = useState(null);
+    // const [description, setDescription] = useState(null);
+    const [description,setDescription]=useState("");
     const [edit, setEdit] = useState(false);
     const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem)
     const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
 
-    const listData = getData();
-    const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid)
-    const cardIndex = listData[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
+    // const listData = getData();
+    // const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid)
+    // const cardIndex = listData[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
 
-    useEffect(() => {
-        setDescription(listData[listIndex].tasks[cardIndex].description)
-    },[])
+    // useEffect(() => {
+    //     setDescription(listData[listIndex].tasks[cardIndex].description)
+    // },[])
     function handleDescription(e) {
         //need to store this inside localStorage.
         setDescription(e.target.value)
     }
     function handleSaveClick() {
-        const listData = getData();
-        const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid)
+        // const listData = getData();
+        // const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid)
         
-        const cardIndex = listData[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
-        listData[listIndex].tasks[cardIndex].description = description
-        console.log(listData[listIndex].tasks[cardIndex].description)
-        localStorage.setItem('listData', JSON.stringify(listData))
+        // const cardIndex = listData[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
+        // listData[listIndex].tasks[cardIndex].description = description
+        // console.log(listData[listIndex].tasks[cardIndex].description)
+        // localStorage.setItem('listData', JSON.stringify(listData))
+
+        setEdit(!edit);
         // listData[listIndex].tasks[cardIndex]
         // card.description = description 
        // console.log(listData[listIndex].tasks[cardIndex])
