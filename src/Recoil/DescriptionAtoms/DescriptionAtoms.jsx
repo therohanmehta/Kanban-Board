@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { getData } from "../../utils/Services";
 
 export const Watch = atom({
   key: "watch",
@@ -22,7 +23,7 @@ export const uidOfListItem = atom({
 
 export const list = atom({
   key: "list",
-  default: [],
+  default: getData(),
 });
 
 export const atomListUid = atom({
