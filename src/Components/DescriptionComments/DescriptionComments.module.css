@@ -60,3 +60,8 @@
 .modifyComment {
   cursor: pointer;
 }
+
+.modifyComment:hover {
+   /* color:#1976D2 */
+   color: blue;
+}

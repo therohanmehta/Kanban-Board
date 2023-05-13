@@ -12,7 +12,7 @@ function DescriptionComments() {
     function handleComments(e) {
         e.preventDefault();
         if (commentText.trim() === '') {
-            return; // Do not save empty comments
+            return; 
         }
         let updatedComments = [...comments, commentText];
         setComments(updatedComments);
@@ -60,7 +60,7 @@ function DescriptionComments() {
                                 { comment}
                             </div>
                             <div className={style.updateComment}>
-                                {/* <small className={style.modifyComment} >Edit</small> */}
+                                
                                 <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
                             </div>
                         </>
