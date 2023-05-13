@@ -111,10 +111,10 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
               }}
             >
               <div>{todoList.nameOfCardItem}</div>
-              <CustomizedDialogs
+              {/* <CustomizedDialogs
                 nameCardItem={todoList.nameOfCardItem}
                 isOpen={isOpen}
-              />
+              /> */}
               <div>
                 <Popup
                   trigger={
