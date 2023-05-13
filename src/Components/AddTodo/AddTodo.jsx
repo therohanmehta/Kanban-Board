@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import style from "./AddTodo.module.css";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import AddIcon from "@mui/icons-material/Add";
 import RollerShadesClosedOutlinedIcon from "@mui/icons-material/RollerShadesClosedOutlined";
 import AddItem from "../../atoms/AddItem/AddItem";
@@ -20,6 +19,7 @@ import {
 import { useRecoilState } from "recoil";
 import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
+import MorePopOver from "./more/More";
 
 function AddTodo({ listName, listId }) {
   let data = getData();
@@ -28,7 +28,7 @@ function AddTodo({ listName, listId }) {
   if (currentList != undefined) {
     tasks = currentList.tasks ? currentList.tasks : [];
   }
-  console.log(tasks)
+
   const navigate = useNavigate()
   const [todoname, setTodoName] = useState(listName);
   const [addItem, setAddItem] = useState(false);
@@ -65,7 +65,7 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
 
     setTodoList([...todoList, tempDataOfCard]);
     setListData([...tempListData]);
-    console.log(listData);
+
   };
 
   const handleUpdationOfCartItem = (id, close) => {
@@ -82,9 +82,16 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
       });
       setTodoList([...tempTodoItem]);
       setUpdatedNameOfCardItem("");
+     
       close();
     }
   };
+
+  function handleDelete() {
+    const updatedList = listData.filter((ele) => ele.ListId !== listId)
+    setListData(updatedList)
+    console.log(listData)
+    }
 
   return (
     <div style={{ marginLeft: "20px" }}>
@@ -99,7 +106,7 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
             />
           </div>
           <div>
-            <MoreHorizIcon fontSize="small" color="disabled" />
+            <MorePopOver func={handleDelete} listID={listId} />
           </div>
         </header>
         <section>
@@ -121,12 +128,16 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
                 nameCardItem={todoList.nameOfCardItem}
                 isOpen={isOpen}
               /> */}
-              <div>
+              <div className={style.btnWrapper}>
+              
                 <Popup
                   trigger={
+                    <div>
                     <button className={style.editBtn}>
                       <EditOutlinedIcon fontSize="5px" />
-                    </button>
+                      </button>
+                      </div>
+                    
                   }
                   position="bottom center"
                 >

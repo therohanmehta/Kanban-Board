@@ -87,10 +87,10 @@ header{
 border:none;
 border-radius: 5px;
 padding: 2px;
-font-size: 10px;
+font-size: 13px;
 margin: 0;
 display: none;
-
+cursor: pointer;
 }
 .editBtn:hover{
 background-color: rgb(217, 216, 216);
@@ -98,4 +98,24 @@ background-color: rgb(217, 216, 216);
 
 .itemOfCardDiv:hover .editBtn{
     display: block;;
+}
+.itemOfCardDiv:hover .dltBtn{
+    display: block;;
+}
+.dltBtn{
+    border: none;
+    border-radius: 5px;
+padding: 2px;
+font-size: 13px;
+margin: 0;
+display: none;
+cursor: pointer;
+}
+.dltBtn:hover{
+    background-color:rgb(217, 216, 216); ;
+}
+.btnWrapper{
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
