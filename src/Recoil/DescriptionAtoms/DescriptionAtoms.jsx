@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { getData } from "../../utils/Services";
 
 export const Watch = atom({
   key: "watch",
@@ -15,12 +16,22 @@ export const showDialog = atom({
   default: false,
 });
 
-export const nameOfListItem = atom({
-  key: "nameOfListItem",
+export const uidOfListItem = atom({
+  key: "uidOfListItem",
   default: "",
 });
 
 export const list = atom({
   key: "list",
-  default: [],
+  default: getData(),
 });
+
+export const atomListUid = atom({
+  key: "atomListUid",
+  default: '',
+});
+
+export const atomCardName = atom({
+  key: 'atomCardName',
+  default:'',
+})

@@ -5,15 +5,17 @@ import DvrOutlinedIcon from "@mui/icons-material/DvrOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
-import { nameOfListItem } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
-
+import { useState, useEffect } from "react";
+import { atomCardName, list, uidOfListItem ,atomListUid} from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+import { getData } from "../../utils/Services";
+import { unstable_createChainedFunction } from "@mui/utils";
 function DescriptionTitle() {
   const [watch, setWatch] = useRecoilState(Watch);
   const [titleEdit, setTitleEdit] = useState(false);
-  const [listItemName, setListItemName] = useRecoilState(nameOfListItem);
-  const [titleText, setTitleText] = useState(listItemName);
-
+  const [titleText, setTitleText] = useRecoilState(atomCardName);
+  const [listData, setListData] = useRecoilState(list)
+  const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem)
+  const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
   function handleTextField(e) {
     setTitleText(e.target.value);
   }
@@ -21,6 +23,13 @@ function DescriptionTitle() {
   function handleSubmit(e) {
     e.preventDefault();
     setTitleEdit(!titleEdit);
+
+    const tempList = getData()
+    const listIndex = tempList.findIndex((ele) => ele.ListId === currentListUid)
+    const cardIndex = tempList[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
+    tempList[listIndex].tasks[cardIndex].nameOfCardItem = titleText
+    localStorage.setItem('listData', JSON.stringify(tempList))
+    setListData(tempList)
   }
 
   return (
