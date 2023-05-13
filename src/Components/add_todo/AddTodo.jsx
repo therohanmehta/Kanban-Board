@@ -8,7 +8,7 @@ import AddItem from "../../atoms/add_item/AddItem";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { v4 as uuid } from "uuid";
 import Popup from "reactjs-popup";
-import CustomizedDialogs from "../description/Description";
+import CustomizedDialogs from "../Description/Description";
 import { useNavigate } from "react-router-dom";
 import {
   showDialog,
