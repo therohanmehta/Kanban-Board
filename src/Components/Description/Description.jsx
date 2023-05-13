@@ -1,41 +1,36 @@
-import React from 'react';
+import React from "react";
 
-import DescriptionTitle from '../DescriptionTitle/DescriptionTitle';
-import DescriptionEdit from '../DescriptionEdit/DescriptionEdit';
-import DescriptionComments from '../DescriptionComments/DescriptionComments';
-import DescriptionActivity from '../DescriptionActivity/DescriptionActivity';
-import ActivityList from '../ActivityList/ActivityList';
-import style from './Description.module.css';
-import CloseIcon from '@mui/icons-material/Close';
-import { useNavigate } from 'react-router-dom';
+import DescriptionTitle from "../description_title/DescriptionTitle";
+import DescriptionEdit from "../description_edit/DescriptionEdit";
+import DescriptionComments from "../description_comments/DescriptionComments";
+import DescriptionActivity from "../description_activity/DescriptionActivity";
+import ActivityList from "../activity_list/ActivityList";
+import style from "./Description.module.css";
+import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 
-
-function DescriptionModel(){
-  const navigate=useNavigate();
+function DescriptionModel() {
+  const navigate = useNavigate();
   return (
     <div className={style.descriptionContainer}>
       <div className={style.descriptionMainContainer}>
-          <div className={style.close}>
-             <DescriptionTitle />
-             <CloseIcon onClick={()=>navigate('/') } className={style.iconClose}/>
-           </div>
-         <DescriptionEdit/>
-         <DescriptionActivity/>
-         <DescriptionComments/>
-         <ActivityList/>
-       </div>
+        <div className={style.close}>
+          <DescriptionTitle />
+          <CloseIcon
+            onClick={() => navigate("/")}
+            className={style.iconClose}
+          />
+        </div>
+        <DescriptionEdit />
+        <DescriptionActivity />
+        <DescriptionComments />
+        <ActivityList />
+      </div>
     </div>
-    
-  )
+  );
 }
 
 export default DescriptionModel;
-
-
-
-
-
-
 
 // import * as React from "react";
 // import Button from "@mui/material/Button";
@@ -68,12 +63,11 @@ export default DescriptionModel;
 //     padding: theme.spacing(1),
 //   },
 //   "& .MuiDialog-paper": {
-//     maxWidth: "80vw", 
-//     width: "45vw", 
+//     maxWidth: "80vw",
+//     width: "45vw",
 //   },
-  
-// }));
 
+// }));
 
 // function BootstrapDialogTitle(props) {
 //   const { children, onClose, ...other } = props;
@@ -119,7 +113,6 @@ export default DescriptionModel;
 //   return (
 //     <Stack spacing={2} sx={{ width: "90vw" }} className={style.stackContainer}>
 //       <div>
-       
 
 //         <BootstrapDialog
 //           onClose={handleClose}
@@ -142,7 +135,7 @@ export default DescriptionModel;
 //             </DialogContent>
 
 //             <DialogActions>
-             
+
 //             </DialogActions>
 //           </div>
 //         </BootstrapDialog>

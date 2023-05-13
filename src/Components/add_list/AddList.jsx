@@ -5,11 +5,13 @@ import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuid } from "uuid";
-import AddTodo from "../AddTodo/AddTodo";
-import { list, atomListUid } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+import AddTodo from "../add_todo/AddTodo";
+import {
+  list,
+  atomListUid,
+} from "../../recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
-import {getData} from '../../utils/Services'
-
+import { getData } from "../../utils/Services";
 
 export default function AddList() {
   const [isVisible, setIsVisible] = useState(true);
@@ -17,7 +19,7 @@ export default function AddList() {
   const [addList, setAddList] = useState(data);
   const [listName, setListName] = useState("");
   const [listData, setListData] = useRecoilState(list);
-  const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
+  const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
   function handleAddList() {
     setIsVisible(false);
   }
@@ -28,7 +30,7 @@ export default function AddList() {
         ListId: uuid(),
         nameOfList: listName,
       };
-      setListName("")
+      setListName("");
       setAddList([...addList, tempList]);
       setListData([...addList, tempList]);
     }
