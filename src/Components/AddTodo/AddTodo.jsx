@@ -19,8 +19,16 @@ import {
 } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+import { getData } from "../../utils/Services";
 
 function AddTodo({ listName, listId }) {
+  let data = getData();
+  let tasks =[]
+  let currentList = data.find((ele) => ele.ListId == listId)
+  if (currentList != undefined) {
+    tasks = currentList.tasks ? currentList.tasks : [];
+  }
+  console.log(tasks)
   const navigate = useNavigate()
   const [todoname, setTodoName] = useState(listName);
   const [addItem, setAddItem] = useState(false);
@@ -28,7 +36,7 @@ function AddTodo({ listName, listId }) {
   const [isOpen, setIsOpen] = useRecoilState(showDialog);
   const [uidOfListItem1, setUidOfListItem1] = useRecoilState(uidOfListItem);
   const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(tasks);
   const [listData, setListData] = useRecoilState(list);
   const[ cardName, setCardName] = useRecoilState(atomCardName)
 const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
@@ -102,9 +110,10 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
               onClick={() => { 
                 setUidOfListItem1(todoList.cardItemId);
                 setCurrentListUid(listId)
+                const test = todoList.cardItemId
                 setCardName(todoList.nameOfCardItem)
                 console.log(cardName)
-                navigate(`/task/:${currentListUid}`);
+                navigate(`/task/:${test}`);
               }}
             >
               <div>{todoList.nameOfCardItem}</div>
