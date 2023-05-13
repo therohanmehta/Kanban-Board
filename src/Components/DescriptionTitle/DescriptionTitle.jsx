@@ -12,7 +12,8 @@ import { unstable_createChainedFunction } from "@mui/utils";
 function DescriptionTitle() {
   const [watch, setWatch] = useRecoilState(Watch);
   const [titleEdit, setTitleEdit] = useState(false);
-  const [titleText, setTitleText] = useRecoilState(atomCardName);
+  // const [titleText, setTitleText] = useRecoilState(atomCardName);
+  const [titleText,setTitleText]=useState('To do');
   const [listData, setListData] = useRecoilState(list)
   const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem)
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
@@ -25,16 +26,18 @@ function DescriptionTitle() {
     setTitleEdit(!titleEdit);
 
     const tempList = getData()
-    const listIndex = tempList.findIndex((ele) => ele.ListId === currentListUid)
-    const cardIndex = tempList[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
-    tempList[listIndex].tasks[cardIndex].nameOfCardItem = titleText
-    localStorage.setItem('listData', JSON.stringify(tempList))
-    setListData(tempList)
+    // const listIndex = tempList.findIndex((ele) => ele.ListId === currentListUid)
+    // const cardIndex = tempList[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
+    // tempList[listIndex].tasks[cardIndex].nameOfCardItem = titleText
+    // localStorage.setItem('listData', JSON.stringify(tempList))
+    // setListData(tempList)
   }
 
   return (
     <>
       <div className={style.titleContainer}>
+
+        <div className={style.titleFirst}>
         <div className={style.titleIcon}>
           {/* <DvrOutlinedIcon className={`${style.icon} ${style.iconLarge}`} /> */}
           <DvrOutlinedIcon
@@ -42,6 +45,8 @@ function DescriptionTitle() {
             style={{ fontSize: "28px" }}
           />
         </div>
+
+        <div className={style.titleSecond}>
         <div className={style.titleName}>
           <form onSubmit={handleSubmit}>
             {titleEdit ? (
@@ -62,10 +67,11 @@ function DescriptionTitle() {
           <div className={style.listName}>
             <small>in list To Do </small>
             {watch && (
-              <div>
+              // <div>
                 <VisibilityOutlinedIcon style={{ fontSize: "16px" }} />
-              </div>
+              // </div>
             )}
+          </div>
           </div>
 
           {/* Notifications */}
@@ -97,6 +103,7 @@ function DescriptionTitle() {
                     <small>Watch</small>
                   </div>
                 )}
+              </div>
               </div>
             </div>
           </div>
