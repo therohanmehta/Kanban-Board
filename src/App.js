@@ -16,6 +16,7 @@ function App() {
   useEffect(() => {
     if (listData.length != 0) {
       localStorage.setItem("listData", JSON.stringify(listData));
+      console.log('useEffect running')
     }
   }, [listData]);
 
