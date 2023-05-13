@@ -1,14 +1,14 @@
-import AddTodo from "./Components/AddTodo/AddTodo";
+import AddTodo from "./components/add_todo/AddTodo";
 import "./App.css";
-import AddList from "./Components/AddList/AddList";
-import Navbar from "./Components/Navbar/Navbar";
+import AddList from "./components/add_list/AddList";
+import Navbar from "./components/navbar/Navbar";
 
-import { list } from "./Recoil/DescriptionAtoms/DescriptionAtoms";
+import { list } from "./recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import DemoDetails from "./DemoDetails";
-import DescriptionModel from "./Components/Description/Description";
+import DescriptionModel from "./components/description/Description";
 
 function App() {
   const [listData, setListData] = useRecoilState(list);

@@ -5,31 +5,31 @@ import style from "./AddTodo.module.css";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import AddIcon from "@mui/icons-material/Add";
 import RollerShadesClosedOutlinedIcon from "@mui/icons-material/RollerShadesClosedOutlined";
-import AddItem from "../../atoms/AddItem/AddItem";
+import AddItem from "../../atoms/add_item/AddItem";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { v4 as uuid } from "uuid";
 import Popup from "reactjs-popup";
-import CustomizedDialogs from "../Description/Description";
+import CustomizedDialogs from "../description/Description";
 import { useNavigate } from "react-router-dom";
 import {
   showDialog,
   uidOfListItem,
   atomListUid,
-  atomCardName
-} from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+  atomCardName,
+} from "../../recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
-import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 
 function AddTodo({ listName, listId }) {
   let data = getData();
-  let tasks =[]
-  let currentList = data.find((ele) => ele.ListId == listId)
+  let tasks = [];
+  let currentList = data.find((ele) => ele.ListId == listId);
   if (currentList != undefined) {
     tasks = currentList.tasks ? currentList.tasks : [];
   }
-  console.log(tasks)
-  const navigate = useNavigate()
+  console.log(tasks);
+  const navigate = useNavigate();
   const [todoname, setTodoName] = useState(listName);
   const [addItem, setAddItem] = useState(false);
   const [open, setOpen] = useState(false);
@@ -38,8 +38,8 @@ function AddTodo({ listName, listId }) {
   const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
   const [todoList, setTodoList] = useState(tasks);
   const [listData, setListData] = useRecoilState(list);
-  const[ cardName, setCardName] = useRecoilState(atomCardName)
-const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
+  const [cardName, setCardName] = useRecoilState(atomCardName);
+  const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
   const handleOpenAddItemBox = () => {
     setAddItem(true);
   };
@@ -49,11 +49,11 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
       nameOfCardItem: nameOfCardItem,
       description: "",
       comment: [],
-      activity:[],
+      activity: [],
     };
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
-        console.log(listId)
+        console.log(listId);
         return {
           ListId: list.ListId,
           nameOfList: list.nameOfList,
@@ -107,12 +107,12 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
             <div
               className={style.itemOfCardDiv}
               key={todoList.cardItemId}
-              onClick={() => { 
+              onClick={() => {
                 setUidOfListItem1(todoList.cardItemId);
-                setCurrentListUid(listId)
-                const test = todoList.cardItemId
-                setCardName(todoList.nameOfCardItem)
-                console.log(cardName)
+                setCurrentListUid(listId);
+                const test = todoList.cardItemId;
+                setCardName(todoList.nameOfCardItem);
+                console.log(cardName);
                 navigate(`/task/:${test}`);
               }}
             >

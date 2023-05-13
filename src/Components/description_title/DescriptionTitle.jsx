@@ -1,4 +1,4 @@
-import { Watch } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+import { Watch } from "../../recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import style from "./DescriptionTitle.module.css";
 import DvrOutlinedIcon from "@mui/icons-material/DvrOutlined";
@@ -6,15 +6,20 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
-import { atomCardName, list, uidOfListItem ,atomListUid} from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
+import {
+  atomCardName,
+  list,
+  uidOfListItem,
+  atomListUid,
+} from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import { unstable_createChainedFunction } from "@mui/utils";
 function DescriptionTitle() {
   const [watch, setWatch] = useRecoilState(Watch);
   const [titleEdit, setTitleEdit] = useState(false);
   const [titleText, setTitleText] = useRecoilState(atomCardName);
-  const [listData, setListData] = useRecoilState(list)
-  const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem)
+  const [listData, setListData] = useRecoilState(list);
+  const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
   function handleTextField(e) {
     setTitleText(e.target.value);
@@ -24,12 +29,16 @@ function DescriptionTitle() {
     e.preventDefault();
     setTitleEdit(!titleEdit);
 
-    const tempList = getData()
-    const listIndex = tempList.findIndex((ele) => ele.ListId === currentListUid)
-    const cardIndex = tempList[listIndex].tasks.findIndex((ele) => ele.cardItemId === uidOfList)
-    tempList[listIndex].tasks[cardIndex].nameOfCardItem = titleText
-    localStorage.setItem('listData', JSON.stringify(tempList))
-    setListData(tempList)
+    const tempList = getData();
+    const listIndex = tempList.findIndex(
+      (ele) => ele.ListId === currentListUid
+    );
+    const cardIndex = tempList[listIndex].tasks.findIndex(
+      (ele) => ele.cardItemId === uidOfList
+    );
+    tempList[listIndex].tasks[cardIndex].nameOfCardItem = titleText;
+    localStorage.setItem("listData", JSON.stringify(tempList));
+    setListData(tempList);
   }
 
   return (

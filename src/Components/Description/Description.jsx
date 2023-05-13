@@ -1,6 +1,6 @@
 import React from "react";
 
-import DescriptionTitle from "../DescriptionTitle/DescriptionTitle";
+import DescriptionTitle from "../description_title/DescriptionTitle";
 
 function DescriptionModel() {
   return (
