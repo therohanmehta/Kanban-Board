@@ -1,14 +1,14 @@
-import AddTodo from "./components/add_todo/AddTodo";
+import AddTodo from "./Components/add_todo/AddTodo";
 import "./App.css";
-import AddList from "./components/add_list/AddList";
-import Navbar from "./components/navbar/Navbar";
+import AddList from "./Components/add_list/AddList";
+import Navbar from "./Components/Navbar/Navbar";
 
 import { list } from "./recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import DemoDetails from "./DemoDetails";
-import DescriptionModel from "./components/description/Description";
+import DescriptionModel from "./Components/Description/Description";
 
 function App() {
   const [listData, setListData] = useRecoilState(list);
@@ -16,6 +16,7 @@ function App() {
   useEffect(() => {
     if (listData.length != 0) {
       localStorage.setItem("listData", JSON.stringify(listData));
+      console.log('useEffect running')
     }
   }, [listData]);
 

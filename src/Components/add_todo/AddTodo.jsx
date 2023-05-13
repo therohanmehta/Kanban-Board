@@ -1,6 +1,6 @@
 //Chandra Bhan
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import style from "./AddTodo.module.css";
 import AddIcon from "@mui/icons-material/Add";
 import RollerShadesClosedOutlinedIcon from "@mui/icons-material/RollerShadesClosedOutlined";
@@ -8,7 +8,7 @@ import AddItem from "../../atoms/add_item/AddItem";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { v4 as uuid } from "uuid";
 import Popup from "reactjs-popup";
-import CustomizedDialogs from "../description/Description";
+import CustomizedDialogs from "../Description/Description";
 import { useNavigate } from "react-router-dom";
 import {
   showDialog,
@@ -21,19 +21,18 @@ import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import MorePopOver from "./more/More";
 
-function AddTodo({ listName, listId }) {
+function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
   let data = getData();
   let tasks = [];
   let currentList = data.find((ele) => ele.ListId == listId);
   if (currentList != undefined) {
     tasks = currentList.tasks ? currentList.tasks : [];
   }
-
+  const inputRef = useRef(null);
   const navigate = useNavigate();
   const [todoname, setTodoName] = useState(listName);
+  const [isShow, setIsShow] = useState(false);
   const [addItem, setAddItem] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [isOpen, setIsOpen] = useRecoilState(showDialog);
   const [uidOfListItem1, setUidOfListItem1] = useRecoilState(uidOfListItem);
   const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
   const [todoList, setTodoList] = useState(tasks);
@@ -85,27 +84,42 @@ function AddTodo({ listName, listId }) {
       close();
     }
   };
-
-  function handleDelete() {
-    const updatedList = listData.filter((ele) => ele.ListId !== listId);
-    setListData(updatedList);
-    console.log(listData);
-  }
-
+  useEffect(() => {
+    if (isShow) {
+      inputRef.current.focus();
+    }
+  }, [isShow]);
+  function handleChange() {
+    //Changing the name of the list 
+    setIsShow(false)
+    const update = [...listData]
+    const index = update.findIndex((ele) => ele.ListId == listId)
+    const updatedObj = { ...update[index] }
+    updatedObj.nameOfList = todoname;
+    update[index] = updatedObj
+    setListData(update)
+}
   return (
     <div style={{ marginLeft: "20px" }}>
       <div className={style.mainCardDiv}>
         <header>
           <div>
-            <input
-              className={style.todoNameField}
-              type="text"
-              value={todoname}
-              onChange={(e) => setTodoName(e.target.value)}
-            />
+            {isShow ? (
+              <form onSubmit={handleChange }>
+                <input
+                  ref={inputRef}
+                  className={style.todoNameField}
+                  type="text"
+                  placeholder={listName}
+                  onChange={(e) =>setTodoName(e.target.value)}
+                />
+              </form>
+            ) : (
+              <span onClick={() => setIsShow(!isShow)}>{listName}</span>
+            )}
           </div>
           <div>
-            <MorePopOver func={handleDelete} listID={listId} />
+            <MorePopOver func={handleDelete} name={todoname} />
           </div>
         </header>
         <section>

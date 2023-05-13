@@ -16,7 +16,6 @@ import { getData } from "../../utils/Services";
 export default function AddList() {
   const [isVisible, setIsVisible] = useState(true);
   let data = getData();
-  const [addList, setAddList] = useState(data);
   const [listName, setListName] = useState("");
   const [listData, setListData] = useRecoilState(list);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
@@ -31,16 +30,29 @@ export default function AddList() {
         nameOfList: listName,
       };
       setListName("");
-      setAddList([...addList, tempList]);
-      setListData([...addList, tempList]);
+      setListData([...listData, tempList]);
     }
   };
+  function handleDelete(listId) {
+    const updatedList = listData.filter((ele) => ele.ListId != listId);
+    setListData(updatedList);
+    console.log(listData);
+    localStorage.setItem("listData", JSON.stringify(updatedList));
+  }
+  function handleListNameChange(e, listId) {
+    console.log(e, listId)
+  }
 
   return (
     <div style={{ display: "flex", margin: "20px" }}>
       <div style={{ display: "flex", marginLeft: "20px" }}>
-        {addList.map((list) => (
-          <AddTodo listName={list.nameOfList} listId={list.ListId} />
+        {listData.map((list) => (
+          <AddTodo
+            listName={list.nameOfList}
+            listId={list.ListId}
+            handleDelete={() => handleDelete(list.ListId)}
+            handleListNameChange={handleListNameChange}
+          />
         ))}
       </div>
       <div

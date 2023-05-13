@@ -20,16 +20,22 @@ function DescriptionEdit() {
   const [edit, setEdit] = useState(false);
   const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
-
+let cardIndex = 0
   const listData = getData();
   const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid);
-  const cardIndex = listData[listIndex].tasks.findIndex(
+// if(listIndex!=-1)
+// {
+  cardIndex = listData[listIndex].tasks.findIndex(
     (ele) => ele.cardItemId === uidOfList
-  );
+);
 
-  useEffect(() => {
-    setDescription(listData[listIndex].tasks[cardIndex].description);
-  }, []);
+
+
+  
+useEffect(() => {
+  setDescription(listData[listIndex].tasks[cardIndex].description);
+    }, []);
+
 
   function handleDescription(e) {
     //need to store this inside localStorage.

@@ -119,3 +119,8 @@ cursor: pointer;
     gap: 5px;
     align-items: center;
 }
+.mainCardDiv span{
+  display: block;
+  width: 12rem;
+  cursor: pointer;
+}
