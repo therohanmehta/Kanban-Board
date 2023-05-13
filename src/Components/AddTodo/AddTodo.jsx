@@ -64,7 +64,7 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
     });
 
     setTodoList([...todoList, tempDataOfCard]);
-    setListData([...tempListData]);
+    setListData([...tempListData]);//casing
 
   };
 
