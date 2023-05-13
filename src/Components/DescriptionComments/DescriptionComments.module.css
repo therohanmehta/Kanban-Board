@@ -1,62 +1,62 @@
 .commentContainer {
-    display: flex;
-    margin-bottom: 1rem;
-    flex-direction: column;
-    /* text-align: center; */
+   display: flex;
+   margin-bottom: 1rem;
+   flex-direction: column;
+   /* text-align: center; */
 }
 
 .comment {
-    display: flex;
-    margin-left: 2.3rem;
-    height:4.5vh;
-    margin-bottom: 0.5rem;
-   
- }
+   display: flex;
+   margin-left: 2.3rem;
+   height:4.5vh;
+   margin-bottom: 0.5rem;
+  
+}
 
- .comments {
-    width:100%;
-    outline:none;
-    /* background-color: #F1F2F4; */
-    border: transparent;
-    border-radius: 5px;
-    padding:0.6rem;
-    background-color: #FFFFFF;
-    /* box-shadow: 0 3px 10px rgba(16, 15, 15, 0.2); */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   
-   
- }
- .commentList{
-    display: flex;
-    flex-direction: column-reverse;
-    /* width:90%; */
- }
+.comments {
+   width:100%;
+   outline:none;
+   /* background-color: #F1F2F4; */
+   border: transparent;
+   border-radius: 5px;
+   padding:0.6rem;
+   background-color: #FFFFFF;
+   /* box-shadow: 0 3px 10px rgba(16, 15, 15, 0.2); */
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  
+}
+.commentList{
+   display: flex;
+   flex-direction: column-reverse;
+   /* width:90%; */
+}
 
- .commentTexts {
-    display: flex;
-    gap:0.5rem;
-    flex-direction: column;
-    margin-bottom: 1rem;
+.commentTexts {
+   display: flex;
+   gap:0.5rem;
+   flex-direction: column;
+   margin-bottom: 1rem;
 
- }
+}
 
- .eachComment {
-    margin-left: 2.3rem;
-    background-color: #F1F2F4;
-    margin-top:0.5rem;
-    padding: 0.6rem;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
- }
+.eachComment {
+   margin-left: 2.3rem;
+   background-color: #F1F2F4;
+   margin-top:0.5rem;
+   padding: 0.6rem;
+   border-radius: 5px;
+   background-color: #FFFFFF;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
- .updateComment {
-    margin-left: 2.3rem;
-    display: flex;
-    gap:0.5rem;
-    padding:0.4rem;
- }
+.updateComment {
+   margin-left: 2.3rem;
+   display: flex;
+   gap:0.5rem;
+   padding:0.4rem;
+}
 
- .modifyComment {
-   cursor: pointer;
- }
+.modifyComment {
+  cursor: pointer;
+}

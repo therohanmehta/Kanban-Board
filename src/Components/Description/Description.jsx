@@ -1,14 +1,31 @@
 import React from 'react';
 
 import DescriptionTitle from '../DescriptionTitle/DescriptionTitle';
+import DescriptionEdit from '../DescriptionEdit/DescriptionEdit';
+import DescriptionComments from '../DescriptionComments/DescriptionComments';
+import DescriptionActivity from '../DescriptionActivity/DescriptionActivity';
+import ActivityList from '../ActivityList/ActivityList';
+import style from './Description.module.css';
+import CloseIcon from '@mui/icons-material/Close';
+import { useNavigate } from 'react-router-dom';
 
 
 function DescriptionModel(){
+  const navigate=useNavigate();
   return (
-    <>
-    <h2>Hello</h2>
-    <DescriptionTitle/>
-    </>
+    <div className={style.descriptionContainer}>
+      <div className={style.descriptionMainContainer}>
+          <div className={style.close}>
+             <DescriptionTitle />
+             <CloseIcon onClick={()=>navigate('/') } className={style.iconClose}/>
+           </div>
+         <DescriptionEdit/>
+         <DescriptionActivity/>
+         <DescriptionComments/>
+         <ActivityList/>
+       </div>
+    </div>
+    
   )
 }
 
@@ -133,4 +150,3 @@ export default DescriptionModel;
 //     </Stack>
 //   );
 // }
-

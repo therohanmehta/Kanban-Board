@@ -1,4 +1,6 @@
-import {useState} from 'react';
+
+
+import { useState } from 'react';
 import style from './DescriptionComments.module.css';
 import Button from '@mui/material/Button';
 
@@ -6,12 +8,12 @@ function DescriptionComments() {
     const [showComment, setShowComment] = useState(false);
     const [commentText, setCommentText] = useState('');
     const [comments, setComments] = useState(JSON.parse(localStorage.getItem('comments')) || []);
-
+   
     function handleComments(e) {
         e.preventDefault();
         if (commentText.trim() === '') {
             return; // Do not save empty comments
-          }
+        }
         let updatedComments = [...comments, commentText];
         setComments(updatedComments);
         console.log(commentText);
@@ -26,9 +28,11 @@ function DescriptionComments() {
             return index !== i;
         })
         setComments(removeItems);
-        localStorage.setItem('comments',JSON.stringify(removeItems));
+        localStorage.setItem('comments', JSON.stringify(removeItems));
 
     }
+
+   
 
     return (
         <>
@@ -48,21 +52,21 @@ function DescriptionComments() {
                             <input type='text' placeholder='Write a comment...' onClick={() => setShowComment(!showComment)} className={style.comments} />
                         </div>
                 }
-                {/* <div className={style.commentList}> */}
+
                 {
                     comments.map((comment, index) => (
-                        comment.trim() !== '' &&  <>
+                        comment.trim() !== '' && <>
                             <div key={index} className={style.eachComment}>
-                                {comment}
+                                { comment}
                             </div>
                             <div className={style.updateComment}>
-                                <small className={style.modifyComment}>Edit</small>
+                                {/* <small className={style.modifyComment} >Edit</small> */}
                                 <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
                             </div>
                         </>
                     ))
                 }
-                {/* </div> */}
+
 
             </div>
         </>
