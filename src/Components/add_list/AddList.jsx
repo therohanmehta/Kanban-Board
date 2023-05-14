@@ -39,9 +39,7 @@ export default function AddList() {
     console.log(listData);
     localStorage.setItem("listData", JSON.stringify(updatedList));
   }
-  function handleListNameChange(e, listId) {
-    console.log(e, listId)
-  }
+  
 
   return (
     <div style={{ display: "flex", margin: "20px" }}>
@@ -51,7 +49,7 @@ export default function AddList() {
             listName={list.nameOfList}
             listId={list.ListId}
             handleDelete={() => handleDelete(list.ListId)}
-            handleListNameChange={handleListNameChange}
+            
           />
         ))}
       </div>

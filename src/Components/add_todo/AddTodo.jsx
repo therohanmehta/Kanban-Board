@@ -21,7 +21,7 @@ import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import MorePopOver from "./more/More";
 
-function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
+function AddTodo({ listName, listId, handleDelete }) {
   let data = getData();
   let tasks = [];
   let currentList = data.find((ele) => ele.ListId == listId);
@@ -48,7 +48,12 @@ function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
       nameOfCardItem: nameOfCardItem,
       description: "",
       comment: [],
-      activity: [],
+      activity: [
+//         const timestamp = new Date().toLocaleString();
+// `${nameOfCardItem} added to ${listName} at ${ timestamp}`
+
+      ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
+
     };
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
