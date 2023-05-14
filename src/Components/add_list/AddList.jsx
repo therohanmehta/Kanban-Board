@@ -12,6 +12,7 @@ import {
 } from "../../recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import { getData } from "../../utils/Services";
+import { Droppable } from "react-beautiful-dnd";
 
 export default function AddList() {
   const [isVisible, setIsVisible] = useState(true);
@@ -40,20 +41,35 @@ export default function AddList() {
     localStorage.setItem("listData", JSON.stringify(updatedList));
   }
   function handleListNameChange(e, listId) {
-    console.log(e, listId)
+    console.log(e, listId);
   }
 
   return (
     <div style={{ display: "flex", margin: "20px" }}>
       <div style={{ display: "flex", marginLeft: "20px" }}>
-        {listData.map((list) => (
-          <AddTodo
-            listName={list.nameOfList}
-            listId={list.ListId}
-            handleDelete={() => handleDelete(list.ListId)}
-            handleListNameChange={handleListNameChange}
-          />
-        ))}
+        <Droppable droppableId="board" type="COLUMN" direction="horizontal">
+          {(provided, snapshot) => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              style={{
+                display: "flex",
+                // background: snapshot.isDraggingOver ? "lightblue" : "grey",
+              }}
+            >
+              {listData.map((list, index) => (
+                <AddTodo
+                  index={index}
+                  listName={list.nameOfList}
+                  listId={list.ListId}
+                  handleDelete={() => handleDelete(list.ListId)}
+                  handleListNameChange={handleListNameChange}
+                />
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
       </div>
       <div
         style={{ marginLeft: "20px" }}

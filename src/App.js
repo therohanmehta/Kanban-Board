@@ -5,10 +5,11 @@ import Navbar from "./Components/Navbar/Navbar";
 
 import { list } from "./recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, json } from "react-router-dom";
 // import DemoDetails from "./DemoDetails";
 import DescriptionModel from "./Components/Description/Description";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 function App() {
   const [listData, setListData] = useRecoilState(list);
@@ -16,7 +17,7 @@ function App() {
   useEffect(() => {
     if (listData.length != 0) {
       localStorage.setItem("listData", JSON.stringify(listData));
-      console.log('useEffect running')
+      console.log("useEffect running");
     }
   }, [listData]);
 
@@ -34,14 +35,50 @@ function App() {
 export default App;
 
 function Kanban() {
+  const [columns, setColumns] = useRecoilState(list);
+  // const [listData, setListData] = useRecoilState(list);
+
+  useEffect(() => {
+    if (columns.length != 0) {
+      localStorage.setItem("listData", JSON.stringify(columns));
+      console.log("useEffect running");
+    }
+  }, [columns]);
+
   return (
     <>
       <div className="App">
         <Navbar />
-        <div className="content">
-          <AddList />
-        </div>
+        <DragDropContext
+          onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+        >
+          <div className="content">
+            <AddList />
+          </div>
+        </DragDropContext>
       </div>
     </>
   );
 }
+
+const onDragEnd = (result, columns, setColumns) => {
+  console.log(result);
+  if (!result.destination) {
+    return;
+  }
+  const { source, destination } = result;
+  // const column = columns[source.index];
+  // console.log(source, destination);
+  // console.log(columns);
+  const copiedItems = JSON.parse(JSON.stringify(columns));
+  // console.log(copiedItems);
+  // console.log(destination.index);
+  const [removed] = copiedItems.splice(source.index, 1);
+  // console.log(copiedItems);
+  // console.log(removed);
+  const rem = JSON.parse(JSON.stringify(removed));
+  copiedItems.splice(destination.index, 0, rem);
+  // console.log(copiedItems);
+  // console.log(copiedItems);
+  setColumns([...copiedItems]);
+};

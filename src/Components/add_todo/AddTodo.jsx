@@ -20,8 +20,9 @@ import { useRecoilState } from "recoil";
 import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import MorePopOver from "./more/More";
+import { Draggable } from "react-beautiful-dnd";
 
-function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
+function AddTodo({ listName, listId, handleDelete, index }) {
   let data = getData();
   let tasks = [];
   let currentList = data.find((ele) => ele.ListId == listId);
@@ -90,135 +91,157 @@ function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
     }
   }, [isShow]);
   function handleChange() {
-    //Changing the name of the list 
-    setIsShow(false)
-    const update = [...listData]
-    const index = update.findIndex((ele) => ele.ListId == listId)
-    const updatedObj = { ...update[index] }
+    //Changing the name of the list
+    setIsShow(false);
+    const update = [...listData];
+    const index = update.findIndex((ele) => ele.ListId == listId);
+    const updatedObj = { ...update[index] };
     updatedObj.nameOfList = todoname;
-    update[index] = updatedObj
-    setListData(update)
-}
+    update[index] = updatedObj;
+    setListData(update);
+  }
+  // console.log(listName, listId);
   return (
-    <div style={{ marginLeft: "20px" }}>
-      <div className={style.mainCardDiv}>
-        <header>
-          <div>
-            {isShow ? (
-              <form onSubmit={handleChange }>
-                <input
-                  ref={inputRef}
-                  className={style.todoNameField}
-                  type="text"
-                  placeholder={listName}
-                  onChange={(e) =>setTodoName(e.target.value)}
-                />
-              </form>
-            ) : (
-              <span onClick={() => setIsShow(!isShow)}>{listName}</span>
-            )}
-          </div>
-          <div>
-            <MorePopOver func={handleDelete} name={todoname} />
-          </div>
-        </header>
-        <section>
-          {todoList.map((todoList) => (
-            <div
-              className={style.itemOfCardDiv}
-              key={todoList.cardItemId}
-              onClick={() => {
-                setUidOfListItem1(todoList.cardItemId);
-                setCurrentListUid(listId);
-                const test = todoList.cardItemId;
-                setCardName(todoList.nameOfCardItem);
-                console.log(cardName);
-                navigate(`/task/:${test}`);
-              }}
-            >
-              <div>{todoList.nameOfCardItem}</div>
-              {/* <CustomizedDialogs
-                nameCardItem={todoList.nameOfCardItem}
-                isOpen={isOpen}
-              /> */}
-              <div className={style.btnWrapper}>
-                <Popup
-                  trigger={
-                    <div>
-                      <button className={style.editBtn}>
-                        <EditOutlinedIcon fontSize="5px" />
-                      </button>
-                    </div>
-                  }
-                  position="bottom center"
-                >
-                  {(close) => (
-                    <div className={style.cardItemUpdationDiv}>
-                      <div>
-                        <textarea
-                          className={style.titleForItemField}
-                          type="text"
-                          placeholder={todoList.nameOfCardItem}
-                          value={updatedNameOfCardItem}
-                          rows={3}
-                          onChange={(e) =>
-                            setUpdatedNameOfCardItem(e.target.value)
-                          }
-                        ></textarea>
-                      </div>
-                      <div>
-                        <button
-                          onClick={() =>
-                            handleUpdationOfCartItem(todoList.cardItemId, close)
-                          }
-                          className={style.updateCardItemBtn}
-                        >
-                          Save
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </Popup>
+    <Draggable
+      // key={todoList.cardItemId}
+      draggableId={listId}
+      index={index}
+      key={listId}
+    >
+      {(provided, snapshot) => (
+        <div
+          // style={{ marginLeft: "20px" }}
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          style={{
+            userSelect: "none",
+            marginLeft: "20px",
+            // backgroundColor: snapshot.isDragging ? "red" : "",
+            // color: "white",
+            ...provided.draggableProps.style,
+          }}
+        >
+          <div className={style.mainCardDiv}>
+            <header>
+              <div>
+                {isShow ? (
+                  <form onSubmit={handleChange}>
+                    <input
+                      ref={inputRef}
+                      className={style.todoNameField}
+                      type="text"
+                      placeholder={listName}
+                      onChange={(e) => setTodoName(e.target.value)}
+                    />
+                  </form>
+                ) : (
+                  <span onClick={() => setIsShow(!isShow)}>{listName}</span>
+                )}
               </div>
-            </div>
-          ))}
-        </section>
+              <div>
+                <MorePopOver func={handleDelete} name={todoname} />
+              </div>
+            </header>
+            <section>
+              {todoList.map((todoList, index) => (
+                <div
+                  className={style.itemOfCardDiv}
+                  key={todoList.cardItemId}
+                  onClick={() => {
+                    setUidOfListItem1(todoList.cardItemId);
+                    setCurrentListUid(listId);
+                    const test = todoList.cardItemId;
+                    setCardName(todoList.nameOfCardItem);
+                    console.log(cardName);
+                    navigate(`/task/:${test}`);
+                  }}
+                >
+                  <div>{todoList.nameOfCardItem}</div>
 
-        <footer>
-          <div>
-            {addItem && (
-              <AddItem
-                setAddItem={setAddItem}
-                handleAddCardItem={handleAddCardItem}
-              />
-            )}
-          </div>
-          {!addItem && (
-            <div className={style.addCartItem}>
+                  <div className={style.btnWrapper}>
+                    <Popup
+                      trigger={
+                        <div>
+                          <button className={style.editBtn}>
+                            <EditOutlinedIcon fontSize="5px" />
+                          </button>
+                        </div>
+                      }
+                      position="bottom center"
+                    >
+                      {(close) => (
+                        <div className={style.cardItemUpdationDiv}>
+                          <div>
+                            <textarea
+                              className={style.titleForItemField}
+                              type="text"
+                              placeholder={todoList.nameOfCardItem}
+                              value={updatedNameOfCardItem}
+                              rows={3}
+                              onChange={(e) =>
+                                setUpdatedNameOfCardItem(e.target.value)
+                              }
+                            ></textarea>
+                          </div>
+                          <div>
+                            <button
+                              onClick={() =>
+                                handleUpdationOfCartItem(
+                                  todoList.cardItemId,
+                                  close
+                                )
+                              }
+                              className={style.updateCardItemBtn}
+                            >
+                              Save
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </Popup>
+                  </div>
+                </div>
+              ))}
+            </section>
+
+            <footer>
               <div>
-                <button
-                  onClick={handleOpenAddItemBox}
-                  className={style.addCardBtn}
-                >
-                  <AddIcon
-                    sx={{ marginBottom: "-5px", paddingRight: "4px" }}
-                    fontSize="small"
-                    color="#B7BCC7"
+                {addItem && (
+                  <AddItem
+                    setAddItem={setAddItem}
+                    handleAddCardItem={handleAddCardItem}
                   />
-                  Add a card
-                </button>
+                )}
               </div>
-              <div>
-                <RollerShadesClosedOutlinedIcon
-                  fontSize="small"
-                  color="disabled"
-                />
-              </div>
-            </div>
-          )}
-        </footer>
-      </div>
-    </div>
+              {!addItem && (
+                <div className={style.addCartItem}>
+                  <div>
+                    <button
+                      onClick={handleOpenAddItemBox}
+                      className={style.addCardBtn}
+                    >
+                      <AddIcon
+                        sx={{ marginBottom: "-5px", paddingRight: "4px" }}
+                        fontSize="small"
+                        color="#B7BCC7"
+                      />
+                      Add a card
+                    </button>
+                  </div>
+                  <div>
+                    <RollerShadesClosedOutlinedIcon
+                      fontSize="small"
+                      color="disabled"
+                    />
+                  </div>
+                </div>
+              )}
+            </footer>
+          </div>
+        </div>
+      )}
+    </Draggable>
   );
 }
 
