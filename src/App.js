@@ -41,7 +41,7 @@ function Kanban() {
   useEffect(() => {
     if (columns.length != 0) {
       localStorage.setItem("listData", JSON.stringify(columns));
-      console.log("useEffect running");
+      // console.log("useEffect running");
     }
   }, [columns]);
 
@@ -67,18 +67,50 @@ const onDragEnd = (result, columns, setColumns) => {
     return;
   }
   const { source, destination } = result;
-  // const column = columns[source.index];
-  // console.log(source, destination);
-  // console.log(columns);
-  const copiedItems = JSON.parse(JSON.stringify(columns));
-  // console.log(copiedItems);
-  // console.log(destination.index);
-  const [removed] = copiedItems.splice(source.index, 1);
-  // console.log(copiedItems);
-  // console.log(removed);
-  const rem = JSON.parse(JSON.stringify(removed));
-  copiedItems.splice(destination.index, 0, rem);
-  // console.log(copiedItems);
-  // console.log(copiedItems);
-  setColumns([...copiedItems]);
+  if (result.type == "COLUMN") {
+    // const column = columns[source.index];
+    // console.log(source, destination);
+    // console.log(columns);
+    const copiedItems = JSON.parse(JSON.stringify(columns));
+    // console.log(copiedItems);
+    // console.log(destination.index);
+    const [removed] = copiedItems.splice(source.index, 1);
+    // console.log(copiedItems);
+    // console.log(removed);
+    const rem = JSON.parse(JSON.stringify(removed));
+    copiedItems.splice(destination.index, 0, rem);
+    // console.log(copiedItems);
+    // console.log(copiedItems);
+    setColumns([...copiedItems]);
+    return;
+  }
+
+  console.log(source, destination);
+  if (source.droppableId === destination.droppableId) {
+    let dragedTaskList = columns.find(
+      (list) => list.ListId == source.droppableId
+    );
+    if (dragedTaskList != undefined) {
+      let taskList = JSON.parse(JSON.stringify(dragedTaskList.tasks));
+      const [removedTask] = taskList.splice(source.index, 1);
+      taskList.splice(destination.index, 0, removedTask);
+
+      let updatedList = {
+        ...dragedTaskList,
+        tasks: [...taskList],
+      };
+
+      const updatedLists = columns.map((list) => {
+        if (list.ListId == source.droppableId) {
+          return updatedList;
+        }
+        return list;
+      });
+      setColumns([...updatedLists]);
+    }
+    // const current = [...columns[source.droppableId]];
+    // const next = [...columns[destination.droppableId]];
+    // const target = current[source.index];
+    // console.log(current, next, target);
+  }
 };
