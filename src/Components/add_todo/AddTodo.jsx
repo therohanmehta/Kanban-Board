@@ -103,7 +103,19 @@ function AddTodo({ listName, listId, handleDelete }) {
     updatedObj.nameOfList = todoname;
     update[index] = updatedObj
     setListData(update)
-}
+  }
+  function handleCardItemDelete(id) {
+    let updateList = [...listData]
+    const index = updateList.findIndex((ele) => ele.ListId == listId)
+    let currentList = { ...updateList[index] }
+    const updatedTasks = currentList.tasks.filter((ele) => ele.cardItemId != id)
+    currentList.tasks = updatedTasks;
+    updateList[index] = currentList;
+    setListData(updateList)
+    setTodoList(updatedTasks)
+
+    console.log(updateList)
+  }
   return (
     <div style={{ marginLeft: "20px" }}>
       <div className={style.mainCardDiv}>
@@ -132,16 +144,18 @@ function AddTodo({ listName, listId, handleDelete }) {
             <div
               className={style.itemOfCardDiv}
               key={todoList.cardItemId}
-              onClick={() => {
-                setUidOfListItem1(todoList.cardItemId);
-                setCurrentListUid(listId);
-                const test = todoList.cardItemId;
-                setCardName(todoList.nameOfCardItem);
-                console.log(cardName);
-                navigate(`/task/:${test}`);
-              }}
+             
             >
-              <div>{todoList.nameOfCardItem}</div>
+              <div className={style.cardTitle}
+                 onClick={() => {
+                  setUidOfListItem1(todoList.cardItemId);
+                  setCurrentListUid(listId);
+                  const test = todoList.cardItemId;
+                  setCardName(todoList.nameOfCardItem);
+                  console.log(cardName);
+                  navigate(`/task/:${test}`);
+                }}
+              >{todoList.nameOfCardItem}</div>
               {/* <CustomizedDialogs
                 nameCardItem={todoList.nameOfCardItem}
                 isOpen={isOpen}
@@ -184,7 +198,11 @@ function AddTodo({ listName, listId, handleDelete }) {
                     </div>
                   )}
                 </Popup>
+                <button className={style.dltBtn}
+                  onClick={()=>handleCardItemDelete(todoList.cardItemId)}
+                >❌</button>
               </div>
+              
             </div>
           ))}
         </section>
