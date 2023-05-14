@@ -20,7 +20,7 @@ import { useRecoilState } from "recoil";
 import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import MorePopOver from "./more/More";
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 
 function AddTodo({ listName, listId, handleDelete, index }) {
   let data = getData();
@@ -122,123 +122,143 @@ function AddTodo({ listName, listId, handleDelete, index }) {
             ...provided.draggableProps.style,
           }}
         >
-          <div className={style.mainCardDiv}>
-            <header>
-              <div>
-                {isShow ? (
-                  <form onSubmit={handleChange}>
-                    <input
-                      ref={inputRef}
-                      className={style.todoNameField}
-                      type="text"
-                      placeholder={listName}
-                      onChange={(e) => setTodoName(e.target.value)}
-                    />
-                  </form>
-                ) : (
-                  <span onClick={() => setIsShow(!isShow)}>{listName}</span>
-                )}
-              </div>
-              <div>
-                <MorePopOver func={handleDelete} name={todoname} />
-              </div>
-            </header>
-            <section>
-              {todoList.map((todoList, index) => (
-                <div
-                  className={style.itemOfCardDiv}
-                  key={todoList.cardItemId}
-                  onClick={() => {
-                    setUidOfListItem1(todoList.cardItemId);
-                    setCurrentListUid(listId);
-                    const test = todoList.cardItemId;
-                    setCardName(todoList.nameOfCardItem);
-                    console.log(cardName);
-                    navigate(`/task/:${test}`);
-                  }}
-                >
-                  <div>{todoList.nameOfCardItem}</div>
-
-                  <div className={style.btnWrapper}>
-                    <Popup
-                      trigger={
-                        <div>
-                          <button className={style.editBtn}>
-                            <EditOutlinedIcon fontSize="5px" />
-                          </button>
-                        </div>
-                      }
-                      position="bottom center"
+          <Droppable droppableId={listId}>
+            {(provided, snapshot) => (
+              <div
+                className={style.mainCardDiv}
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                <header>
+                  <div>
+                    {isShow ? (
+                      <form onSubmit={handleChange}>
+                        <input
+                          ref={inputRef}
+                          className={style.todoNameField}
+                          type="text"
+                          placeholder={listName}
+                          onChange={(e) => setTodoName(e.target.value)}
+                        />
+                      </form>
+                    ) : (
+                      <span onClick={() => setIsShow(!isShow)}>{listName}</span>
+                    )}
+                  </div>
+                  <div>
+                    <MorePopOver func={handleDelete} name={todoname} />
+                  </div>
+                </header>
+                <section>
+                  {todoList.map((todoList, index) => (
+                    <Draggable
+                      draggableId={todoList.cardItemId}
+                      index={index}
+                      key={todoList.cardItemId}
                     >
-                      {(close) => (
-                        <div className={style.cardItemUpdationDiv}>
-                          <div>
-                            <textarea
-                              className={style.titleForItemField}
-                              type="text"
-                              placeholder={todoList.nameOfCardItem}
-                              value={updatedNameOfCardItem}
-                              rows={3}
-                              onChange={(e) =>
-                                setUpdatedNameOfCardItem(e.target.value)
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className={style.itemOfCardDiv}
+                          key={todoList.cardItemId}
+                          onClick={() => {
+                            setUidOfListItem1(todoList.cardItemId);
+                            setCurrentListUid(listId);
+                            const test = todoList.cardItemId;
+                            setCardName(todoList.nameOfCardItem);
+                            console.log(cardName);
+                            navigate(`/task/:${test}`);
+                          }}
+                        >
+                          <div>{todoList.nameOfCardItem}</div>
+
+                          <div className={style.btnWrapper}>
+                            <Popup
+                              trigger={
+                                <div>
+                                  <button className={style.editBtn}>
+                                    <EditOutlinedIcon fontSize="5px" />
+                                  </button>
+                                </div>
                               }
-                            ></textarea>
-                          </div>
-                          <div>
-                            <button
-                              onClick={() =>
-                                handleUpdationOfCartItem(
-                                  todoList.cardItemId,
-                                  close
-                                )
-                              }
-                              className={style.updateCardItemBtn}
+                              position="bottom center"
                             >
-                              Save
-                            </button>
+                              {(close) => (
+                                <div className={style.cardItemUpdationDiv}>
+                                  <div>
+                                    <textarea
+                                      className={style.titleForItemField}
+                                      type="text"
+                                      placeholder={todoList.nameOfCardItem}
+                                      value={updatedNameOfCardItem}
+                                      rows={3}
+                                      onChange={(e) =>
+                                        setUpdatedNameOfCardItem(e.target.value)
+                                      }
+                                    ></textarea>
+                                  </div>
+                                  <div>
+                                    <button
+                                      onClick={() =>
+                                        handleUpdationOfCartItem(
+                                          todoList.cardItemId,
+                                          close
+                                        )
+                                      }
+                                      className={style.updateCardItemBtn}
+                                    >
+                                      Save
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </Popup>
                           </div>
                         </div>
                       )}
-                    </Popup>
-                  </div>
-                </div>
-              ))}
-            </section>
+                    </Draggable>
+                  ))}
+                </section>
 
-            <footer>
-              <div>
-                {addItem && (
-                  <AddItem
-                    setAddItem={setAddItem}
-                    handleAddCardItem={handleAddCardItem}
-                  />
-                )}
-              </div>
-              {!addItem && (
-                <div className={style.addCartItem}>
+                <footer>
                   <div>
-                    <button
-                      onClick={handleOpenAddItemBox}
-                      className={style.addCardBtn}
-                    >
-                      <AddIcon
-                        sx={{ marginBottom: "-5px", paddingRight: "4px" }}
-                        fontSize="small"
-                        color="#B7BCC7"
+                    {addItem && (
+                      <AddItem
+                        setAddItem={setAddItem}
+                        handleAddCardItem={handleAddCardItem}
                       />
-                      Add a card
-                    </button>
+                    )}
                   </div>
-                  <div>
-                    <RollerShadesClosedOutlinedIcon
-                      fontSize="small"
-                      color="disabled"
-                    />
-                  </div>
-                </div>
-              )}
-            </footer>
-          </div>
+                  {!addItem && (
+                    <div className={style.addCartItem}>
+                      <div>
+                        <button
+                          onClick={handleOpenAddItemBox}
+                          className={style.addCardBtn}
+                        >
+                          <AddIcon
+                            sx={{ marginBottom: "-5px", paddingRight: "4px" }}
+                            fontSize="small"
+                            color="#B7BCC7"
+                          />
+                          Add a card
+                        </button>
+                      </div>
+                      <div>
+                        <RollerShadesClosedOutlinedIcon
+                          fontSize="small"
+                          color="disabled"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </footer>
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
       )}
     </Draggable>
