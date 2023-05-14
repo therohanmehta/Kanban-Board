@@ -23,9 +23,12 @@ import MorePopOver from "./more/More";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 
 function AddTodo({ listName, listId, handleDelete, index }) {
-  let data = getData();
+  const [listData, setListData] = useRecoilState(list);
+
+  // let data = getData();
+  // let data = [...listData];
   let tasks = [];
-  let currentList = data.find((ele) => ele.ListId == listId);
+  let currentList = listData.find((ele) => ele.ListId == listId);
   if (currentList != undefined) {
     tasks = currentList.tasks ? currentList.tasks : [];
   }
@@ -37,7 +40,6 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   const [uidOfListItem1, setUidOfListItem1] = useRecoilState(uidOfListItem);
   const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
   const [todoList, setTodoList] = useState(tasks);
-  const [listData, setListData] = useRecoilState(list);
   const [cardName, setCardName] = useRecoilState(atomCardName);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
   const handleOpenAddItemBox = () => {
