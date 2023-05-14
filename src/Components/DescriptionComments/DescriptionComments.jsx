@@ -3,16 +3,17 @@
 import { useState } from 'react';
 import style from './DescriptionComments.module.css';
 import Button from '@mui/material/Button';
+import PersonIcon from '@mui/icons-material/Person';
 
 function DescriptionComments() {
     const [showComment, setShowComment] = useState(false);
     const [commentText, setCommentText] = useState('');
     const [comments, setComments] = useState(JSON.parse(localStorage.getItem('comments')) || []);
-   
+
     function handleComments(e) {
         e.preventDefault();
         if (commentText.trim() === '') {
-            return; 
+            return;
         }
         let updatedComments = [...comments, commentText];
         setComments(updatedComments);
@@ -32,7 +33,7 @@ function DescriptionComments() {
 
     }
 
-   
+
 
     return (
         <>
@@ -55,14 +56,16 @@ function DescriptionComments() {
 
                 {
                     comments.map((comment, index) => (
-                        comment.trim() !== '' && <>
-                            <div key={index} className={style.eachComment}>
-                                { comment}
-                            </div>
-                            <div className={style.updateComment}>
-                                
-                                <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
-                            </div>
+                        comment.trim() !== '' &&
+                       <>
+                                <div key={index} className={style.eachComment}>
+                                    {comment}
+                                </div>
+                                <div className={style.updateComment}>
+
+                                    <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
+                                </div>
+                          
                         </>
                     ))
                 }

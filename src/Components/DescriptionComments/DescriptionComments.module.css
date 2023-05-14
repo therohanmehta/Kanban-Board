@@ -5,6 +5,13 @@
    /* text-align: center; */
 }
 
+.commentMain {
+   display: flex;
+   flex-direction: row;
+   gap:1rem;
+   
+}
+
 .comment {
    display: flex;
    margin-left: 2.3rem;

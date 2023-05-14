@@ -20,6 +20,9 @@ import {
 import { useRecoilState } from "recoil";
 import { list } from "../../Recoil/DescriptionAtoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
+import moment from 'moment';
+moment().format()
+
 
 function AddTodo({ listName, listId }) {
   let data = getData();
@@ -51,6 +54,10 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
       comment: [],
       activity:[],
     };
+
+    
+
+
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
         console.log(listId)
@@ -58,6 +65,7 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
           ListId: list.ListId,
           nameOfList: list.nameOfList,
           tasks: [...todoList, tempDataOfCard],
+         
         };
       }
       return list;
@@ -85,6 +93,9 @@ const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid)
       close();
     }
   };
+
+ 
+  
 
   return (
     <div style={{ marginLeft: "20px" }}>
