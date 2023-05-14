@@ -5,7 +5,7 @@ import DvrOutlinedIcon from "@mui/icons-material/DvrOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {
   atomCardName,
   list,
@@ -21,15 +21,31 @@ function DescriptionTitle() {
   const [listData, setListData] = useRecoilState(list);
   const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
+  const [listTitle,setListTitle]=useState('');
   // const currentListUid = useRecoilState(atomListUid);
+
+  useEffect(()=> {
+    let listData = getData();
+      const listIndex = listData.findIndex((item) => item.ListId === currentListUid);
+      if (listIndex !== -1) {
+        const nameOfList = listData[listIndex].nameOfList;
+        setListTitle(nameOfList);
+        console.log(nameOfList);
+        
+      }
+
+  },[])
+
 
   function handleTextField(e) {
     setTitleText(e.target.value);
   }
 
+
   function handleSubmit(e) {
     e.preventDefault();
     setTitleEdit(!titleEdit);
+
 
     const tempList = getData();
     const listIndex = tempList.findIndex(
@@ -74,7 +90,7 @@ function DescriptionTitle() {
               </form>
 
               <div className={style.listName}>
-                <small>in list To Do </small>
+                <small>in list {listTitle} </small>
                 {watch && (
                   <VisibilityOutlinedIcon style={{ fontSize: "16px" }} />
                 )}
