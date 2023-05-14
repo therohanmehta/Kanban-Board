@@ -71,19 +71,10 @@ const onDragEnd = (result, columns, setColumns) => {
 
   // ! moving list
   if (result.type == "COLUMN") {
-    // const column = columns[source.index];
-    // console.log(source, destination);
-    // console.log(columns);
     const copiedItems = JSON.parse(JSON.stringify(columns));
-    // console.log(copiedItems);
-    // console.log(destination.index);
     const [removed] = copiedItems.splice(source.index, 1);
-    // console.log(copiedItems);
-    // console.log(removed);
     const rem = JSON.parse(JSON.stringify(removed));
     copiedItems.splice(destination.index, 0, rem);
-    // console.log(copiedItems);
-    // console.log(copiedItems);
     setColumns([...copiedItems]);
     return;
   }
