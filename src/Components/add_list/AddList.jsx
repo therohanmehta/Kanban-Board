@@ -1,4 +1,3 @@
-//Samad
 import React, { useState } from "react";
 import styles from "./AddList.module.css";
 import AddIcon from "@mui/icons-material/Add";
@@ -13,12 +12,16 @@ import {
 import { useRecoilState } from "recoil";
 import { getData } from "../../utils/Services";
 
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
+
 export default function AddList() {
   const [isVisible, setIsVisible] = useState(true);
   let data = getData();
   const [listName, setListName] = useState("");
   const [listData, setListData] = useRecoilState(list);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
+
   function handleAddList() {
     setIsVisible(false);
   }
@@ -33,12 +36,14 @@ export default function AddList() {
       setListData([...listData, tempList]);
     }
   };
+
   function handleDelete(listId) {
     const updatedList = listData.filter((ele) => ele.ListId != listId);
     setListData(updatedList);
     console.log(listData);
     localStorage.setItem("listData", JSON.stringify(updatedList));
   }
+
   function handleListNameChange(e, listId) {
     console.log(e, listId)
   }
@@ -46,14 +51,33 @@ export default function AddList() {
   return (
     <div style={{ display: "flex", margin: "20px" }}>
       <div style={{ display: "flex", marginLeft: "20px" }}>
-        {listData.map((list) => (
-          <AddTodo
-            listName={list.nameOfList}
-            listId={list.ListId}
-            handleDelete={() => handleDelete(list.ListId)}
-            handleListNameChange={handleListNameChange}
-          />
-        ))}
+        
+        {listData.map((list, index) => (
+  <Droppable droppableId={list.ListId} key={list.ListId}>
+    {(provided) => (
+      <div ref={provided.innerRef} {...provided.droppableProps}>
+        <Draggable draggableId={list.ListId} index={index}>
+          {(provided) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              <AddTodo
+                listName={list.nameOfList}
+                listId={list.ListId}
+                handleDelete={() => handleDelete(list.ListId)}
+                handleListNameChange={handleListNameChange}
+              />
+            </div>
+          )}
+        </Draggable>
+        {provided.placeholder}
+      </div>
+    )}
+  </Droppable>
+))}
+
       </div>
       <div
         style={{ marginLeft: "20px" }}
@@ -87,5 +111,3 @@ export default function AddList() {
     </div>
   );
 }
-
-//! folder-casing

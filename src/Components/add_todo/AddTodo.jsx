@@ -1,225 +1,129 @@
-//Chandra Bhan
-
-import React, { useEffect, useState, useRef } from "react";
-import style from "./AddTodo.module.css";
+import React, { useState } from "react";
+import styles from "./AddTodo.module.css";
 import AddIcon from "@mui/icons-material/Add";
-import RollerShadesClosedOutlinedIcon from "@mui/icons-material/RollerShadesClosedOutlined";
-import AddItem from "../../atoms/add_item/AddItem";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import { Button } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuid } from "uuid";
-import Popup from "reactjs-popup";
-import CustomizedDialogs from "../Description/Description";
-import { useNavigate } from "react-router-dom";
+import AddTodo from "../add_todo/AddTodo";
 import {
-  showDialog,
-  uidOfListItem,
+  list,
   atomListUid,
-  atomCardName,
 } from "../../recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
-import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
-import MorePopOver from "./more/More";
 
-function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
+export default function AddList() {
+  const [isVisible, setIsVisible] = useState(true);
   let data = getData();
-  let tasks = [];
-  let currentList = data.find((ele) => ele.ListId == listId);
-  if (currentList != undefined) {
-    tasks = currentList.tasks ? currentList.tasks : [];
-  }
-  const inputRef = useRef(null);
-  const navigate = useNavigate();
-  const [todoname, setTodoName] = useState(listName);
-  const [isShow, setIsShow] = useState(false);
-  const [addItem, setAddItem] = useState(false);
-  const [uidOfListItem1, setUidOfListItem1] = useRecoilState(uidOfListItem);
-  const [updatedNameOfCardItem, setUpdatedNameOfCardItem] = useState("");
-  const [todoList, setTodoList] = useState(tasks);
+  const [listName, setListName] = useState("");
   const [listData, setListData] = useRecoilState(list);
-  const [cardName, setCardName] = useRecoilState(atomCardName);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
-  const handleOpenAddItemBox = () => {
-    setAddItem(true);
-  };
-  const handleAddCardItem = (nameOfCardItem) => {
-    const tempDataOfCard = {
-      cardItemId: uuid(),
-      nameOfCardItem: nameOfCardItem,
-      description: "",
-      comment: [],
-      activity: [],
-    };
-    let tempListData = listData.map((list) => {
-      if (list.ListId == listId) {
-        console.log(listId);
-        return {
-          ListId: list.ListId,
-          nameOfList: list.nameOfList,
-          tasks: [...todoList, tempDataOfCard],
-        };
-      }
-      return list;
-    });
 
-    setTodoList([...todoList, tempDataOfCard]);
-    setListData([...tempListData]);
-  };
+  function handleAddList() {
+    setIsVisible(false);
+  }
 
-  const handleUpdationOfCartItem = (id, close) => {
-    if (updatedNameOfCardItem != "") {
-      const tempTodoItem = todoList.map((item) => {
-        if (item.cardItemId == id) {
-          return {
-            cardItemId: item.cardItemId,
-            nameOfCardItem: updatedNameOfCardItem,
-            description: "",
-          };
-        }
-        return item;
-      });
-      setTodoList([...tempTodoItem]);
-      setUpdatedNameOfCardItem("");
-
-      close();
+  const handleAddCardItem = () => {
+    if (listName !== "") {
+      const tempList = {
+        ListId: uuid(),
+        nameOfList: listName,
+      };
+      setListName("");
+      setListData([...listData, tempList]);
     }
   };
-  useEffect(() => {
-    if (isShow) {
-      inputRef.current.focus();
+
+  function handleDelete(listId) {
+    const updatedList = listData.filter((ele) => ele.ListId !== listId);
+    setListData(updatedList);
+    console.log(listData);
+    localStorage.setItem("listData", JSON.stringify(updatedList));
+  }
+
+  function handleListNameChange(e, listId) {
+    console.log(e, listId);
+  }
+
+  const handleDragEnd = (result) => {
+    if (!result.destination) {
+      return;
     }
-  }, [isShow]);
-  function handleChange() {
-    //Changing the name of the list 
-    setIsShow(false)
-    const update = [...listData]
-    const index = update.findIndex((ele) => ele.ListId == listId)
-    const updatedObj = { ...update[index] }
-    updatedObj.nameOfList = todoname;
-    update[index] = updatedObj
-    setListData(update)
-}
+    const items = Array.from(listData);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setListData(items);
+  };
+
   return (
-    <div style={{ marginLeft: "20px" }}>
-      <div className={style.mainCardDiv}>
-        <header>
-          <div>
-            {isShow ? (
-              <form onSubmit={handleChange }>
-                <input
-                  ref={inputRef}
-                  className={style.todoNameField}
-                  type="text"
-                  placeholder={listName}
-                  onChange={(e) =>setTodoName(e.target.value)}
-                />
-              </form>
-            ) : (
-              <span onClick={() => setIsShow(!isShow)}>{listName}</span>
-            )}
-          </div>
-          <div>
-            <MorePopOver func={handleDelete} name={todoname} />
-          </div>
-        </header>
-        <section>
-          {todoList.map((todoList) => (
+    <DragDropContext onDragEnd={handleDragEnd}>
+      <div style={{ display: "flex", margin: "20px" }}>
+        <Droppable droppableId="listData">
+          {(provided) => (
             <div
-              className={style.itemOfCardDiv}
-              key={todoList.cardItemId}
-              onClick={() => {
-                setUidOfListItem1(todoList.cardItemId);
-                setCurrentListUid(listId);
-                const test = todoList.cardItemId;
-                setCardName(todoList.nameOfCardItem);
-                console.log(cardName);
-                navigate(`/task/:${test}`);
-              }}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              style={{ display: "flex", marginLeft: "20px" }}
             >
-              <div>{todoList.nameOfCardItem}</div>
-              {/* <CustomizedDialogs
-                nameCardItem={todoList.nameOfCardItem}
-                isOpen={isOpen}
-              /> */}
-              <div className={style.btnWrapper}>
-                <Popup
-                  trigger={
-                    <div>
-                      <button className={style.editBtn}>
-                        <EditOutlinedIcon fontSize="5px" />
-                      </button>
-                    </div>
-                  }
-                  position="bottom center"
+              {listData.map((list, index) => (
+                <Draggable
+                  key={list.ListId}
+                  draggableId={list.ListId}
+                  index={index}
                 >
-                  {(close) => (
-                    <div className={style.cardItemUpdationDiv}>
-                      <div>
-                        <textarea
-                          className={style.titleForItemField}
-                          type="text"
-                          placeholder={todoList.nameOfCardItem}
-                          value={updatedNameOfCardItem}
-                          rows={3}
-                          onChange={(e) =>
-                            setUpdatedNameOfCardItem(e.target.value)
-                          }
-                        ></textarea>
-                      </div>
-                      <div>
-                        <button
-                          onClick={() =>
-                            handleUpdationOfCartItem(todoList.cardItemId, close)
-                          }
-                          className={style.updateCardItemBtn}
-                        >
-                          Save
-                        </button>
-                      </div>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <AddTodo
+                        listName={list.nameOfList}
+                        listId={list.ListId}
+                        handleDelete={() => handleDelete(list.ListId)}
+                        handleListNameChange={handleListNameChange}
+                      />
                     </div>
                   )}
-                </Popup>
-              </div>
+                </Draggable>
+              ))}
+              {provided.placeholder}
             </div>
-          ))}
-        </section>
-
-        <footer>
-          <div>
-            {addItem && (
-              <AddItem
-                setAddItem={setAddItem}
-                handleAddCardItem={handleAddCardItem}
+          )}
+        </Droppable>
+        <div
+          style={{ marginLeft: "20px" }}
+          className={`${styles.container} ${isVisible ? "" : styles.expanded}`}
+        >
+          {isVisible ? (
+            <div className={styles.btnWrapper} onClick={handleAddList}>
+              <AddIcon /> <span> Add another list</span>
+            </div>
+          ) : (
+            <div className={styles.inputWrapper}>
+              <input
+                type="text"
+                value={listName}
+                onChange={(e) => setListName(e.target.value)}
+                className={styles.inputField}
+                placeholder="Enter list title..."
               />
-            )}
-          </div>
-          {!addItem && (
-            <div className={style.addCartItem}>
-              <div>
-                <button
-                  onClick={handleOpenAddItemBox}
-                  className={style.addCardBtn}
-                >
-                  <AddIcon
-                    sx={{ marginBottom: "-5px", paddingRight: "4px" }}
-                    fontSize="small"
-                    color="#B7BCC7"
-                  />
-                  Add a card
-                </button>
-              </div>
-              <div>
-                <RollerShadesClosedOutlinedIcon
-                  fontSize="small"
-                  color="disabled"
+              <div className={styles.innerDiv}>
+                <Button onClick={handleAddCardItem} variant="contained">
+                  Add List
+                </Button>
+                <CloseIcon
+                  onClick={() => setIsVisible(!isVisible)}
+                  id={styles.closeIcon}
                 />
               </div>
             </div>
           )}
-        </footer>
+        </div>
       </div>
-    </div>
+    </DragDropContext>
   );
 }
-
-export default AddTodo;
