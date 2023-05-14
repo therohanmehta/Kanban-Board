@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route, json } from "react-router-dom";
 // import DemoDetails from "./DemoDetails";
 import DescriptionModel from "./Components/Description/Description";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { Source } from "@mui/icons-material";
 
 function App() {
   const [listData, setListData] = useRecoilState(list);
@@ -67,6 +68,8 @@ const onDragEnd = (result, columns, setColumns) => {
     return;
   }
   const { source, destination } = result;
+
+  // ! moving list
   if (result.type == "COLUMN") {
     // const column = columns[source.index];
     // console.log(source, destination);
@@ -85,6 +88,7 @@ const onDragEnd = (result, columns, setColumns) => {
     return;
   }
 
+  // ! moving task to same list
   console.log(source, destination);
   if (source.droppableId === destination.droppableId) {
     let dragedTaskList = columns.find(
@@ -108,9 +112,45 @@ const onDragEnd = (result, columns, setColumns) => {
       });
       setColumns([...updatedLists]);
     }
-    // const current = [...columns[source.droppableId]];
-    // const next = [...columns[destination.droppableId]];
-    // const target = current[source.index];
-    // console.log(current, next, target);
   }
+
+  // ! moving task to different list
+
+  let sourceTaskList = columns.find(
+    (list) => list.ListId == source.droppableId
+  );
+  let destinationTaskList = columns.find(
+    (list) => list.ListId == destination.droppableId
+  );
+
+  const current = JSON.parse(JSON.stringify(sourceTaskList.tasks));
+  const next = JSON.parse(JSON.stringify(destinationTaskList.tasks));
+  const target = current[source.index];
+  console.log(current, next, target);
+
+  // * removing from original list
+  current.splice(source.index, 1);
+
+  // * inserting into next
+  next.splice(destination.index, 0, target);
+
+  // * merging the updated task in list
+  const updatedLists = columns.map((list) => {
+    if (list.ListId == source.droppableId) {
+      return {
+        ...list,
+        tasks: current,
+      };
+    }
+    if (list.ListId == destination.droppableId) {
+      return {
+        ...list,
+        tasks: next,
+      };
+    }
+    return list;
+  });
+
+  // ? adding the updatedList
+  setColumns([...updatedLists]);
 };
