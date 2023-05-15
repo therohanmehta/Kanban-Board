@@ -12,10 +12,12 @@ function Customisation() {
     const image=['https://img.freepik.com/free-vector/flower-background-desktop-wallpaper-cute-vector_53876-136877.jpg?w=2000',
                 'https://images.unsplash.com/photo-1548263594-a71ea65a8598?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80',
                   'https://marketplace.canva.com/EAFHxwp8HsY/1/0/1600w/canva-green-sun-flowers-pattern-desktop-wallpaper-Ev2N9Va1npQ.jpg',
-              'https://media.istockphoto.com/id/1353553203/photo/forest-wooden-table-background-summer-sunny-meadow-with-green-grass-forest-trees-background.jpg?b=1&s=170667a&w=0&k=20&c=-jvR1WDwcloLXRgRTGeyG3frvrhPIbegdemeL6vY2Pk=' ]
+              'https://media.istockphoto.com/id/1353553203/photo/forest-wooden-table-background-summer-sunny-meadow-with-green-grass-forest-trees-background.jpg?b=1&s=170667a&w=0&k=20&c=-jvR1WDwcloLXRgRTGeyG3frvrhPIbegdemeL6vY2Pk=',
+            'https://wallpapers.com/images/featured/mhdoyguhq3skloxt.jpg', 'https://wallpaperaccess.com/thumb/1781036.jpg','https://cdn.wallpaperhub.app/cloudcache/b/d/7/6/4/b/bd764bb25d49a05105060185774ba14cd2c846f7.jpg','https://wallpapers.com/images/featured/4axuqbnq0u647e8o.jpg' ]
 
                 function handleBackground(ele) {
                     setCurrentWallpaper(ele)
+                    localStorage.setItem('userWallpaper',`${ele}`)
                     navigate('/')
                 }
                 function handleLinkOfWallpaper(e){
@@ -24,6 +26,7 @@ function Customisation() {
                 function handleSendLinkOfWallpaper(){
                   if(linkOfWallpaper!==''){
                   setCurrentWallpaper(linkOfWallpaper)
+                  localStorage.setItem('userWallpaper',`${linkOfWallpaper}`)
                   navigate('/')
                 }
               else{
