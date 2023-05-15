@@ -10,22 +10,28 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 import style from './Navbar.module.css'
+import { useNavigate } from 'react-router-dom';
 function Navbar() {
 const [showStar,setShowStar]=useState(true)
+const [showBgChange,setshowBgChange]=useState(true)
+const navigate=useNavigate()
 
   return (
     <>
 
       <nav className={style.navBar}>
      <div className={style.left}>
-     <Button  variant='text'>Trello</Button>
+     <Button  variant='text'>Fake Trello</Button>
      {showStar?<Button  onClick={()=>{setShowStar(!showStar)}}><StarBorderIcon/></Button>:<Button  onClick={()=>{setShowStar(!showStar)}}><StarIcon/></Button>}
      <Button sx={{color:'white',textTransform:'none'}} variant='text' startIcon={<PublicIcon />}>Public</Button>  
       <Button  variant='text'>Workspace Visible</Button>
-      <Button id={style.whiteBtn} variant='contained' startIcon={<ViewKanbanOutlinedIcon />}>Board</Button>
-      <Button  variant='text'><KeyboardArrowDownOutlinedIcon/></Button>
+      <Button  id={style.whiteBtn} variant='contained' startIcon={<ViewKanbanOutlinedIcon />}>Board  </Button>_
+     { showBgChange?<Button onClick={()=>{setshowBgChange(!showBgChange)}}  variant='text'  startIcon={<AutoAwesomeIcon />}> Edit Board</Button>: 
+      <Button onClick={()=>{navigate('/customisation')}} variant='contained' id={style.whiteBtn} startIcon={<AddPhotoAlternateIcon />}> Change Background</Button>}
      </div>
      
      <div className={style.right}>

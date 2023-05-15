@@ -49,7 +49,12 @@ function AddTodo({ listName, listId, handleDelete, index }) {
       nameOfCardItem: nameOfCardItem,
       description: "",
       comment: [],
-      activity: [],
+      activity: [
+//         const timestamp = new Date().toLocaleString();
+// `${nameOfCardItem} added to ${listName} at ${ timestamp}`
+
+      ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
+
     };
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
