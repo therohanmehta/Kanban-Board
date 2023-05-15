@@ -145,3 +145,5 @@ const onDragEnd = (result, columns, setColumns) => {
   // ? adding the updatedList
   setColumns([...updatedLists]);
 };
+
+//? completion drag and drop
