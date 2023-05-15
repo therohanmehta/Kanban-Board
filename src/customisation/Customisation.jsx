@@ -9,11 +9,11 @@ function Customisation() {
     const navigate=useNavigate()
     const[linkOfWallpaper,setLinkOfWallpaper]=useState('')
     const [currentWallpaper,setCurrentWallpaper]=useRecoilState(wallpaper)
-    const image=['https://img.freepik.com/free-vector/flower-background-desktop-wallpaper-cute-vector_53876-136877.jpg?w=2000',
-                'https://images.unsplash.com/photo-1548263594-a71ea65a8598?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80',
-                  'https://marketplace.canva.com/EAFHxwp8HsY/1/0/1600w/canva-green-sun-flowers-pattern-desktop-wallpaper-Ev2N9Va1npQ.jpg',
-              'https://media.istockphoto.com/id/1353553203/photo/forest-wooden-table-background-summer-sunny-meadow-with-green-grass-forest-trees-background.jpg?b=1&s=170667a&w=0&k=20&c=-jvR1WDwcloLXRgRTGeyG3frvrhPIbegdemeL6vY2Pk=',
-            'https://wallpapers.com/images/featured/mhdoyguhq3skloxt.jpg', 'https://wallpaperaccess.com/thumb/1781036.jpg','https://cdn.wallpaperhub.app/cloudcache/b/d/7/6/4/b/bd764bb25d49a05105060185774ba14cd2c846f7.jpg','https://wallpapers.com/images/featured/4axuqbnq0u647e8o.jpg' ]
+    const image=['https://wallpaperaccess.com/full/4545909.jpg',
+                'https://wallpapercave.com/wp/wp6940885.jpg',
+                  'https://a-static.besthdwallpaper.com/fantasy-world-wallpaper-2880x1620-29897_52.jpg',
+              'https://wallpapercave.com/wp/wp2803669.jpg',
+            'https://downloadhdwallpapers.in/wp-content/uploads/2017/12/Code-in-Laptop-Computer-1366x768.jpg','https://www.pixelstalk.net/wp-content/uploads/images6/Laptop-Wallpaper-4K-High-Resolution.jpg','https://www.pixelstalk.net/wp-content/uploads/images6/Free-download-Meme-Wallpaper-HD.png','https://socialstuffy.com/upload/wallpaper/ship-painting-hd-4k-wallpaper-free-for-desktop-and-laptop-background-6492023021013322924.jpg' ]
 
                 function handleBackground(ele) {
                     setCurrentWallpaper(ele)
