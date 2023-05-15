@@ -29,6 +29,7 @@ export default function AddList() {
       const tempList = {
         ListId: uuid(),
         nameOfList: listName,
+        tasks: [],
       };
       setListName("");
       setListData([...listData, tempList]);

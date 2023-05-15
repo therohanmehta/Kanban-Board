@@ -47,6 +47,11 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   const [todoList, setTodoList] = useState(tasks);
   const [cardName, setCardName] = useRecoilState(atomCardName);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
+
+  useEffect(() => {
+    setTodoList(tasks);
+  }, [listData]);
+
   const handleOpenAddItemBox = () => {
     setAddItem(true);
   };
