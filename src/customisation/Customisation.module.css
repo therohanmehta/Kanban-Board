@@ -30,8 +30,11 @@
         
     }
     .perImg{
-        border: 2px solid;
-        height: 200px;
+        /* border: 2px solid; */
+        /* height: 200px; */
+        width: 20vw;
+        padding: 10px;
+        /* border-radius: 20px; */
     }
     .perImg:hover{
         /* transform: scale(1.1); */
@@ -44,4 +47,5 @@
     .inpDiv{
         display: flex;
         justify-content: center;
+        padding: 20px;
     }
