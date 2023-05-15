@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route, json } from "react-router-dom";
 import DescriptionModel from "./Components/Description/Description";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { Source } from "@mui/icons-material";
+import { getData } from "./utils/Services";
 
 function App() {
   const [listData, setListData] = useRecoilState(list);
@@ -37,12 +38,15 @@ export default App;
 
 function Kanban() {
   const [columns, setColumns] = useRecoilState(list);
+  const [count, setCount] = useState(0);
   // const [listData, setListData] = useRecoilState(list);
 
   useEffect(() => {
     if (columns.length != 0) {
       localStorage.setItem("listData", JSON.stringify(columns));
       // console.log("useEffect running");
+      // const data = getData();
+      // setColumns(data);
     }
   }, [columns]);
 
@@ -51,7 +55,9 @@ function Kanban() {
       <div className="App">
         <Navbar />
         <DragDropContext
-          onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+          onDragEnd={(result) =>
+            onDragEnd(result, columns, setColumns, setCount, count)
+          }
         >
           <div className="content">
             <AddList />
@@ -62,7 +68,7 @@ function Kanban() {
   );
 }
 
-const onDragEnd = (result, columns, setColumns) => {
+const onDragEnd = (result, columns, setColumns, setCount, count) => {
   console.log(result);
   if (!result.destination) {
     return;
@@ -76,6 +82,7 @@ const onDragEnd = (result, columns, setColumns) => {
     const rem = JSON.parse(JSON.stringify(removed));
     copiedItems.splice(destination.index, 0, rem);
     setColumns([...copiedItems]);
+    setCount(count + 1);
     return;
   }
 
@@ -97,11 +104,15 @@ const onDragEnd = (result, columns, setColumns) => {
 
       const updatedLists = columns.map((list) => {
         if (list.ListId == source.droppableId) {
+          console.log("now ok");
           return updatedList;
         }
         return list;
       });
-      setColumns([...updatedLists]);
+      console.log("udpated", updatedLists);
+      setColumns(updatedLists);
+      setCount(count + 1);
+      return;
     }
   }
 
@@ -144,6 +155,7 @@ const onDragEnd = (result, columns, setColumns) => {
 
   // ? adding the updatedList
   setColumns([...updatedLists]);
+  setCount(count + 1);
 };
 
 //? completion drag and drop

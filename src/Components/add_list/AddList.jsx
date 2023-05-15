@@ -58,13 +58,15 @@ export default function AddList() {
               }}
             >
               {listData.map((list, index) => (
-                <AddTodo
-                  index={index}
-                  listName={list.nameOfList}
-                  listId={list.ListId}
-                  handleDelete={() => handleDelete(list.ListId)}
-                  handleListNameChange={handleListNameChange}
-                />
+                <div key={list.ListId}>
+                  <AddTodo
+                    index={index}
+                    listName={list.nameOfList}
+                    listId={list.ListId}
+                    handleDelete={() => handleDelete(list.ListId)}
+                    handleListNameChange={handleListNameChange}
+                  />
+                </div>
               ))}
               {provided.placeholder}
             </div>

@@ -24,14 +24,19 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 
 function AddTodo({ listName, listId, handleDelete, index }) {
   const [listData, setListData] = useRecoilState(list);
+  // const [tasks, setTasks] = useState([]);
 
   // let data = getData();
   // let data = [...listData];
   let tasks = [];
+  // useEffect(() => {
   let currentList = listData.find((ele) => ele.ListId == listId);
   if (currentList != undefined) {
     tasks = currentList.tasks ? currentList.tasks : [];
+    // setTasks(currentList.tasks ? currentList.tasks : []);
   }
+  // }, [listData]);
+
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [todoname, setTodoName] = useState(listName);
@@ -124,7 +129,7 @@ function AddTodo({ listName, listId, handleDelete, index }) {
             ...provided.draggableProps.style,
           }}
         >
-          <Droppable droppableId={listId}>
+          <Droppable droppableId={listId} key={listId}>
             {(provided, snapshot) => (
               <div
                 className={style.mainCardDiv}
