@@ -26,8 +26,8 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   const [listData, setListData] = useRecoilState(list);
   // const [tasks, setTasks] = useState([]);
 
-  // let data = getData();
-  // let data = [...listData];
+  // function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
+  let data = getData();
   let tasks = [];
   // useEffect(() => {
   let currentList = listData.find((ele) => ele.ListId == listId);
@@ -61,7 +61,10 @@ function AddTodo({ listName, listId, handleDelete, index }) {
       nameOfCardItem: nameOfCardItem,
       description: "",
       comment: [],
-      activity: [],
+      activity: [
+        //         const timestamp = new Date().toLocaleString();
+        // `${nameOfCardItem} added to ${listName} at ${ timestamp}`
+      ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
     };
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
@@ -112,7 +115,20 @@ function AddTodo({ listName, listId, handleDelete, index }) {
     update[index] = updatedObj;
     setListData(update);
   }
-  // console.log(listName, listId);
+  function handleCardItemDelete(id) {
+    let updateList = [...listData];
+    const index = updateList.findIndex((ele) => ele.ListId == listId);
+    let currentList = { ...updateList[index] };
+    const updatedTasks = currentList.tasks.filter(
+      (ele) => ele.cardItemId != id
+    );
+    currentList.tasks = updatedTasks;
+    updateList[index] = currentList;
+    setListData(updateList);
+    setTodoList(updatedTasks);
+
+    console.log(updateList);
+  }
   return (
     <Draggable
       // key={todoList.cardItemId}
@@ -175,16 +191,20 @@ function AddTodo({ listName, listId, handleDelete, index }) {
                           {...provided.dragHandleProps}
                           className={style.itemOfCardDiv}
                           key={todoList.cardItemId}
-                          onClick={() => {
-                            setUidOfListItem1(todoList.cardItemId);
-                            setCurrentListUid(listId);
-                            const test = todoList.cardItemId;
-                            setCardName(todoList.nameOfCardItem);
-                            console.log(cardName);
-                            navigate(`/task/:${test}`);
-                          }}
                         >
-                          <div>{todoList.nameOfCardItem}</div>
+                          <div
+                            className={style.cardTitle}
+                            onClick={() => {
+                              setUidOfListItem1(todoList.cardItemId);
+                              setCurrentListUid(listId);
+                              const test = todoList.cardItemId;
+                              setCardName(todoList.nameOfCardItem);
+                              console.log(cardName);
+                              navigate(`/task/:${test}`);
+                            }}
+                          >
+                            {todoList.nameOfCardItem}
+                          </div>
 
                           <div className={style.btnWrapper}>
                             <Popup
@@ -227,6 +247,15 @@ function AddTodo({ listName, listId, handleDelete, index }) {
                                 </div>
                               )}
                             </Popup>
+
+                            <button
+                              className={style.dltBtn}
+                              onClick={() =>
+                                handleCardItemDelete(todoList.cardItemId)
+                              }
+                            >
+                              ❌
+                            </button>
                           </div>
                         </div>
                       )}

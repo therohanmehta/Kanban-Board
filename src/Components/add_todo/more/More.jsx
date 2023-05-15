@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import MoreHorizOutlined from '@mui/icons-material/MoreHorizOutlined';
+import styles from './More.module.css'
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function MorePopOver(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,8 +20,8 @@ export default function MorePopOver(props) {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div>
-      <button onClick={handleClick}>
+    <div className={styles.Div}>
+      <button className={styles.moreBtn} onClick={handleClick}>
         <MoreHorizOutlined fontSize="small" color="disabled"/>
       </button>
       <Popover
@@ -34,9 +35,10 @@ export default function MorePopOver(props) {
         }}
       >
               <Typography sx={{ p: 2 }}><button
-                  onClick={props.func}
+          onClick={props.func}
+          className={styles.dltBtn}
               >
-                  ❌</button></Typography>
+                  <DeleteIcon /></button></Typography>
       </Popover>
     </div>
   );

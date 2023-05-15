@@ -5,6 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuid } from "uuid";
+// import AddTodo from "../add_todo/AddTodo";
 import AddTodo from "../add_todo/AddTodo";
 import {
   list,
@@ -41,9 +42,6 @@ export default function AddList() {
     console.log(listData);
     localStorage.setItem("listData", JSON.stringify(updatedList));
   }
-  function handleListNameChange(e, listId) {
-    console.log(e, listId);
-  }
 
   return (
     <div style={{ display: "flex", margin: "20px" }}>
@@ -65,7 +63,6 @@ export default function AddList() {
                     listName={list.nameOfList}
                     listId={list.ListId}
                     handleDelete={() => handleDelete(list.ListId)}
-                    handleListNameChange={handleListNameChange}
                   />
                 </div>
               ))}
