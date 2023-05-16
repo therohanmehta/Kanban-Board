@@ -18,7 +18,7 @@ export const showDialog = atom({
 
 export const uidOfListItem = atom({
   key: "uidOfListItem",
-  default: "",
+  default: localStorage.getItem('uidOfListItem'),
 });
 
 export const list = atom({
@@ -28,12 +28,12 @@ export const list = atom({
 
 export const atomListUid = atom({
   key: "atomListUid",
-  default: '',
+  default: localStorage.getItem('itemid'),
 });
 
 export const atomCardName = atom({
   key: 'atomCardName',
-  default:'',
+  default:localStorage.getItem('cardName'),
 })
 export const wallpaper = atom({
   key: 'wallpaper',

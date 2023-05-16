@@ -198,7 +198,8 @@ function AddTodo({ listName, listId, handleDelete, index }) {
                               setUidOfListItem1(todoList.cardItemId);
                               setCurrentListUid(listId);
                               localStorage.setItem('itemid', listId)
-                              localStorage.setItem('uidOfListItem',todoList.cardItemId)
+                              localStorage.setItem('uidOfListItem', todoList.cardItemId)
+                              localStorage.setItem('cardName', todoList.nameOfCardItem)
                               const test = todoList.cardItemId;
                               setCardName(todoList.nameOfCardItem);
                               console.log(cardName);

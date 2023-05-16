@@ -14,40 +14,27 @@ import { lightGreen } from "@mui/material/colors";
 function DescriptionComments() {
   const [showComment, setShowComment] = useState(false);
   const [commentText, setCommentText] = useState("");
-  // const [comments, setComments] = useState(JSON.parse(localStorage.getItem('comments')) || []);
-  // const [comments, setComments] = useState([]);
-  const tempList = getData();
-
-
-//   const [itemidFromLocal, setItemidFromLocal] = useState("");
-//   const [uidOfListItemFromLocal, setUidOfListItemFromLocal] = useState("");
-  
-//   useEffect(() => {
-//     const retrievedItemid = localStorage.getItem('itemid');
-//     const retrievedUidOfListItem = localStorage.getItem('uidOfListItem');
-  
-//     if (retrievedItemid) {
-//       setItemidFromLocal(retrievedItemid);
-//     }
-  
-//     if (retrievedUidOfListItem) {
-//       setUidOfListItemFromLocal(retrievedUidOfListItem);
-//     }
-//   }, []);
-  
+  let tempList = getData();
+  const [itemidFromLocal, setItemidFromLocal] = useState("");
+  const [uidOfListItemFromLocal, setUidOfListItemFromLocal] = useState("");
 
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
   const [listData, setListData] = useRecoilState(list);
   const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem);
-
+  useEffect(() => {
+      tempList = getData();
+      console.log("working")
+      console.log(currentListUid)
+  },[]);
   const commentsListIndex = tempList.findIndex(
     (ele) => ele.ListId === currentListUid
   );
-  // console.log( tempList[commentsListIndex].tasks)
+  console.log(tempList[commentsListIndex].tasks); // cards
   const CommentsCardIndex = tempList[commentsListIndex].tasks.findIndex(
     (ele) => ele.cardItemId === uidOfList
-  );
-  console.log(CommentsCardIndex);
+  ); // finding the selected card
+
+  console.log(tempList[commentsListIndex].tasks[CommentsCardIndex]);
   // tempList[commentsListIndex].tasks[CommentsCardIndex].comments;
   const currentComment =
     tempList[commentsListIndex].tasks[CommentsCardIndex].comments;
