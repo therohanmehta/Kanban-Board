@@ -78,6 +78,7 @@ function ActivityList() {
                                         <small>{ele}</small><br />
                                         </div>
                            ))}
+                          
                             {/* {time} */}
                             
                         </div>
