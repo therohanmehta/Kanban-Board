@@ -62,12 +62,17 @@ function AddTodo({ listName, listId, handleDelete, index }) {
     setAddItem(true);
   };
   const handleAddCardItem = (nameOfCardItem) => {
+    const currentTime =  new Date().toLocaleString() 
     const tempDataOfCard = {
       cardItemId: uuid(),
       nameOfCardItem: nameOfCardItem,
       description: "",
-      activity: [
-     new Date().toLocaleString()        
+      activity: [{
+        text: `${nameOfCardItem} added to ${listName}`,
+        time: currentTime
+      }
+         
+        
         // `${nameOfCardItem} added to ${listName} at ${ timestamp}`
       ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
     };

@@ -37,9 +37,9 @@ function ActivityList() {
 
    
 
-    const [time, setTime] = useState(listData[listIndex].tasks[cardIndex].activity[0]);
-    const activityTime = listData[listIndex].tasks[cardIndex].activity;
-   
+    const [time, setTime] = useState(listData[listIndex].tasks[cardIndex].activity);
+    
+   let activityTime =[]
 
     // const timestamp = new Date().toLocaleString();
 
@@ -53,14 +53,14 @@ function ActivityList() {
         if (listIndex !== -1) {
             const nameOfList = listData[listIndex].nameOfList;
             setTodoAction(nameOfList);
-            console.log(nameOfList);
-
+            console.log(time);
+            activityTime = listData[listIndex].tasks[cardIndex].activity;
         }
 
         setTime(activityTime );
         setTempData(listData);
 
-    }, [])
+    }, )
 
 
     return (
@@ -71,11 +71,12 @@ function ActivityList() {
                     <div className={style.timeContainer}>
                         <PersonIcon />
                         <div className={style.activity}>
-                            <span  >Added this card to {todoAction} </span>
+                            {/* <span  >Added this card to {todoAction} </span> */}
                             {/* <small className={style.timeStamp}></small> */}
                                 {time.map((ele) => (
                                     <div>
-                                        <small>{ele}</small><br />
+                                        <span style={{fontWeight:'bold'}}>{ele.text}</span><br />
+                                        <small>{ele.time}</small>
                                         </div>
                            ))}
                           
