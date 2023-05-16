@@ -12,6 +12,9 @@ import {
     uidOfListItem,
     atomListUid,
 } from "../../recoil/description_atoms/DescriptionAtoms";
+import Moment from 'react-moment';
+// import moment from 'moment';
+// moment().format();
 
 function DescriptionComments() {
     const [showComment, setShowComment] = useState(false);
@@ -35,6 +38,8 @@ function DescriptionComments() {
     console.log(tempList[commentsListIndex].tasks[CommentsCardIndex].comments);
     const [comments, setComments] = useState(currentComment || []);
 
+    
+
 
     // const [comments, setComments] = useState(tempList[listIndex].tasks[cardIndex].comments || []);
 
@@ -47,12 +52,17 @@ function DescriptionComments() {
         if (commentText.trim() === '') {
             return;
         }
-        let updatedComments = [...comments, commentText];
+        const commentTimeValue={
+            id: new Date(),
+            comment: commentText,
+            time:new Date().getTime()
+        }
+
+        let updatedComments = [...comments, commentTimeValue];
         setComments(updatedComments);
         console.log(commentText);
         console.log(comments);
-        //need to store it inside listData key.
-        // localStorage.setItem('comments', JSON.stringify(updatedComments))
+        
 
 
         const listIndex = tempList.findIndex(
@@ -115,15 +125,17 @@ function DescriptionComments() {
 
                 {
                     comments.map((comment, index) => (
-                        comment.trim() !== '' && <>
-                            <div key={index} className={style.eachComment}>
-                                {comment}
+                        comment.comment.trim() !== '' && <div key={comment.id}>
+                            {/* <small>{comment.time}</small> */}
+                            <Moment fromNow>{comment.time}</Moment>
+                            <div  className={style.eachComment}>
+                                {comment.comment}
                             </div>
                             <div className={style.updateComment}>
 
                                 <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
                             </div>
-                        </>
+                        </div>
                     ))
                 }
 

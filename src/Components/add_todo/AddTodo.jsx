@@ -21,6 +21,9 @@ import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import MorePopOver from "./more/More";
 import { Draggable, Droppable } from "react-beautiful-dnd";
+import Moment from 'react-moment';
+// import moment from 'moment';
+// moment().format();
 
 function AddTodo({ listName, listId, handleDelete, index }) {
   const [listData, setListData] = useRecoilState(list);
@@ -48,6 +51,9 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   const [cardName, setCardName] = useRecoilState(atomCardName);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
 
+  // const timestamp = new Date().toLocaleString();
+  // const timestamp=moment().startOf('day').fromNow(); 
+
   useEffect(() => {
     setTodoList(tasks);
   }, [listData]);
@@ -60,9 +66,9 @@ function AddTodo({ listName, listId, handleDelete, index }) {
       cardItemId: uuid(),
       nameOfCardItem: nameOfCardItem,
       description: "",
-      comment: [],
       activity: [
-        //         const timestamp = new Date().toLocaleString();
+        new Date().getTime()
+         
         // `${nameOfCardItem} added to ${listName} at ${ timestamp}`
       ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
     };
