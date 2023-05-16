@@ -67,8 +67,7 @@ function AddTodo({ listName, listId, handleDelete, index }) {
       nameOfCardItem: nameOfCardItem,
       description: "",
       activity: [
-        new Date().getTime()
-         
+     new Date().toLocaleString()        
         // `${nameOfCardItem} added to ${listName} at ${ timestamp}`
       ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
     };

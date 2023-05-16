@@ -57,7 +57,7 @@ function ActivityList() {
 
         }
 
-        setTime(<Moment fromNow>{activityTime}</Moment>);
+        setTime(activityTime );
         setTempData(listData);
 
     }, [])
@@ -71,9 +71,13 @@ function ActivityList() {
                     <div className={style.timeContainer}>
                         <PersonIcon />
                         <div className={style.activity}>
-                            <small >Added this card to {todoAction} </small>
+                            <span  >Added this card to {todoAction} </span>
                             {/* <small className={style.timeStamp}></small> */}
-                            <Moment fromNow>{time}</Moment>
+                                {time.map((ele) => (
+                                    <div>
+                                        <small>{ele}</small><br />
+                                        </div>
+                           ))}
                             {/* {time} */}
                             
                         </div>

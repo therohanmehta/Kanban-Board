@@ -129,23 +129,31 @@ const onDragEnd = (result, columns, setColumns, setCount, count) => {
   let sourceTaskList = columns.find(
     (list) => list.ListId == source.droppableId
   );
+  let sourceListName = sourceTaskList.nameOfList;
+console.log(sourceListName)
   let destinationTaskList = columns.find(
     (list) => list.ListId == destination.droppableId
   );
-
+  let destinationListName = destinationTaskList.nameOfList;
+  console.log(destinationListName)
   const current = JSON.parse(JSON.stringify(sourceTaskList.tasks));
   const next = JSON.parse(JSON.stringify(destinationTaskList.tasks));
   const target = current[source.index];
-  console.log(current, next, target);
 
+   let newActivity = `Moved from ${sourceListName} to ${destinationListName}`
+
+  target.activity = [...target.activity, newActivity]
+  console.log(target.activity)
   // * removing from original list
   current.splice(source.index, 1);
 
-  // * inserting into next
+  // * inserting into next 
   next.splice(destination.index, 0, target);
 
   // * merging the updated task in list
+  console.log(current)
   const updatedLists = columns.map((list) => {
+
     if (list.ListId == source.droppableId) {
       return {
         ...list,
