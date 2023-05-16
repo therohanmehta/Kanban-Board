@@ -34,7 +34,74 @@ function Customisation() {
               }}
   return (
     <div className={style.mainDiv}>
+<div className={style.introPage}>
+<nav className={style.introNav}>
+
+<div >
+  <img className={style.introNavLogo}  src="https://cdn.iconscout.com/icon/premium/png-256-thumb/kanban-board-4185955-3461987.png" alt="" />
+  {/* <img className={style.introNavLogo}  src="https://e1.yotools.net/images/user_image/2023/05/64640d5cceab5.jpg" alt="" /> */}
+<h1>KanBan.com</h1>
+</div>
+
+<div className={style.btnDiv}>
+<Button variant='contained'>Features</Button>
+<Button variant='contained'>Templates</Button>
+<Button variant='contained'  >For Teams</Button>
+<Button variant='contained'  >For Students</Button>
+<Button variant='contained'  >Resources ❌</Button>
+<Button variant='contained'  >Pricing</Button>
+<Button color='success' variant='contained' >Start For Free</Button>
+
+</div>
+</nav>
+<div className={style.centerText}>
+    <h1 >Organize your Work and Life , finally</h1>
+    <h2>BEcome focused , organized and calm with Todoist. The worlds #1 task manager and to-do list website   </h2>
+
+</div>
+
+</div>
+
+<div className={style.features}>
+  <div>
+  <img  src="/home.png " alt="" />
+  <div>
+  <h1>The KanBan Board </h1>
+  <h3> Here you can add Cards Task and also you can drag and  drop froom card to another card</h3>
+  </div>
+
+  </div>
+</div>
+
+
+
+  <div className={style.descDiv}>
+    <div>
+    <h1>The Description</h1>
+<h3>Worry about the minor details or pinpoint to be added to the task here is the Description for you to add any details</h3>
+    </div>
+
+<img  src="/Desc.png " alt="" />
+  </div>
+
+  <div className={style.custShow}>
+<img  src="/chooseBG.png " alt="" />
+   <div>
+   <h1>Customisation on the go</h1>
+    <h3>Bored of all the old plain boring ToDo-List Websited and KanBan board </h3>
+    <h3>We are here to give you the customisation that you want now you can make any background that you like just by pasting the link of the image </h3>
+   </div>
+     </div>
+
+
+
+
+
+
+
+
         <div className={style.heading}>
+
       <h1 >Choose Background</h1>
 
         </div>
