@@ -5,6 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuid } from "uuid";
+// import AddTodo from "../add_todo/AddTodo";
 import AddTodo from "../add_todo/AddTodo";
 import {
   list,
@@ -12,6 +13,7 @@ import {
 } from "../../recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import { getData } from "../../utils/Services";
+import { Droppable } from "react-beautiful-dnd";
 
 export default function AddList() {
   const [isVisible, setIsVisible] = useState(true);
@@ -28,6 +30,7 @@ export default function AddList() {
       const tempList = {
         ListId: uuid(),
         nameOfList: listName,
+        tasks: [],
       };
       setListName("");
       setListData([...listData, tempList]);
@@ -39,19 +42,34 @@ export default function AddList() {
     console.log(listData);
     localStorage.setItem("listData", JSON.stringify(updatedList));
   }
-  
 
   return (
     <div style={{ display: "flex", margin: "20px" }}>
       <div style={{ display: "flex", marginLeft: "20px" }}>
-        {listData.map((list) => (
-          <AddTodo
-            listName={list.nameOfList}
-            listId={list.ListId}
-            handleDelete={() => handleDelete(list.ListId)}
-            
-          />
-        ))}
+        <Droppable droppableId="board" type="COLUMN" direction="horizontal">
+          {(provided, snapshot) => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              style={{
+                display: "flex",
+                // background: snapshot.isDraggingOver ? "lightblue" : "grey",
+              }}
+            >
+              {listData.map((list, index) => (
+                <div key={list.ListId}>
+                  <AddTodo
+                    index={index}
+                    listName={list.nameOfList}
+                    listId={list.ListId}
+                    handleDelete={() => handleDelete(list.ListId)}
+                  />
+                </div>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
       </div>
       <div
         style={{ marginLeft: "20px" }}

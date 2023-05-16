@@ -15,25 +15,41 @@ import { getData } from "../../utils/Services";
 import { useEffect } from "react";
 
 function DescriptionEdit() {
-  const [description, setDescription] = useState(null);
+  const [description, setDescription] = useState('');
   // const [description,setDescription]=useState("");
   const [edit, setEdit] = useState(false);
+  const [completeListData, setCompleteListData] = useRecoilState(list)
   const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
-let cardIndex = 0
+  const itemidFromLocal = localStorage.getItem('itemId')
+  const uidOfListItemFromLocal = localStorage.getItem('uidOfListItem')
+  
+//   let cardIndex = 0
+  
+//   const listData = getData();
+//   const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid);
+// // if(listIndex!=-1)
+// // {
+//   cardIndex = listData[listIndex].tasks.findIndex(
+//     (ele) => ele.cardItemId === uidOfList
+// );
+
+
+
+  
+  useEffect(() => {
+    let cardIndex = 0
+  
   const listData = getData();
+  // const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid);
   const listIndex = listData.findIndex((ele) => ele.ListId === currentListUid);
 // if(listIndex!=-1)
 // {
   cardIndex = listData[listIndex].tasks.findIndex(
     (ele) => ele.cardItemId === uidOfList
 );
-
-
-
-  
-useEffect(() => {
   setDescription(listData[listIndex].tasks[cardIndex].description);
+
     }, []);
 
 
@@ -54,9 +70,9 @@ useEffect(() => {
 
     console.log(listData[listIndex].tasks[cardIndex].description);
     localStorage.setItem("listData", JSON.stringify(listData));
-
+      setCompleteListData(listData)
     setEdit(!edit);
-    console.log(listData);
+    console.log(completeListData);
   }
 
   return (
