@@ -62,3 +62,12 @@
   font-size:0.9rem;
   text-align: center;
 }
+
+.userTime {
+  margin-left: 2.3rem;
+  font-size: 0.75rem;
+  color: rgb(120, 118, 118);
+  font-weight: bold;
+  position:relative;
+  top:-5px;
+}

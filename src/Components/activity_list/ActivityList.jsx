@@ -57,25 +57,20 @@ function ActivityList() {
                             {time.map((ele) => (
                                 <div className={style.activityUserDetails}>
                                     <div className={style.userDetails}>
-                                    <div className={style.users}>
-                                    <PersonIcon />
-                                    </div>
-                                    <div className={style.activityAlign}>
-                                    <span className={style.activityUser}>User</span>
-                                    <span className={style.activityUserText}>{ele.text}</span>
-                                    </div>
+                                        <div className={style.users}>
+                                            <PersonIcon />
+                                        </div>
+                                        <div className={style.activityAlign}>
+                                            <span className={style.activityUser}>User</span>
+                                            <span className={style.activityUserText}>{ele.text}</span>
+                                        </div>
                                     </div>
 
                                     <div>
-
-                                        <span style={{fontWeight:'bold'}}>{ele.text}</span><br />
-                                        <span >{ele.time}</span>
+                                        <span className={style.userTime}>{ele.time}</span>
                                     </div>
-                                    // <Moment fromNow>{comment.time}</Moment>
-                           ))}
-                          
-                         
-                            
+                                </div>
+                            ))}
 
                         </div>
                     </div>
