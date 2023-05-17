@@ -52,13 +52,18 @@ function ActivityList() {
                 {
                     detailsHide &&
                     <div className={style.timeContainer}>
-                        <PersonIcon />
+                        {/* <PersonIcon /> */}
                         <div className={style.activity}>
                             {time.map((ele) => (
                                 <div className={style.activityUserDetails}>
+                                    <div className={style.userDetails}>
+                                    <div className={style.users}>
+                                    <PersonIcon />
+                                    </div>
                                     <div className={style.activityAlign}>
                                     <span className={style.activityUser}>User</span>
-                                    <span className={style.activityUserText}>{ele.text}</span><br />
+                                    <span className={style.activityUserText}>{ele.text}</span>
+                                    </div>
                                     </div>
 
                                     <div>
