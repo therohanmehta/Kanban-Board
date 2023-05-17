@@ -21,7 +21,7 @@ import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import MorePopOver from "./more/More";
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 // import moment from 'moment';
 // moment().format();
 
@@ -52,7 +52,7 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
 
   // const timestamp = new Date().toLocaleString();
-  // const timestamp=moment().startOf('day').fromNow(); 
+  // const timestamp=moment().startOf('day').fromNow();
 
   useEffect(() => {
     setTodoList(tasks);
@@ -62,17 +62,17 @@ function AddTodo({ listName, listId, handleDelete, index }) {
     setAddItem(true);
   };
   const handleAddCardItem = (nameOfCardItem) => {
-    const currentTime =  new Date().toLocaleString() 
+    const currentTime = new Date().toLocaleString();
     const tempDataOfCard = {
       cardItemId: uuid(),
       nameOfCardItem: nameOfCardItem,
       description: "",
-      activity: [{
-        text: `${nameOfCardItem} added to ${listName}`,
-        time: currentTime
-      }
-         
-        
+      activity: [
+        {
+          text: `${nameOfCardItem} added to ${listName}`,
+          time: currentTime,
+        },
+
         // `${nameOfCardItem} added to ${listName} at ${ timestamp}`
       ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
     };
@@ -93,20 +93,47 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   };
 
   const handleUpdationOfCartItem = (id, close) => {
+    // if (updatedNameOfCardItem != "") {
+    //   const tempTodoItem = todoList.map((item) => {
+    //     if (item.cardItemId == id) {
+    //       return {
+    //         cardItemId: item.cardItemId,
+    //         nameOfCardItem: updatedNameOfCardItem,
+    //         description: item.description,
+    //         activity: item.activity,
+    //       };
+    //     }
+    //     return item;
+    //   });
+    //   setTodoList([...tempTodoItem]);
+    //   setUpdatedNameOfCardItem("");
+
+    //!stop
     if (updatedNameOfCardItem != "") {
       const tempTodoItem = todoList.map((item) => {
         if (item.cardItemId == id) {
           return {
-            cardItemId: item.cardItemId,
+            ...item,
             nameOfCardItem: updatedNameOfCardItem,
-            description: item.description,
-            activity: item.activity,
           };
         }
         return item;
       });
-      setTodoList([...tempTodoItem]);
-      setUpdatedNameOfCardItem("");
+      console.log(tempTodoItem);
+
+      let tempListData = listData.map((list) => {
+        if (list.ListId == listId) {
+          console.log(listId);
+          return {
+            ListId: list.ListId,
+            nameOfList: list.nameOfList,
+            tasks: [...todoList, tempTodoItem],
+          };
+        }
+        return list;
+      });
+      setListData([...tempListData]);
+
       // let tempListData = listData.map((list) => {
       //   if (list.ListId == listId) {
       //     console.log(listId);
@@ -119,7 +146,7 @@ function AddTodo({ listName, listId, handleDelete, index }) {
       //   return list;
       // });
       //setListData([...tempListData]);
-     console.log(todoList)
+      console.log(todoList);
 
       close();
     }
@@ -221,9 +248,15 @@ function AddTodo({ listName, listId, handleDelete, index }) {
                             onClick={() => {
                               setUidOfListItem1(todoList.cardItemId);
                               setCurrentListUid(listId);
-                              localStorage.setItem('itemid', listId)
-                              localStorage.setItem('uidOfListItem', todoList.cardItemId)
-                              localStorage.setItem('cardName', todoList.nameOfCardItem)
+                              localStorage.setItem("itemid", listId);
+                              localStorage.setItem(
+                                "uidOfListItem",
+                                todoList.cardItemId
+                              );
+                              localStorage.setItem(
+                                "cardName",
+                                todoList.nameOfCardItem
+                              );
                               const test = todoList.cardItemId;
                               setCardName(todoList.nameOfCardItem);
                               console.log(cardName);
