@@ -52,7 +52,7 @@ function Customisation() {
 <a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained'  >Resources ❌</Button> </a>
 <Button id={style.introNavBlankButtons} variant='contained'/>
 <Button variant='contained' onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} >Pricing</Button>
-<Button id={style.introNavGreenButtons} color='success' variant='contained' >Start For Free</Button>
+<Button onClick={()=>navigate('/kanban')} id={style.introNavGreenButtons} color='success' variant='contained' >Start For Free</Button>
 
 </div>
 </nav>
