@@ -18,7 +18,7 @@ function Customisation() {
                 function handleBackground(ele) {
                     setCurrentWallpaper(ele)
                     localStorage.setItem('userWallpaper',`${ele}`)
-                    navigate('/')
+                    navigate('/kanban')
                 }
                 function handleLinkOfWallpaper(e){
                   setLinkOfWallpaper(e.target.value)
@@ -27,7 +27,7 @@ function Customisation() {
                   if(linkOfWallpaper!==''){
                   setCurrentWallpaper(linkOfWallpaper)
                   localStorage.setItem('userWallpaper',`${linkOfWallpaper}`)
-                  navigate('/')
+                  navigate('/kanban')
                 }
               else{
                 alert('select any background')
