@@ -116,7 +116,7 @@ function DescriptionComments() {
                
                 {
                     comments.map((comment, index) => (
-                        comment.comment.trim() !== '' && <div key={comment.id} className={style.commentsContainer}>
+                        comment && comment.comment &&  comment.comment.trim() !== '' && <div key={comment.id} className={style.commentsContainer}>
                              <PersonIcon className={style.mainComment}/>
                             <small className={style.user} ><span>User</span> <Moment fromNow className={style.commentsTime}>{comment.time}</Moment></small>
                             <div className={style.eachComment}>
