@@ -20,5 +20,39 @@
 .timeStamp {
   font-size: 0.8rem;
   color: rgb(75, 73, 73);
-  /* font-weight: bold; */
+}
+
+.timeActivity {
+  color: rgb(106, 105, 105);
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.activityUserDetails{
+  display: flex;
+  gap:0.4rem;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: column;
+}
+
+.activityAlign{
+  display: flex;
+  gap:0.7rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.activityUser {
+  font-weight: bold;
+ 
+  
+}
+
+.activityUserText{
+  color:rgb(99, 96, 96);
+  font-weight: bold;
+  font-size:0.9rem;
+  text-align: center;
 }

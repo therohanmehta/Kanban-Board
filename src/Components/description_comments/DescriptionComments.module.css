@@ -12,6 +12,17 @@
   
 }
 
+.mainComments {
+   position: relative;
+   top:35px;
+   
+}
+
+.mainComment {
+   position:relative;
+   top:42px;
+}
+
 .comments {
    width:100%;
    outline:none;
@@ -49,13 +60,13 @@
 .updateComment {
    margin-left: 2.3rem;
    display: flex;
-   gap:0.5rem;
-   padding:0.4rem;
+   gap:0.3rem;
+   padding:0.2rem;
 }
 
 .modifyComment {
   cursor: pointer;
-  font-weight: bold;
+  text-decoration: underline;
 }
 
 .modifyComment:hover {
@@ -63,7 +74,18 @@
 }
 
 .commentsTime {
-   margin-left: 2.3rem;
    color:rgb(87, 86, 86);
    font-weight: bold;
+   margin-left: 0.5rem;
+   font-size: 0.75rem;
+}
+
+.user {
+   margin-left: 1rem;
+   font-weight: bold;
+}
+
+.commentsContainer{
+   margin-top: 0.5rem;
+   
 }

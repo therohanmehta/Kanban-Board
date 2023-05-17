@@ -44,6 +44,9 @@ function DescriptionEdit() {
     setDescription(e.target.value);
   }
   function handleSaveClick() {
+    if(description===""){
+      return ;
+    }
     const listData = getData();
     const listIndex = listData.findIndex(
       (ele) => ele.ListId === currentListUid

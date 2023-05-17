@@ -55,9 +55,15 @@ function ActivityList() {
                         <PersonIcon />
                         <div className={style.activity}>
                             {time.map((ele) => (
-                                <div>
-                                    <span style={{ fontWeight: 'bold' }}>{ele.text}</span><br />
-                                    <small>{ele.time}</small>
+                                <div className={style.activityUserDetails}>
+                                    <div className={style.activityAlign}>
+                                    <span className={style.activityUser}>User</span>
+                                    <span className={style.activityUserText}>{ele.text}</span><br />
+                                    </div>
+
+                                    <div>
+                                    <small className={style.timeActivity}>{ele.time}</small>
+                                    </div>
                                 </div>
                             ))}
                         </div>

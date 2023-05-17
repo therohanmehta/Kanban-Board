@@ -11,6 +11,7 @@ import {
     atomListUid,
 } from "../../recoil/description_atoms/DescriptionAtoms";
 import Moment from 'react-moment';
+import PersonIcon from '@mui/icons-material/Person';
 
 function DescriptionComments() {
     const [showComment, setShowComment] = useState(false);
@@ -90,7 +91,9 @@ function DescriptionComments() {
 
     return (
         <>
+       <PersonIcon className={style.mainComments}/>
             <div className={style.commentContainer}>
+           
                 {
                     showComment ?
                         <div className={style.commentTexts}>
@@ -98,7 +101,7 @@ function DescriptionComments() {
                                 <input type='text' placeholder='Write a comment' value={commentText} onChange={(e) => setCommentText(e.target.value)} className={style.comments} />
                             </div>
                             <div>
-                                <Button variant='contained' sx={{ width: '18%', ml: 5 }} onClick={handleComments}>Save</Button>
+                                <Button variant='contained' sx={{ width: '18%', ml: 4.7 }} onClick={handleComments}>Save</Button>
                             </div>
                         </div>
                         :
@@ -106,12 +109,12 @@ function DescriptionComments() {
                             <input type='text' placeholder='Write a comment...' onClick={() => setShowComment(!showComment)} className={style.comments} />
                         </div>
                 }
-
+               
                 {
                     comments.map((comment, index) => (
-                        comment.comment.trim() !== '' && <div key={comment.id}>
-                            {/* <small>{comment.time}</small> */}
-                            <small className={style.commentsTime}>  <Moment fromNow>{comment.time}</Moment></small>
+                        comment.comment.trim() !== '' && <div key={comment.id} className={style.commentsContainer}>
+                             <PersonIcon className={style.mainComment}/>
+                            <small className={style.user} ><span>User</span> <Moment fromNow className={style.commentsTime}>{comment.time}</Moment></small>
                             <div className={style.eachComment}>
                                 {comment.comment}
                             </div>
@@ -119,12 +122,15 @@ function DescriptionComments() {
 
                                 <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
                             </div>
+                           
                         </div>
+                        
                     ))
                 }
 
 
             </div>
+        {/* </div> */}
         </>
     )
 }
