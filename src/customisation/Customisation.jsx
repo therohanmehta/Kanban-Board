@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import { wallpaper } from '../recoil/description_atoms/DescriptionAtoms'
+import React,{useEffect, useState} from 'react'
+import { list, wallpaper } from '../recoil/description_atoms/DescriptionAtoms'
 import { useRecoilState } from 'recoil'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -10,9 +10,11 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 import AssistantIcon from '@mui/icons-material/Assistant';
 import style from './Customisation.module.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { studentPreDefinedData } from './customisationData';
 function Customisation() {
-  
+  let location = useLocation()
+  const [listData, setListData] = useRecoilState(list)
     const navigate=useNavigate()
     const[linkOfWallpaper,setLinkOfWallpaper]=useState('')
     const [currentWallpaper,setCurrentWallpaper]=useRecoilState(wallpaper)
@@ -40,7 +42,16 @@ function Customisation() {
                 alert('select any background')
               }}
 
-            
+  useEffect(() => {
+    if (location.hash == "#customisation") {
+                window.scroll(0,3700)
+              }
+  }, [])
+  
+  function handleStudentBoard() {
+    setListData(studentPreDefinedData)
+    navigate('/kanban')
+  }
   return (
     <div id='top' className={style.mainDiv}>
 <div className={style.introPage}>
@@ -130,9 +141,10 @@ function Customisation() {
 <div id='students' className={style.forStudent}>
   <br /><br />
 <h1>Are you a Student?</h1>
-<h2>We understand now a days how hard it is for a student to track all the task he has to complete </h2>
-<h2>We Create a Template for you that is designed specially for the students so that It will make it easier to for you to manage the things in an easy way</h2>
-</div>
+<h2>We understand now a days how hard it is for a student to track all the task they have to complete </h2>
+<h2>We have created a Template for you that is designed specially for students so that it will make it easier for you to manage your tasks, click on the button below to get started.</h2>
+        <Button onClick={handleStudentBoard} variant='contained'>Get started </Button>
+      </div>
 
 
 
