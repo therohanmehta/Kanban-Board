@@ -126,9 +126,10 @@ margin-right: 10px;
   cursor: pointer;
 }
 .cardTitle{
-
-    width: 100%;
-    height: 2rem;
+    width: 70%;
+    padding: 8px;
+   min-height: auto;
+ overflow: hidden;
     display: flex;
     align-items: center;
     cursor: pointer;
