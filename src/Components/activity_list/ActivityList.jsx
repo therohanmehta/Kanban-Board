@@ -54,8 +54,8 @@ function ActivityList() {
                     <div className={style.timeContainer}>
                         {/* <PersonIcon /> */}
                         <div className={style.activity}>
-                            {time.map((ele) => (
-                                <div className={style.activityUserDetails}>
+                            {time.map((ele,index) => (
+                                <div className={style.activityUserDetails} key={index}>
                                     <div className={style.userDetails}>
                                         <div className={style.users}>
                                             <PersonIcon />
