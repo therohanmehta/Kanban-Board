@@ -32,9 +32,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Kanban />} />
+        <Route path="/kanban" element={<Kanban />} />
         <Route path="/task/:id" element={<DescriptionModel />} />
-        <Route path="/customisation" element={<Customisation />} />
+        <Route path="/" element={<Customisation />} />
       </Routes>
     </BrowserRouter>
   );
