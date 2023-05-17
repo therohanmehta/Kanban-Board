@@ -39,8 +39,8 @@ const navigate=useNavigate()
      </div>
      
      <div className={style.right}>
-     <Button  variant='text' startIcon={<RocketLaunchOutlinedIcon />}>Power-ups</Button>
           <Button variant='text' onClick={handleClearBoard} startIcon={<BoltIcon />}>Clear Board</Button>
+     <Button  variant='text' startIcon={<RocketLaunchOutlinedIcon />}>Power-ups</Button>
       <Button  variant='text' startIcon={<FilterListIcon />}>Filter</Button>
       <img className={style.userImg} src="https://sialifehospital.com/wp-content/uploads/2021/04/testimonial-1.png" alt="" />
       <Button id={style.whiteBtn} variant='contained' startIcon={<PersonAddAltOutlinedIcon />}>Share</Button>
