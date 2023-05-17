@@ -36,14 +36,14 @@ function ActivityList() {
         if (listIndex !== -1) {
             const nameOfList = listData[listIndex].nameOfList;
             setTodoAction(nameOfList);
-            console.log(time);
+            // console.log(time);
             activityTime = listData[listIndex].tasks[cardIndex].activity;
         }
 
         setTime(activityTime);
         setTempData(listData);
 
-    },)
+    },[])
 
 
     return (
