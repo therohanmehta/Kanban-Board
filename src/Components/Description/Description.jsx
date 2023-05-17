@@ -17,7 +17,7 @@ function DescriptionModel() {
         <div className={style.close}>
           <DescriptionTitle />
           <CloseIcon
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/kanban")}
             className={style.iconClose}
           />
         </div>

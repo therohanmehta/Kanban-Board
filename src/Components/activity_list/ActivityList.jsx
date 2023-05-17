@@ -67,10 +67,16 @@ function ActivityList() {
                                     </div>
 
                                     <div>
-                                    <small className={style.timeActivity}>{ele.time}</small>
+
+                                        <span style={{fontWeight:'bold'}}>{ele.text}</span><br />
+                                        <span >{ele.time}</span>
                                     </div>
-                                </div>
-                            ))}
+                                    // <Moment fromNow>{comment.time}</Moment>
+                           ))}
+                          
+                         
+                            
+
                         </div>
                     </div>
                 }
