@@ -3,6 +3,12 @@ import { wallpaper } from '../recoil/description_atoms/DescriptionAtoms'
 import { useRecoilState } from 'recoil'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import GroupsIcon from '@mui/icons-material/Groups';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';  import PhotoIcon from '@mui/icons-material/Photo';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import MoneyOffIcon from '@mui/icons-material/MoneyOff';
+import AssistantIcon from '@mui/icons-material/Assistant';
 import style from './Customisation.module.css'
 import { useNavigate } from "react-router-dom";
 function Customisation() {
@@ -46,15 +52,15 @@ function Customisation() {
 </div>
 
 <div className={style.btnDiv}>
-<a href="#features" ><Button  variant='contained'>Features</Button></a>
-<a href="#customisation" ><Button variant='contained'>Templates</Button></a>
-<a href="#teams" ><Button variant='contained'>For Teams</Button></a>
-<a href="#students" ><Button variant='contained'>For Students</Button></a>
+<a href="#features" ><Button  variant='contained' endIcon={<AssistantIcon/>}>Features</Button></a>
+<a href="#teams" ><Button variant='contained' endIcon={<GroupsIcon/>}>For Teams</Button></a>
+<a href="#students" ><Button variant='contained' endIcon={<EmojiPeopleIcon/>}>For Students</Button></a>
+<a href="#customisation"  ><Button variant='contained' endIcon={<PhotoIcon/>}>Background</Button></a>
 
-<a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained'  >Resources ❌</Button> </a>
-<Button id={style.introNavBlankButtons} variant='contained'/>
-<Button variant='contained' onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} >Pricing</Button>
-<Button onClick={()=>{navigate('/')}} id={style.introNavGreenButtons} color='success' variant='contained' >Start For Free</Button>
+<a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained' endIcon={<GitHubIcon/>} >Resources </Button> </a>
+{/* <Button id={style.introNavBlankButtons} variant='contained'/> */}
+<Button variant='contained' onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} endIcon={<CurrencyRupeeIcon/>} >Pricing</Button>
+<Button onClick={()=>{navigate('/')}} id={style.introNavGreenButtons} color='success' variant='contained' endIcon={<MoneyOffIcon/>}>Start For Free</Button>
 
 </div>
 </nav>
@@ -66,8 +72,8 @@ function Customisation() {
 
 </div>
 
-<h1 id='features'>.</h1>
-
+<h1 style={{color:'white'}} id='features'>.</h1>
+<br />
 <div  className={style.features}>
   <div  >
   <img src="/home.png " alt="" />
@@ -98,15 +104,31 @@ function Customisation() {
     <h3>We are here to give you the customisation that you want now you can make any background that you like just by pasting the link of the image </h3>
    </div>
      </div>
+     
 <div id='teams'  className={style.forTeams}>
   <h1>Are you a working Professional?</h1>
   <h2>Here is a Template that is specially Designed for the Working Professionals</h2>
   <h2>That template is specially designed for the working professionals in that we have special card for arranging task accoring to the required</h2>
+
+  <h1>Companies that are using our Board</h1>
+  <div className={style.companiesIcon}>
+ 
+    <img src="https://thumbs.dreamstime.com/b/new-google-logo-vector-illustration-white-background-editorial-149046989.jpg" alt="" />
+    <img src="https://www.freeiconspng.com/uploads/facebook-f-logo-white-background-21.jpg" alt="" />
+    <img src="https://logodownload.org/wp-content/uploads/2015/05/uber-logo-3-1.png" alt="" />
+    <img src="https://static.vecteezy.com/system/resources/previews/017/221/833/non_2x/apple-logo-free-png.png" alt="" />
+    
+    <img src="https://thumbs.dreamstime.com/b/amazon-logo-159029074.jpg" alt="" />
+    <img src="https://i.pinimg.com/736x/da/f3/0f/daf30fac5e16393d66a3684dd27e29af.jpg" alt="" />
+    <img src="https://1000logos.net/wp-content/uploads/2017/04/Microsoft-logo.jpg" alt="" />
+    <img src="" alt="" />
+  </div>
 </div>
 
 <div id='students' className={style.forStudent}>
+  <br /><br />
 <h1>Are you a Student?</h1>
-<h2>We understand now a days how it is hard for a student to track all the task he has to complete </h2>
+<h2>We understand now a days how hard it is for a student to track all the task he has to complete </h2>
 <h2>We Create a Template for you that is designed specially for the students so that It will make it easier to for you to manage the things in an easy way</h2>
 </div>
 
