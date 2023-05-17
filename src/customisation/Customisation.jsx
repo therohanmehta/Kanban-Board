@@ -42,14 +42,15 @@ function Customisation() {
 
             
   return (
-    <div className={style.mainDiv}>
+    <div id='top' className={style.mainDiv}>
 <div className={style.introPage}>
 <nav className={style.introNav}>
 
 <div >
   <img className={style.introNavLogo}  src="https://cdn.iconscout.com/icon/premium/png-256-thumb/kanban-board-4185955-3461987.png" alt="" />
   {/* <img className={style.introNavLogo}  src="https://e1.yotools.net/images/user_image/2023/05/64640d5cceab5.jpg" alt="" /> */}
-<h1 style={{color:'rgba(7, 79, 187, 0.459)'}}>KanBan.com</h1>
+
+  <a style={{textDecoration:'none'}} href="#top"><h1  style={{color:'rgba(7, 79, 187, 0.459)'}}>Monday.com</h1></a>
 </div>
 
 <div className={style.btnDiv}>
@@ -58,7 +59,7 @@ function Customisation() {
 <a href="#students" ><Button variant='contained' endIcon={<EmojiPeopleIcon/>}>For Students</Button></a>
 <a href="#customisation"  ><Button variant='contained' endIcon={<PhotoIcon/>}>Background</Button></a>
 
-<a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained'  >Resources ❌</Button> </a>
+<a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained' endIcon={<GitHubIcon/>} >Resources </Button> </a>
 <Button id={style.introNavBlankButtons} variant='contained'/>
 <Button variant='contained' onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} >Pricing</Button>
 <Button onClick={()=>navigate('/kanban')} id={style.introNavGreenButtons} color='success' variant='contained' >Start For Free</Button>

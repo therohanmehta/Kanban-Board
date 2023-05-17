@@ -79,3 +79,126 @@ export const studentPreDefinedData=[
         ]
     }
 ]
+
+
+export const professionalPreDefinedData=[
+    {
+        "ListId": "94a8040d-3d97-4e2a-ae9e-fea2f81e0882",
+        "nameOfList": "PRD",
+        "tasks": [
+            {
+                "cardItemId": "5faebde0-7579-457d-8c40-327ac9a5871d",
+                "nameOfCardItem": "Define the Kanban Board layout",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Define the Kanban Board layout added to PRD",
+                        "time": "5/17/2023, 3:35:41 PM"
+                    }
+                ]
+            },
+            {
+                "cardItemId": "82657f98-11d1-4aed-ae63-f8760f569ea5",
+                "nameOfCardItem": "Create React components",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Create React components added to PRD",
+                        "time": "5/17/2023, 3:35:54 PM"
+                    }
+                ]
+            },
+            {
+                "cardItemId": "754f5106-f0f3-4aa2-b252-bece3192253a",
+                "nameOfCardItem": "Implement drag and drop functionality",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Implement drag and drop functionality added to PRD",
+                        "time": "5/17/2023, 3:36:09 PM"
+                    }
+                ]
+            },
+            {
+                "cardItemId": "6d643f0f-b511-4835-b3a3-8cf1f1b65680",
+                "nameOfCardItem": "Manage the state of the application",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Manage the state of the application added to PRD",
+                        "time": "5/17/2023, 3:36:27 PM"
+                    }
+                ]
+            },
+            {
+                "cardItemId": "1a7cb24c-920d-4cff-b284-fa824931591a",
+                "nameOfCardItem": "Add functionality for adding and editing tasks",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Add functionality for adding and editing tasks added to PRD",
+                        "time": "5/17/2023, 3:36:46 PM"
+                    }
+                ]
+            },
+            {
+                "cardItemId": "eb228c3d-a031-420a-a05a-5f3e1b74d654",
+                "nameOfCardItem": "Implement customizations",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Implement customizations added to PRD",
+                        "time": "5/17/2023, 3:37:13 PM"
+                    }
+                ]
+            },
+            {
+                "cardItemId": "56e56554-88d7-46bb-906d-9ffed4fccd1c",
+                "nameOfCardItem": "Test and deploy",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Test and deploy added to PRD",
+                        "time": "5/17/2023, 3:37:17 PM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "ListId": "7b6cf0a9-d8c0-4d08-bfeb-4068141a823f",
+        "nameOfList": "In-Process",
+        "tasks": []
+    },
+    {
+        "ListId": "fcdcfddb-73ee-4b40-9ea5-988529679bac",
+        "nameOfList": "Yet to be debugged",
+        "tasks": []
+    },
+    {
+        "ListId": "7929da86-0400-4191-bfe6-8c5cba17e335",
+        "nameOfList": "Completed",
+        "tasks": [
+            {
+                "cardItemId": "a6a1fc7a-a167-4490-8771-7a29b2d7f47f",
+                "nameOfCardItem": "Set up the React development environment",
+                "description": "",
+                "activity": [
+                    {
+                        "text": "Moved from PRD to Completed",
+                        "time": "5/17/2023, 3:37:33 PM"
+                    },
+                    {
+                        "text": "Set up the React development environment added to PRD",
+                        "time": "5/17/2023, 3:35:18 PM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "ListId": "9e30c21f-ace0-41d8-b183-fde7f82058d7",
+        "nameOfList": "Tested",
+        "tasks": []
+    }
+]
