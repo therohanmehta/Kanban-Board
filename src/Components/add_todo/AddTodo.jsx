@@ -93,21 +93,6 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   };
 
   const handleUpdationOfCartItem = (id, close) => {
-    // if (updatedNameOfCardItem != "") {
-    //   const tempTodoItem = todoList.map((item) => {
-    //     if (item.cardItemId == id) {
-    //       return {
-    //         cardItemId: item.cardItemId,
-    //         nameOfCardItem: updatedNameOfCardItem,
-    //         description: item.description,
-    //         activity: item.activity,
-    //       };
-    //     }
-    //     return item;
-    //   });
-    //   setTodoList([...tempTodoItem]);
-    //   setUpdatedNameOfCardItem("");
-
     //!stop
     if (updatedNameOfCardItem != "") {
       const tempTodoItem = todoList.map((item) => {
@@ -119,35 +104,22 @@ function AddTodo({ listName, listId, handleDelete, index }) {
         }
         return item;
       });
-      console.log(tempTodoItem);
 
+      // console.log("tasks: ", tempTodoItem);
       let tempListData = listData.map((list) => {
         if (list.ListId == listId) {
           console.log(listId);
           return {
             ListId: list.ListId,
             nameOfList: list.nameOfList,
-            tasks: [...todoList, tempTodoItem],
+            tasks: [...tempTodoItem],
           };
         }
         return list;
       });
+      // console.log("tasks: ", tempListData);
+      setTodoList([...tempTodoItem]);
       setListData([...tempListData]);
-
-      // let tempListData = listData.map((list) => {
-      //   if (list.ListId == listId) {
-      //     console.log(listId);
-      //     return {
-      //       ListId: list.ListId,
-      //       nameOfList: list.nameOfList,
-      //       tasks: todoList,
-      //     };
-      //   }
-      //   return list;
-      // });
-      //setListData([...tempListData]);
-      console.log(todoList);
-
       close();
     }
   };
