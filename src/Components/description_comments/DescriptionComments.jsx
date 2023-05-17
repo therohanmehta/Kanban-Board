@@ -4,7 +4,6 @@ import style from './DescriptionComments.module.css';
 import Button from '@mui/material/Button';
 import { useRecoilState } from 'recoil';
 import { getData } from '../../utils/Services';
-// import { atomListUid,list} from "../../recoil/description_atoms/DescriptionAtoms";
 import {
     atomCardName,
     list,
@@ -14,11 +13,14 @@ import {
 import Moment from 'react-moment';
 
 
+
+import PersonIcon from '@mui/icons-material/Person';
+
+
 function DescriptionComments() {
     const [showComment, setShowComment] = useState(false);
     const [commentText, setCommentText] = useState('');
-    // const [comments, setComments] = useState(JSON.parse(localStorage.getItem('comments')) || []);
-    // const [comments, setComments] = useState([]);
+
     const tempList = getData();
 
     const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
@@ -31,7 +33,7 @@ function DescriptionComments() {
     const CommentsCardIndex = tempList[commentsListIndex].tasks.findIndex(
         (ele) => ele.cardItemId === uidOfList
     );
-    // tempList[commentsListIndex].tasks[CommentsCardIndex].comments;
+
     const currentComment = tempList[commentsListIndex].tasks[CommentsCardIndex].comments;
     console.log(tempList[commentsListIndex].tasks[CommentsCardIndex].comments);
     const [comments, setComments] = useState(currentComment || []);
@@ -42,17 +44,17 @@ function DescriptionComments() {
         if (commentText.trim() === '') {
             return;
         }
-        const commentTimeValue={
+        const commentTimeValue = {
             id: new Date(),
             comment: commentText,
-            time:new Date().getTime()
+            time: new Date().getTime()
         }
 
         let updatedComments = [...comments, commentTimeValue];
         setComments(updatedComments);
         console.log(commentText);
         console.log(comments);
-        
+
 
 
         const listIndex = tempList.findIndex(
@@ -74,9 +76,6 @@ function DescriptionComments() {
             return index !== i;
         })
         setComments(removeItems);
-        // localStorage.setItem('comments', JSON.stringify(removeItems));
-        //    currentComment.comments
-        // console.log(tempList, "delete");
 
         const listIndex = tempList.findIndex(
             (ele) => ele.ListId === currentListUid
@@ -96,7 +95,9 @@ function DescriptionComments() {
 
     return (
         <>
+       <PersonIcon className={style.mainComments}/>
             <div className={style.commentContainer}>
+           
                 {
                     showComment ?
                         <div className={style.commentTexts}>
@@ -104,7 +105,7 @@ function DescriptionComments() {
                                 <input type='text' placeholder='Write a comment' value={commentText} onChange={(e) => setCommentText(e.target.value)} className={style.comments} />
                             </div>
                             <div>
-                                <Button variant='contained' sx={{ width: '18%', ml: 5 }} onClick={handleComments}>Save</Button>
+                                <Button variant='contained' sx={{ width: '18%', ml: 4.7 }} onClick={handleComments}>Save</Button>
                             </div>
                         </div>
                         :
@@ -112,25 +113,28 @@ function DescriptionComments() {
                             <input type='text' placeholder='Write a comment...' onClick={() => setShowComment(!showComment)} className={style.comments} />
                         </div>
                 }
-
+               
                 {
                     comments.map((comment, index) => (
-                        comment.comment.trim() !== '' && <div key={comment.id}>
-                            {/* <small>{comment.time}</small> */}
-                            <Moment fromNow>{comment.time}</Moment>
-                            <div  className={style.eachComment}>
+                        comment.comment.trim() !== '' && <div key={comment.id} className={style.commentsContainer}>
+                             <PersonIcon className={style.mainComment}/>
+                            <small className={style.user} ><span>User</span> <Moment fromNow className={style.commentsTime}>{comment.time}</Moment></small>
+                            <div className={style.eachComment}>
                                 {comment.comment}
                             </div>
                             <div className={style.updateComment}>
 
                                 <small onClick={() => handleDelete(index)} className={style.modifyComment}>Delete</small>
                             </div>
+                           
                         </div>
+                        
                     ))
                 }
 
 
             </div>
+        {/* </div> */}
         </>
     )
 }

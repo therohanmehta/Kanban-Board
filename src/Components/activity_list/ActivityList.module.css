@@ -1,5 +1,4 @@
 .timeContainer {
-   /* margin-left: 2.5rem; */
    display: flex;
    flex-direction: row;
    font-size: 1.1rem;
@@ -21,5 +20,45 @@
 .timeStamp {
   font-size: 0.8rem;
   color: rgb(75, 73, 73);
-  /* font-weight: bold; */
+}
+
+.timeActivity {
+  color: rgb(106, 105, 105);
+  font-weight: bold;
+  font-size: 0.75rem;
+  margin-left: 2.4rem;
+  position:relative;
+  top:-5px;
+}
+
+.activityUserDetails{
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.userDetails {
+  display: flex;
+  gap:1rem;
+}
+
+.activityAlign{
+  display: flex;
+  gap:0.7rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.activityUser {
+  font-weight: bold;
+ 
+  
+}
+
+.activityUserText{
+  color:rgb(72, 71, 71);
+  font-weight: 450;
+  font-size:0.9rem;
+  text-align: center;
 }

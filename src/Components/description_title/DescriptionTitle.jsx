@@ -5,7 +5,7 @@ import DvrOutlinedIcon from "@mui/icons-material/DvrOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import TextField from "@mui/material/TextField";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   atomCardName,
   list,
@@ -21,20 +21,20 @@ function DescriptionTitle() {
   const [listData, setListData] = useRecoilState(list);
   const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
-  const [listTitle,setListTitle]=useState('');
-  // const currentListUid = useRecoilState(atomListUid);
+  const [listTitle, setListTitle] = useState('');
 
-  useEffect(()=> {
+
+  useEffect(() => {
     let listData = getData();
-      const listIndex = listData.findIndex((item) => item.ListId === currentListUid);
-      if (listIndex !== -1) {
-        const nameOfList = listData[listIndex].nameOfList;
-        setListTitle(nameOfList);
-        console.log(nameOfList);
-        
-      }
+    const listIndex = listData.findIndex((item) => item.ListId === currentListUid);
+    if (listIndex !== -1) {
+      const nameOfList = listData[listIndex].nameOfList;
+      setListTitle(nameOfList);
+      console.log(nameOfList);
 
-  },[])
+    }
+
+  }, [])
 
 
   function handleTextField(e) {
@@ -64,7 +64,6 @@ function DescriptionTitle() {
       <div className={style.titleContainer}>
         <div className={style.titleFirst}>
           <div className={style.titleIcon}>
-            {/* <DvrOutlinedIcon className={`${style.icon} ${style.iconLarge}`} /> */}
             <DvrOutlinedIcon
               className={style.icon}
               style={{ fontSize: "20px" }}
@@ -90,7 +89,7 @@ function DescriptionTitle() {
               </form>
 
               <div className={style.listName}>
-                <small>in list {listTitle} </small>
+                <small>in list <span className={style.listTitleName}>{listTitle} </span> </small>
                 {watch && (
                   <VisibilityOutlinedIcon style={{ fontSize: "16px" }} />
                 )}
