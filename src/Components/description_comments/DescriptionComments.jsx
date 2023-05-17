@@ -4,7 +4,6 @@ import style from './DescriptionComments.module.css';
 import Button from '@mui/material/Button';
 import { useRecoilState } from 'recoil';
 import { getData } from '../../utils/Services';
-// import { atomListUid,list} from "../../recoil/description_atoms/DescriptionAtoms";
 import {
     atomCardName,
     list,
@@ -12,14 +11,11 @@ import {
     atomListUid,
 } from "../../recoil/description_atoms/DescriptionAtoms";
 import Moment from 'react-moment';
-// import moment from 'moment';
-// moment().format();
 
 function DescriptionComments() {
     const [showComment, setShowComment] = useState(false);
     const [commentText, setCommentText] = useState('');
-    // const [comments, setComments] = useState(JSON.parse(localStorage.getItem('comments')) || []);
-    // const [comments, setComments] = useState([]);
+
     const tempList = getData();
 
     const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
@@ -32,7 +28,7 @@ function DescriptionComments() {
     const CommentsCardIndex = tempList[commentsListIndex].tasks.findIndex(
         (ele) => ele.cardItemId === uidOfList
     );
-    // tempList[commentsListIndex].tasks[CommentsCardIndex].comments;
+
     const currentComment = tempList[commentsListIndex].tasks[CommentsCardIndex].comments;
     console.log(tempList[commentsListIndex].tasks[CommentsCardIndex].comments);
     const [comments, setComments] = useState(currentComment || []);
@@ -43,17 +39,17 @@ function DescriptionComments() {
         if (commentText.trim() === '') {
             return;
         }
-        const commentTimeValue={
+        const commentTimeValue = {
             id: new Date(),
             comment: commentText,
-            time:new Date().getTime()
+            time: new Date().getTime()
         }
 
         let updatedComments = [...comments, commentTimeValue];
         setComments(updatedComments);
         console.log(commentText);
         console.log(comments);
-        
+
 
 
         const listIndex = tempList.findIndex(
@@ -75,9 +71,6 @@ function DescriptionComments() {
             return index !== i;
         })
         setComments(removeItems);
-        // localStorage.setItem('comments', JSON.stringify(removeItems));
-        //    currentComment.comments
-        // console.log(tempList, "delete");
 
         const listIndex = tempList.findIndex(
             (ele) => ele.ListId === currentListUid
@@ -118,8 +111,8 @@ function DescriptionComments() {
                     comments.map((comment, index) => (
                         comment.comment.trim() !== '' && <div key={comment.id}>
                             {/* <small>{comment.time}</small> */}
-                            <Moment fromNow>{comment.time}</Moment>
-                            <div  className={style.eachComment}>
+                            <small className={style.commentsTime}>  <Moment fromNow>{comment.time}</Moment></small>
+                            <div className={style.eachComment}>
                                 {comment.comment}
                             </div>
                             <div className={style.updateComment}>

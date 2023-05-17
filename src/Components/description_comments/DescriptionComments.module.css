@@ -2,7 +2,6 @@
    display: flex;
    margin-bottom: 1rem;
    flex-direction: column;
-   /* text-align: center; */
 }
 
 .comment {
@@ -16,12 +15,10 @@
 .comments {
    width:100%;
    outline:none;
-   /* background-color: #F1F2F4; */
    border: transparent;
    border-radius: 5px;
    padding:0.6rem;
    background-color: #FFFFFF;
-   /* box-shadow: 0 3px 10px rgba(16, 15, 15, 0.2); */
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
   
@@ -29,7 +26,6 @@
 .commentList{
    display: flex;
    flex-direction: column-reverse;
-   /* width:90%; */
 }
 
 .commentTexts {
@@ -59,9 +55,15 @@
 
 .modifyComment {
   cursor: pointer;
+  font-weight: bold;
 }
 
 .modifyComment:hover {
-   /* color:#1976D2 */
    color: blue;
+}
+
+.commentsTime {
+   margin-left: 2.3rem;
+   color:rgb(87, 86, 86);
+   font-weight: bold;
 }
