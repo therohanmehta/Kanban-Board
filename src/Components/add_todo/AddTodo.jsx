@@ -78,7 +78,7 @@ function AddTodo({ listName, listId, handleDelete, index }) {
     };
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
-        console.log(listId);
+        // console.log(listId);
         return {
           ListId: list.ListId,
           nameOfList: list.nameOfList,
@@ -108,7 +108,7 @@ function AddTodo({ listName, listId, handleDelete, index }) {
       // console.log("tasks: ", tempTodoItem);
       let tempListData = listData.map((list) => {
         if (list.ListId == listId) {
-          console.log(listId);
+          // console.log(listId);
           return {
             ListId: list.ListId,
             nameOfList: list.nameOfList,
@@ -150,7 +150,7 @@ function AddTodo({ listName, listId, handleDelete, index }) {
     setListData(updateList);
     setTodoList(updatedTasks);
 
-    console.log(updateList);
+    // console.log(updateList);
   }
   return (
     <Draggable

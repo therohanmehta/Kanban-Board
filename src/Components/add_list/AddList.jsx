@@ -39,7 +39,7 @@ export default function AddList() {
   function handleDelete(listId) {
     const updatedList = listData.filter((ele) => ele.ListId != listId);
     setListData(updatedList);
-    console.log(listData);
+    // console.log(listData);
     localStorage.setItem("listData", JSON.stringify(updatedList));
   }
 
