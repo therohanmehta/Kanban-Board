@@ -99,13 +99,27 @@ function AddTodo({ listName, listId, handleDelete, index }) {
           return {
             cardItemId: item.cardItemId,
             nameOfCardItem: updatedNameOfCardItem,
-            description: "",
+            description: item.description,
+            activity: item.activity,
           };
         }
         return item;
       });
       setTodoList([...tempTodoItem]);
       setUpdatedNameOfCardItem("");
+      // let tempListData = listData.map((list) => {
+      //   if (list.ListId == listId) {
+      //     console.log(listId);
+      //     return {
+      //       ListId: list.ListId,
+      //       nameOfList: list.nameOfList,
+      //       tasks: todoList,
+      //     };
+      //   }
+      //   return list;
+      // });
+      //setListData([...tempListData]);
+     console.log(todoList)
 
       close();
     }

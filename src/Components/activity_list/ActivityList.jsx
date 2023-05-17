@@ -76,8 +76,9 @@ function ActivityList() {
                                 {time.map((ele) => (
                                     <div>
                                         <span style={{fontWeight:'bold'}}>{ele.text}</span><br />
-                                        <small>{ele.time}</small>
-                                        </div>
+                                        <span >{ele.time}</span>
+                                    </div>
+                                    // <Moment fromNow>{comment.time}</Moment>
                            ))}
                           
                             {/* {time} */}

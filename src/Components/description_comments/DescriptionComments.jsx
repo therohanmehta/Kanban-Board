@@ -12,8 +12,7 @@ import {
     atomListUid,
 } from "../../recoil/description_atoms/DescriptionAtoms";
 import Moment from 'react-moment';
-// import moment from 'moment';
-// moment().format();
+
 
 function DescriptionComments() {
     const [showComment, setShowComment] = useState(false);
