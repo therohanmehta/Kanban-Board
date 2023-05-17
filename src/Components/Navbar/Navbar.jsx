@@ -25,7 +25,7 @@ const navigate=useNavigate()
 
       <nav className={style.navBar}>
      <div className={style.left}>
-     <Button  variant='text'>Fake Trello</Button>
+     <Button  variant='text'>Monday.com</Button>
      {showStar?<Button  onClick={()=>{setShowStar(!showStar)}}><StarBorderIcon/></Button>:<Button  onClick={()=>{setShowStar(!showStar)}}><StarIcon/></Button>}
      <Button sx={{color:'white',textTransform:'none'}} variant='text' startIcon={<PublicIcon />}>Public</Button>  
       <Button  variant='text'>Workspace Visible</Button>

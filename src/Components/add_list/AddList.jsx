@@ -34,6 +34,7 @@ export default function AddList() {
       };
       setListName("");
       setListData([...listData, tempList]);
+      setIsVisible(!isVisible)
     }
   };
   function handleDelete(listId) {
@@ -91,11 +92,13 @@ export default function AddList() {
             <div className={styles.innerDiv}>
               <Button onClick={handleAddCardItem} variant="contained">
                 Add List
-              </Button>
-              <CloseIcon
+                </Button>
+                
+                <Button id={styles.closeIcon} startIcon={<CloseIcon/>} variant='contained' onClick={()=>setIsVisible(!isVisible)}>Close</Button>
+              {/* <CloseIcon
                 onClick={() => setIsVisible(!isVisible)}
                 id={styles.closeIcon}
-              />
+              /> */}
             </div>
           </div>
         )}
