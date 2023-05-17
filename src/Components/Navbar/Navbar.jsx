@@ -31,7 +31,7 @@ const navigate=useNavigate()
       <Button  variant='text'>Workspace Visible</Button>
       <Button  id={style.whiteBtn} variant='contained' startIcon={<ViewKanbanOutlinedIcon />}>Board  </Button>_
      { showBgChange?<Button onClick={()=>{setshowBgChange(!showBgChange)}}  variant='text'  startIcon={<AutoAwesomeIcon />}> Edit Board</Button>: 
-      <Button onClick={()=>{navigate('/customisation#customisation')}} variant='contained' id={style.whiteBtn} startIcon={<AddPhotoAlternateIcon />}> Change Background</Button>}
+      <Button onClick={()=>{navigate('/#customisation')}} variant='contained' id={style.whiteBtn} startIcon={<AddPhotoAlternateIcon />}> Change Background</Button>}
      </div>
      
      <div className={style.right}>

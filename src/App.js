@@ -32,9 +32,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Kanban />} />
+        <Route path="/kanban" element={<Kanban />} />
         <Route path="/task/:id" element={<DescriptionModel />} />
-        <Route path="/customisation" element={<Customisation />} />
+        <Route path="/" element={<Customisation />} />
       </Routes>
     </BrowserRouter>
   );
@@ -130,7 +130,7 @@ const onDragEnd = (result, columns, setColumns, setCount, count) => {
     (list) => list.ListId == source.droppableId
   );
   let sourceListName = sourceTaskList.nameOfList;
-console.log(sourceListName)
+  console.log(sourceListName)
   let destinationTaskList = columns.find(
     (list) => list.ListId == destination.droppableId
   );
@@ -139,10 +139,14 @@ console.log(sourceListName)
   const current = JSON.parse(JSON.stringify(sourceTaskList.tasks));
   const next = JSON.parse(JSON.stringify(destinationTaskList.tasks));
   const target = current[source.index];
+  const currentTime = new Date().toLocaleString()
+  console.log(currentTime)
+  let newActivity = {
+    text: `Moved from ${sourceListName} to ${destinationListName}`,
+    time:currentTime,
+}
 
-   let newActivity = `Moved from ${sourceListName} to ${destinationListName}`
-
-  target.activity = [...target.activity, newActivity]
+  target.activity = [ newActivity, ...target.activity]
   console.log(target.activity)
   // * removing from original list
   current.splice(source.index, 1);

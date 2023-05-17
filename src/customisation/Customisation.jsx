@@ -12,6 +12,7 @@ import AssistantIcon from '@mui/icons-material/Assistant';
 import style from './Customisation.module.css'
 import { useNavigate } from "react-router-dom";
 function Customisation() {
+  
     const navigate=useNavigate()
     const[linkOfWallpaper,setLinkOfWallpaper]=useState('')
     const [currentWallpaper,setCurrentWallpaper]=useRecoilState(wallpaper)
@@ -24,7 +25,7 @@ function Customisation() {
                 function handleBackground(ele) {
                     setCurrentWallpaper(ele)
                     localStorage.setItem('userWallpaper',`${ele}`)
-                    navigate('/')
+                    navigate('/kanban')
                 }
                 function handleLinkOfWallpaper(e){
                   setLinkOfWallpaper(e.target.value)
@@ -33,7 +34,7 @@ function Customisation() {
                   if(linkOfWallpaper!==''){
                   setCurrentWallpaper(linkOfWallpaper)
                   localStorage.setItem('userWallpaper',`${linkOfWallpaper}`)
-                  navigate('/')
+                  navigate('/kanban')
                 }
               else{
                 alert('select any background')
@@ -57,10 +58,10 @@ function Customisation() {
 <a href="#students" ><Button variant='contained' endIcon={<EmojiPeopleIcon/>}>For Students</Button></a>
 <a href="#customisation"  ><Button variant='contained' endIcon={<PhotoIcon/>}>Background</Button></a>
 
-<a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained' endIcon={<GitHubIcon/>} >Resources </Button> </a>
-{/* <Button id={style.introNavBlankButtons} variant='contained'/> */}
-<Button variant='contained' onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} endIcon={<CurrencyRupeeIcon/>} >Pricing</Button>
-<Button onClick={()=>{navigate('/')}} id={style.introNavGreenButtons} color='success' variant='contained' endIcon={<MoneyOffIcon/>}>Start For Free</Button>
+<a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained'  >Resources ❌</Button> </a>
+<Button id={style.introNavBlankButtons} variant='contained'/>
+<Button variant='contained' onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} >Pricing</Button>
+<Button onClick={()=>navigate('/kanban')} id={style.introNavGreenButtons} color='success' variant='contained' >Start For Free</Button>
 
 </div>
 </nav>
