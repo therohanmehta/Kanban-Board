@@ -11,7 +11,8 @@ import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 import AssistantIcon from '@mui/icons-material/Assistant';
 import style from './Customisation.module.css'
 import { useNavigate, useLocation } from "react-router-dom";
-import { studentPreDefinedData } from './customisationData';
+import { studentPreDefinedData,studentDefaultBG,ProfessionalDefaultBG,professionalPreDefinedData,companiesImg ,instituteImg} from './customisationData';
+import PricingCard from './PricingCard';
 function Customisation() {
   let location = useLocation()
   const [listData, setListData] = useRecoilState(list)
@@ -44,12 +45,18 @@ function Customisation() {
 
   useEffect(() => {
     if (location.hash == "#customisation") {
-                window.scroll(0,3700)
+                window.scroll(0,3600)
               }
   }, [])
   
   function handleStudentBoard() {
     setListData(studentPreDefinedData)
+    localStorage.setItem('userWallpaper',studentDefaultBG)
+    navigate('/kanban')
+  }
+  function handleProfessionalBoard() {
+    setListData(professionalPreDefinedData)
+    localStorage.setItem('userWallpaper',ProfessionalDefaultBG)
     navigate('/kanban')
   }
   return (
@@ -72,8 +79,8 @@ function Customisation() {
 
 <a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained' endIcon={<GitHubIcon/>} >Resources </Button> </a>
 <Button id={style.introNavBlankButtons} variant='contained'/>
-<Button variant='contained' onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} >Pricing</Button>
-<Button onClick={()=>navigate('/kanban')} id={style.introNavGreenButtons} color='success' variant='contained' >Start For Free</Button>
+<Button variant='contained' endIcon={<CurrencyRupeeIcon/>} onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} >Pricing</Button>
+<Button onClick={()=>navigate('/kanban')} id={style.introNavGreenButtons} color='success' variant='contained' endIcon={<MoneyOffIcon/>} >Start For Free</Button>
 
 </div>
 </nav>
@@ -122,19 +129,14 @@ function Customisation() {
   <h1>Are you a working Professional?</h1>
   <h2>Here is a Template that is specially Designed for the Working Professionals</h2>
   <h2>That template is specially designed for the working professionals in that we have special card for arranging task accoring to the required</h2>
-
+  <Button onClick={handleProfessionalBoard} variant='contained'>Get started </Button>
   <h1>Companies that are using our Board</h1>
   <div className={style.companiesIcon}>
- 
-    <img src="https://thumbs.dreamstime.com/b/new-google-logo-vector-illustration-white-background-editorial-149046989.jpg" alt="" />
-    <img src="https://www.freeiconspng.com/uploads/facebook-f-logo-white-background-21.jpg" alt="" />
-    <img src="https://logodownload.org/wp-content/uploads/2015/05/uber-logo-3-1.png" alt="" />
-    <img src="https://static.vecteezy.com/system/resources/previews/017/221/833/non_2x/apple-logo-free-png.png" alt="" />
-    
-    <img src="https://thumbs.dreamstime.com/b/amazon-logo-159029074.jpg" alt="" />
-    <img src="https://i.pinimg.com/736x/da/f3/0f/daf30fac5e16393d66a3684dd27e29af.jpg" alt="" />
-    <img src="https://1000logos.net/wp-content/uploads/2017/04/Microsoft-logo.jpg" alt="" />
-    <img src="" alt="" />
+
+ {companiesImg.map((ele)=>(<img src={ele} />))}
+   
+ <img src="" alt="" />
+   
   </div>
 </div>
 
@@ -144,6 +146,15 @@ function Customisation() {
 <h2>We understand now a days how hard it is for a student to track all the task they have to complete </h2>
 <h2>We have created a Template for you that is designed specially for students so that it will make it easier for you to manage your tasks, click on the button below to get started.</h2>
         <Button onClick={handleStudentBoard} variant='contained'>Get started </Button>
+        <h1>Institutes that are using our Board</h1>
+        <div className={style.companiesIcon}>
+
+ {instituteImg.map((ele)=>(<img src={ele} />))}
+   
+ <img src="" alt="" />
+   
+  </div>
+        
       </div>
 
 
@@ -164,6 +175,39 @@ function Customisation() {
 
         {image.map((ele,index)=><img className={style.perImg} key={index} onClick={()=>{handleBackground(ele)}} src={ele}/>)}
         </div>
+
+    <div className={style.pricing}>
+      <PricingCard/>
+      <PricingCard/>
+      <PricingCard/>
+    
+    </div>
+
+<footer className={style.footer}>
+  {/* <h3>Made with ❤️  by Chandra Lakhsmi Samad Rohan </h3> */}
+  <div className="cards">
+      <div className="card blue">
+        <p className="tip">Made with ❤️ by</p>
+
+      </div>
+      <div className="card red">
+        <p className="tip">Lakshmi</p>
+      
+      </div>
+      <div className="card green">
+        <p className="tip">Chandra</p>
+  
+      </div>
+      <div className="card pink">
+        <p className="tip">Samad</p>
+
+      </div>
+      <div className="card black">
+        <p className="tip">Rohan</p>
+
+      </div>
+    </div>
+</footer>
      
     </div>
   )

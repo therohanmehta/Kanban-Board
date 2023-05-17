@@ -1,3 +1,20 @@
+export const studentDefaultBG='https://images.wallpaperscraft.com/image/single/books_library_shelves_138556_3840x2400.jpg'
+export const ProfessionalDefaultBG='https://wallpaperaccess.com/full/8061909.jpg'
+export const companiesImg=[ "https://thumbs.dreamstime.com/b/new-google-logo-vector-illustration-white-background-editorial-149046989.jpg",
+"https://www.freeiconspng.com/uploads/facebook-f-logo-white-background-21.jpg",
+"https://logodownload.org/wp-content/uploads/2015/05/uber-logo-3-1.png",
+"https://static.vecteezy.com/system/resources/previews/017/221/833/non_2x/apple-logo-free-png.png",
+"https://thumbs.dreamstime.com/b/amazon-logo-159029074.jpg",
+"https://i.pinimg.com/736x/da/f3/0f/daf30fac5e16393d66a3684dd27e29af.jpg",
+"https://1000logos.net/wp-content/uploads/2017/04/Microsoft-logo.jpg",]
+
+export const instituteImg=['https://www.pngkit.com/png/detail/802-8025099_advertisement-iit-bombay-logo.png',
+'https://static.toiimg.com/thumb/msid-78139990,width-400,resizemode-4/78139990.jpg',
+'https://upload.wikimedia.org/wikipedia/commons/b/b0/Chandigarh_University_Seal.png',
+'https://png.pngitem.com/pimgs/s/215-2156453_banaras-hindu-university-banaras-hindu-university-logo-hd.png',
+'https://www.cam.ac.uk/sites/www.cam.ac.uk/files/inner-images/logo.jpg',
+'https://static.toiimg.com/photo/msid-84594490/84594490.jpg',
+]
 export const studentPreDefinedData=[
     {
         "ListId": "5e77af99-f99e-446c-a217-ec3b4711e7c2",
@@ -10,7 +27,7 @@ export const studentPreDefinedData=[
                 "activity": [
                     {
                         "text": "[Instructions] Binary Search Tree added to Topics 📖",
-                        "time": "5/17/2023, 3:14:29 PM"
+                        "time": ""
                     }
                 ]
             }
@@ -27,7 +44,7 @@ export const studentPreDefinedData=[
                 "activity": [
                     {
                         "text": "[Example] Dynamic Programming added to Focus 🎯",
-                        "time": "5/17/2023, 3:14:52 PM"
+                        "time": ""
                     }
                 ]
             }
@@ -44,7 +61,7 @@ export const studentPreDefinedData=[
                 "activity": [
                     {
                         "text": "[Example] Graphs added to Current👀",
-                        "time": "5/17/2023, 3:15:08 PM"
+                        "time": ""
                     }
                 ]
             }
@@ -61,7 +78,7 @@ export const studentPreDefinedData=[
                 "activity": [
                     {
                         "text": "[Example] Heaps added to Covered ✔️",
-                        "time": "5/17/2023, 3:15:20 PM"
+                        "time": ""
                     }
                 ]
             },
@@ -72,7 +89,7 @@ export const studentPreDefinedData=[
                 "activity": [
                     {
                         "text": "[Example] Sorting added to Covered ✔️",
-                        "time": "5/17/2023, 3:15:32 PM"
+                        "time": ""
                     }
                 ]
             }
@@ -84,7 +101,7 @@ export const studentPreDefinedData=[
 export const professionalPreDefinedData=[
     {
         "ListId": "94a8040d-3d97-4e2a-ae9e-fea2f81e0882",
-        "nameOfList": "PRD",
+        "nameOfList": "PRD ",
         "tasks": [
             {
                 "cardItemId": "5faebde0-7579-457d-8c40-327ac9a5871d",
@@ -93,7 +110,7 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Define the Kanban Board layout added to PRD",
-                        "time": "5/17/2023, 3:35:41 PM"
+                        "time": ""
                     }
                 ]
             },
@@ -104,7 +121,7 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Create React components added to PRD",
-                        "time": "5/17/2023, 3:35:54 PM"
+                        "time": ""
                     }
                 ]
             },
@@ -115,7 +132,7 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Implement drag and drop functionality added to PRD",
-                        "time": "5/17/2023, 3:36:09 PM"
+                        "time": ""
                     }
                 ]
             },
@@ -126,7 +143,7 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Manage the state of the application added to PRD",
-                        "time": "5/17/2023, 3:36:27 PM"
+                        "time": ""
                     }
                 ]
             },
@@ -137,7 +154,7 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Add functionality for adding and editing tasks added to PRD",
-                        "time": "5/17/2023, 3:36:46 PM"
+                        "time": ""
                     }
                 ]
             },
@@ -148,7 +165,7 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Implement customizations added to PRD",
-                        "time": "5/17/2023, 3:37:13 PM"
+                        "time": ""
                     }
                 ]
             },
@@ -159,7 +176,7 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Test and deploy added to PRD",
-                        "time": "5/17/2023, 3:37:17 PM"
+                        "time": ""
                     }
                 ]
             }
@@ -186,11 +203,11 @@ export const professionalPreDefinedData=[
                 "activity": [
                     {
                         "text": "Moved from PRD to Completed",
-                        "time": "5/17/2023, 3:37:33 PM"
+                        "time": ""
                     },
                     {
                         "text": "Set up the React development environment added to PRD",
-                        "time": "5/17/2023, 3:35:18 PM"
+                        "time": ""
                     }
                 ]
             }
