@@ -154,10 +154,9 @@ function Customisation() {
       <div className={style.features}>
         <div>
           <img src="/home.png " alt="" />
-          <div>
+          <div className={style.featureText}>
             <h1>The KanBan Board </h1>
             <h3>
-              {" "}
               Here you can add Cards Task and also you can drag and drop froom
               card to another card
             </h3>
@@ -166,7 +165,7 @@ function Customisation() {
       </div>
 
       <div className={style.descDiv}>
-        <div>
+        <div className={style.DecpText}>
           <h1>The Description</h1>
           <h3>
             Worry about the minor details or pinpoint to be added to the task
@@ -179,8 +178,7 @@ function Customisation() {
 
       <div className={style.custShow}>
         <img src="/chooseBG.png " alt="" />
-        <div>
-          <h1>Customisation on the go</h1>
+        <div className={style.custShowText}> <h1>Customisation on the go</h1>
           <h3>
             Bored of all the old plain boring ToDo-List Websited and KanBan
             board{" "}
