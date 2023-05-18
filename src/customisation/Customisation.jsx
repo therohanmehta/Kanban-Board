@@ -60,7 +60,7 @@ function Customisation() {
 
   useEffect(() => {
     if (location.hash === "#customisation") {
-      window.scroll(0, 4700);
+      window.scroll(0, 4850);
     }
   }, []);
 
@@ -251,13 +251,17 @@ function Customisation() {
       <div id="customisation" className={style.heading}>
         <h1>Choose <span>Background</span> </h1>
       </div>
+      <div className={style.headingText}>
+        <h2 >Unable to find you perfect background? No worries your board your favourite image</h2>
+        <h2>Just Copy Any Image URL from the internet(GIF feature added)</h2>
+      </div>
       <div className={style.inpDiv}>
         <TextField
-          color="success"
+          // color="success"
           onChange={handleLinkOfWallpaper}
           className={style.textField}
           label="Enter the link of your favourite background"
-          variant="filled"
+          variant="outlined"
         />
         <Button onClick={handleSendLinkOfWallpaper} variant="contained">
           Apply This Image
@@ -281,26 +285,30 @@ function Customisation() {
       </div>
       <div id="pricing" className={style.pricing}>
         <h1 style={{color:'transparent',margin:'0',padding:'0'}}>.</h1>
-        <h1>Become our Premium User</h1>
+        <h1 className={style.pricingText}>Become our <span>Premium</span>  User</h1>
         <div>
           <PricingCard
             plan="Professional "
-            price="69₹/M"
-            desc="Unlimited boards
-            Advanced checklists
-            Admin and security features
+            price="₹69/M"
+            desc="Unlimited boards. . . . . . . .
+            Advanced checklists . . . . . . . . .
+            Admin and security features . . . .
             Unlimited automations
             And more!"
           />
           <PricingCard
             plan="Bussiness"
-            price="169₹/M"
-            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+            price="₹169/M"
+            desc="Add Pie Chart . . . . . . . . . . . . . . . . .  
+            Add Bar Graph. . . . . . . . . . . . . . . . 
+            Prebuilt mail manager. . . . . . . . . . . .
+            Add Upto 100 members on board"
           />
           <PricingCard
             plan="Elite"
-            price="696₹/M"
-            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+            price="₹696/M"
+            desc="Gareeb ki dua lagegi . . . . . . . . .
+            consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
           />
         </div>
       </div>

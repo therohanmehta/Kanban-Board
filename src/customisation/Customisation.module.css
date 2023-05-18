@@ -1,5 +1,6 @@
 
 *{
+    -ms-transform: scale(0.8);
     scroll-behavior: smooth;
 }
 .mainDiv{
@@ -17,13 +18,21 @@
     .heading {
         display: flex;
         justify-content: center ;
-        font-size: 50px;
+        font-size: 40px;
         color:rgb(0, 0, 0);
         background-color: #eaf1ff;
     }
     .heading span{
         background-color: #c3cee4;
         
+    }
+    .heading+div{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+        padding: 0px   ;
+        background-color: #eaf1ff;
     }
     .imageDiv{
         /* flex-wrap: wrap; */
@@ -272,16 +281,21 @@ width: 60%;
 
 /* Pricing Css */
 .pricing{
-    height: 80vh;
-    background-color: #eaf1ff;
-
-    
+    height: 70vh;
+    background-color: #eaf1ff;    
 }
-
+.pricing span{
+    background-color: #c3cee4;
+}
+.pricingText{
+text-align: center;
+font-size: 50px;
+}
   
 .pricing>div{
 display: flex;
-    justify-content: space-around;
+justify-content:center;
+gap: 5rem;
     
 }
 
