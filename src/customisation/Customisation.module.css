@@ -14,19 +14,29 @@
   /* customisation page css */
 
 
-    .heading{
+    .heading {
         display: flex;
         justify-content: center ;
         font-size: 50px;
         color:rgb(0, 0, 0);
         background-color: #eaf1ff;
     }
+    .heading span{
+        background-color: #c3cee4;
+        
+    }
     .imageDiv{
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
+        overflow: auto;
         display: flex;
         justify-content: space-around;
         background-color: #eaf1ff;
+        max-height: 40vh;
     }
+    .imageDiv::-webkit-scrollbar {
+        /* width: 1px; /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
+        /* display:flex;  */
+      }
     .perImg{
         /* border: 2px solid; */
         /* height: 200px; */
@@ -238,7 +248,7 @@ width: 60%;
 .companiesIcon{
     display: flex;
     justify-content: space-between;
-    height: auto;
+   padding: 1rem;
     background-color: white;
 }
 .companiesIcon img{
