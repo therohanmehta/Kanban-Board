@@ -78,7 +78,7 @@ function Navbar() {
               id={style.whiteBtn}
               startIcon={<AddPhotoAlternateIcon />}
             >
-              {" "}
+             
               Change Background
             </Button>
           )}

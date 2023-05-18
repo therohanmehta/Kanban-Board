@@ -12,6 +12,7 @@ import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import style from "./Customisation.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import {
   studentPreDefinedData,
   studentDefaultBG,
@@ -28,7 +29,8 @@ function Customisation() {
   const [linkOfWallpaper, setLinkOfWallpaper] = useState("");
   const [currentWallpaper, setCurrentWallpaper] = useRecoilState(wallpaper);
   const image = [
-    "https://wallpaperaccess.com/full/4545909.jpg",
+    "https://wallpaperaccess.com/full/4545909.jpg",'https://cdn.pixabay.com/photo/2017/05/11/11/15/workplace-2303851_1280.jpg',
+    "https://wallpaperaccess.com/full/4545909.jpg",'https://cdn.pixabay.com/photo/2017/05/11/11/15/workplace-2303851_1280.jpg',
     "https://wallpapercave.com/wp/wp6940885.jpg",
     "https://a-static.besthdwallpaper.com/fantasy-world-wallpaper-2880x1620-29897_52.jpg",
     "https://static1.squarespace.com/static/5fe4caeadae61a2f19719512/5fe5c3a9d85eb525301180ed/5ff082ae17af6f5d1930e6bf/1610530333403/Wallpaper+engine+4k.png?format=1500w",
@@ -58,7 +60,7 @@ function Customisation() {
 
   useEffect(() => {
     if (location.hash === "#customisation") {
-      window.scroll(0, 3600);
+      window.scroll(0, 4850);
     }
   }, []);
 
@@ -111,13 +113,11 @@ function Customisation() {
             </a>
 
             <a
-              href="https://github.com/therohanmehta/Kanban-Board/"
-              target="_blank"
-              rel="noreferrer"
+              href="#videoDiv"
             >
-              <Button variant="contained" endIcon={<GitHubIcon />}>
-                Resources{" "}
-              </Button>{" "}
+              <Button variant="contained" endIcon={<YouTubeIcon />}>
+                Tutorial
+              </Button>
             </a>
             <Button id={style.introNavBlankButtons} variant="contained" />
             <a href="#pricing">
@@ -145,8 +145,9 @@ function Customisation() {
             manager and to-do list website{" "}
           </h2>
         </div>
-      </div>
 
+      </div>
+     
       <h1 style={{ color: "white" }} id="features">
         .
       </h1>
@@ -236,22 +237,37 @@ function Customisation() {
 
           <img src="" alt="" />
         </div>
+      
       </div>
+      <div className={style.videoDiv} id="videoDiv">
+        <div>
+          
+       </div>
+        
+        <h1>Confused! how to use <span>Kanban Board?</span> Check out our Video below</h1>
+        <iframe width="1100" height="600" src="https://www.youtube.com/embed/6drUzoeHZkg?start=63" title="Monday.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen='true'></iframe>
+
+        </div>
       <div id="customisation" className={style.heading}>
-        <h1>Choose Background</h1>
+        <h1>Choose <span>Background</span> </h1>
+      </div>
+      <div className={style.headingText}>
+        <h2 >Unable to find you perfect background? No worries your board your favourite image</h2>
+        <h2>Just Copy Any Image URL from the internet(GIF feature added)</h2>
       </div>
       <div className={style.inpDiv}>
         <TextField
-          color="success"
+          // color="success"
           onChange={handleLinkOfWallpaper}
           className={style.textField}
           label="Enter the link of your favourite background"
-          variant="filled"
+          variant="outlined"
         />
         <Button onClick={handleSendLinkOfWallpaper} variant="contained">
           Apply This Image
         </Button>
       </div>
+      
       <div className={style.imageDiv}>
         {image.map((ele, index) => (
           <img
@@ -264,25 +280,35 @@ function Customisation() {
             src={ele}
           />
         ))}
+     
+
       </div>
       <div id="pricing" className={style.pricing}>
-        <h1>.</h1>
-        <h1>.</h1>
+        <h1 style={{color:'transparent',margin:'0',padding:'0'}}>.</h1>
+        <h1 className={style.pricingText}>Become our <span>Premium</span>  User</h1>
         <div>
           <PricingCard
             plan="Professional "
-            price="69₹/M"
-            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+            price="₹69/M"
+            desc="Unlimited boards. . . . . . . .
+            Advanced checklists . . . . . . . . .
+            Admin and security features . . . .
+            Unlimited automations
+            And more!"
           />
           <PricingCard
             plan="Bussiness"
-            price="169₹/M"
-            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+            price="₹169/M"
+            desc="Add Pie Chart . . . . . . . . . . . . . . . . .  
+            Add Bar Graph. . . . . . . . . . . . . . . . 
+            Prebuilt mail manager. . . . . . . . . . . .
+            Add Upto 100 members on board"
           />
           <PricingCard
             plan="Elite"
-            price="696₹/M"
-            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+            price="₹696/M"
+            desc="Gareeb ki dua lagegi . . . . . . . . .
+            consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
           />
         </div>
       </div>
