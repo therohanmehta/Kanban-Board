@@ -59,7 +59,7 @@ function Customisation() {
 
   useEffect(() => {
     if (location.hash === "#customisation") {
-      window.scroll(0, 3600);
+      window.scroll(0, 4700);
     }
   }, []);
 
@@ -244,7 +244,7 @@ function Customisation() {
        </div>
         
         <h1>Confused! how to use <span>Kanban Board?</span> Check out our Video below</h1>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/6drUzoeHZkg?start=63" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="1100" height="600" src="https://www.youtube.com/embed/6drUzoeHZkg?start=63" title="Monday.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen='true'></iframe>
 
         </div>
       <div id="customisation" className={style.heading}>
@@ -276,7 +276,7 @@ function Customisation() {
         ))}
       </div>
       <div id="pricing" className={style.pricing}>
-        <h1 style={{color:'transparent'}}>.</h1>
+        <h1 style={{color:'transparent',margin:'0',padding:'0'}}>.</h1>
         <h1>Become our Premium User</h1>
         <div>
           <PricingCard
