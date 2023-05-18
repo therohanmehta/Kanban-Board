@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import style from "./AddItem.module.css";
+
 function AddItem({ setAddItem, handleAddCardItem }) {
   const [titleForCard, setTitleForCard] = useState("");
 
@@ -34,9 +35,10 @@ function AddItem({ setAddItem, handleAddCardItem }) {
           </button>
           <CloseOutlinedIcon
             onClick={handleCloseAddCard}
-            sx={{ marginBottom: "-8px", marginLeft: "7px" }}
+            sx={{ marginBottom: "-8px", marginLeft: "7px",cursor:'pointer' }}
             color="disabled"
           />
+     
         </div>
         <div>
           <MoreHorizIcon color="disabled" />

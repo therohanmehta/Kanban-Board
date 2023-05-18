@@ -12,6 +12,7 @@ import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import style from "./Customisation.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import {
   studentPreDefinedData,
   studentDefaultBG,
@@ -111,13 +112,11 @@ function Customisation() {
             </a>
 
             <a
-              href="https://github.com/therohanmehta/Kanban-Board/"
-              target="_blank"
-              rel="noreferrer"
+              href="#videoDiv"
             >
-              <Button variant="contained" endIcon={<GitHubIcon />}>
-                Resources{" "}
-              </Button>{" "}
+              <Button variant="contained" endIcon={<YouTubeIcon />}>
+                Tutorial
+              </Button>
             </a>
             <Button id={style.introNavBlankButtons} variant="contained" />
             <a href="#pricing">
@@ -145,8 +144,9 @@ function Customisation() {
             manager and to-do list website{" "}
           </h2>
         </div>
-      </div>
 
+      </div>
+     
       <h1 style={{ color: "white" }} id="features">
         .
       </h1>
@@ -236,7 +236,17 @@ function Customisation() {
 
           <img src="" alt="" />
         </div>
+      
       </div>
+      <div className={style.videoDiv} id="videoDiv">
+        <div>
+          
+       </div>
+        
+        <h1>Confused! how to use <span>Kanban Board?</span> Check out our Video below</h1>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6drUzoeHZkg?start=63" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </div>
       <div id="customisation" className={style.heading}>
         <h1>Choose Background</h1>
       </div>
@@ -266,13 +276,17 @@ function Customisation() {
         ))}
       </div>
       <div id="pricing" className={style.pricing}>
-        <h1>.</h1>
-        <h1>.</h1>
+        <h1 style={{color:'transparent'}}>.</h1>
+        <h1>Become our Premium User</h1>
         <div>
           <PricingCard
             plan="Professional "
             price="69₹/M"
-            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+            desc="Unlimited boards
+            Advanced checklists
+            Admin and security features
+            Unlimited automations
+            And more!"
           />
           <PricingCard
             plan="Bussiness"

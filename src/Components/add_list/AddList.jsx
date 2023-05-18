@@ -5,8 +5,9 @@ import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { v4 as uuid } from "uuid";
-// import AddTodo from "../add_todo/AddTodo";
+import Alert from "@mui/material/Alert";
 import AddTodo from "../add_todo/AddTodo";
+import Swal from "sweetalert2";
 import {
   list,
   atomListUid,
@@ -37,10 +38,15 @@ export default function AddList() {
       setIsVisible(!isVisible)
     }
   };
+  
   function handleDelete(listId) {
+    <Alert variant="filled" severity="error">
+    This is an error alert — check it out!
+  </Alert>
     const updatedList = listData.filter((ele) => ele.ListId != listId);
     setListData(updatedList);
     localStorage.setItem("listData", JSON.stringify(updatedList));
+   
   }
 
   return (
@@ -89,11 +95,14 @@ export default function AddList() {
               placeholder="Enter list title..."
             />
             <div className={styles.innerDiv}>
-              <Button onClick={handleAddCardItem} variant="contained">
+            { listName.length!=0? <Button onClick={handleAddCardItem} variant="contained">
                 Add List
-                </Button>
+                </Button>:
+            <Button color="error" onClick={()=>Swal.fire('Please enter a list name')} variant="contained">
+              Enter Title
+              </Button>}
                 
-                <Button id={styles.closeIcon} startIcon={<CloseIcon/>} variant='contained' onClick={()=>setIsVisible(!isVisible)}>Close</Button>
+                <Button color="secondary" id={styles.closeIcon} startIcon={<CloseIcon/>} variant='contained' onClick={()=>setIsVisible(!isVisible)}>Close</Button>
               {/* <CloseIcon
                 onClick={() => setIsVisible(!isVisible)}
                 id={styles.closeIcon}

@@ -30,3 +30,15 @@ margin-top: 8px;
 .titleForItemField:focus{
     outline: none;
 }
+#closeIcon{
+    cursor: pointer;
+    background-color: blueviolet;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+}
+#closeIcon:hover{
+    background-color: rgb(117, 35, 193);
+}
