@@ -1,5 +1,4 @@
 import React from "react";
-
 import DescriptionTitle from "../description_title/DescriptionTitle";
 import DescriptionEdit from "../description_edit/DescriptionEdit";
 import DescriptionComments from "../description_comments/DescriptionComments";
@@ -31,4 +30,3 @@ function DescriptionModel() {
 }
 
 export default DescriptionModel;
-

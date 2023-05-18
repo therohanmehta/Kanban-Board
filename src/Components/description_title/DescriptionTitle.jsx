@@ -13,7 +13,6 @@ import {
   atomListUid,
 } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
-import { unstable_createChainedFunction } from "@mui/utils";
 function DescriptionTitle() {
   const [watch, setWatch] = useRecoilState(Watch);
   const [titleEdit, setTitleEdit] = useState(false);
@@ -21,31 +20,26 @@ function DescriptionTitle() {
   const [listData, setListData] = useRecoilState(list);
   const [uidOfList, setUidOfList] = useRecoilState(uidOfListItem);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
-  const [listTitle, setListTitle] = useState('');
-
+  const [listTitle, setListTitle] = useState("");
 
   useEffect(() => {
     let listData = getData();
-    const listIndex = listData.findIndex((item) => item.ListId === currentListUid);
+    const listIndex = listData.findIndex(
+      (item) => item.ListId === currentListUid
+    );
     if (listIndex !== -1) {
       const nameOfList = listData[listIndex].nameOfList;
       setListTitle(nameOfList);
-      console.log(nameOfList);
-
     }
-
-  }, [])
-
+  }, []);
 
   function handleTextField(e) {
     setTitleText(e.target.value);
   }
 
-
   function handleSubmit(e) {
     e.preventDefault();
     setTitleEdit(!titleEdit);
-
 
     const tempList = getData();
     const listIndex = tempList.findIndex(
@@ -87,16 +81,16 @@ function DescriptionTitle() {
                   <p onClick={() => setTitleEdit(!titleEdit)}>{titleText}</p>
                 )}
               </form>
-
               <div className={style.listName}>
-                <small>in list <span className={style.listTitleName}>{listTitle} </span> </small>
+                <small>
+                  in list{" "}
+                  <span className={style.listTitleName}>{listTitle} </span>{" "}
+                </small>
                 {watch && (
                   <VisibilityOutlinedIcon style={{ fontSize: "16px" }} />
                 )}
               </div>
             </div>
-
-            {/* Notifications */}
             <div className={style.contentContainer}>
               <div className={style.notificationContainer}>
                 <small>Notifications</small>

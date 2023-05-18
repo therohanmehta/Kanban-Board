@@ -10,10 +10,10 @@ export const companiesImg=[ "https://thumbs.dreamstime.com/b/new-google-logo-vec
 
 export const instituteImg=['https://www.pngkit.com/png/detail/802-8025099_advertisement-iit-bombay-logo.png',
 'https://static.toiimg.com/thumb/msid-78139990,width-400,resizemode-4/78139990.jpg',
-'https://upload.wikimedia.org/wikipedia/commons/b/b0/Chandigarh_University_Seal.png',
 'https://png.pngitem.com/pimgs/s/215-2156453_banaras-hindu-university-banaras-hindu-university-logo-hd.png',
 'https://www.cam.ac.uk/sites/www.cam.ac.uk/files/inner-images/logo.jpg',
-'https://static.toiimg.com/photo/msid-84594490/84594490.jpg',
+'https://scontent.fccu11-1.fna.fbcdn.net/v/t39.30808-6/307013441_409230498059060_7246421584392431890_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=m7kOlGmlB0cAX-RoV6N&_nc_ht=scontent.fccu11-1.fna&oh=00_AfDZEqJzlqtIfkYgcUpegRo0XhhRhCAfgQunM26CYT9YXw&oe=646A3CE6',
+'https://yt3.googleusercontent.com/ytc/AGIKgqOqarQhLLIsoTy8iDPnFETYhrCQjKjprh-be0gx=s900-c-k-c0x00ffffff-no-rj'
 ]
 export const studentPreDefinedData=[
     {

@@ -16,7 +16,6 @@ function App() {
   useEffect(() => {
     if (listData.length != 0) {
       localStorage.setItem("listData", JSON.stringify(listData));
-      console.log('useEffect running')
     }
     setBgWallpaper(localStorage.getItem("userWallpaper") || "bcgImg.png");
   }, [listData]);
@@ -37,14 +36,10 @@ export default App;
 function Kanban() {
   const [columns, setColumns] = useRecoilState(list);
   const [count, setCount] = useState(0);
-  // const [listData, setListData] = useRecoilState(list);
 
   useEffect(() => {
     if (columns.length != 0) {
       localStorage.setItem("listData", JSON.stringify(columns));
-      // console.log("useEffect running");
-      // const data = getData();
-      // setColumns(data);
     }
   }, [columns]);
 
@@ -52,7 +47,6 @@ function Kanban() {
   return (
     <>
       <div className="App" style={{ backgroundImage: `url(${bgWallpaper})` }}>
-        {/* <div className="App" style={{backgroundImage:`url(bcgImg.png)`}}> */}
         <Navbar />
         <DragDropContext
           onDragEnd={(result) =>
@@ -69,7 +63,6 @@ function Kanban() {
 }
 
 const onDragEnd = (result, columns, setColumns, setCount, count) => {
-  // console.log(result);
   if (!result.destination) {
     return;
   }
@@ -87,7 +80,6 @@ const onDragEnd = (result, columns, setColumns, setCount, count) => {
   }
 
   // ! moving task to same list
-  // console.log(source, destination);
   if (source.droppableId === destination.droppableId) {
     let dragedTaskList = columns.find(
       (list) => list.ListId == source.droppableId
@@ -104,12 +96,10 @@ const onDragEnd = (result, columns, setColumns, setCount, count) => {
 
       const updatedLists = columns.map((list) => {
         if (list.ListId == source.droppableId) {
-          // console.log("now ok");
           return updatedList;
         }
         return list;
       });
-      // console.log("udpated", updatedLists);
       setColumns(updatedLists);
       setCount(count + 1);
       return;
@@ -122,24 +112,20 @@ const onDragEnd = (result, columns, setColumns, setCount, count) => {
     (list) => list.ListId == source.droppableId
   );
   let sourceListName = sourceTaskList.nameOfList;
-  // console.log(sourceListName)
   let destinationTaskList = columns.find(
     (list) => list.ListId == destination.droppableId
   );
   let destinationListName = destinationTaskList.nameOfList;
-  // console.log(destinationListName)
   const current = JSON.parse(JSON.stringify(sourceTaskList.tasks));
   const next = JSON.parse(JSON.stringify(destinationTaskList.tasks));
   const target = current[source.index];
   const currentTime = new Date().toLocaleString();
-  // console.log(currentTime)
   let newActivity = {
     text: `Moved from ${sourceListName} to ${destinationListName}`,
     time: currentTime,
   };
 
   target.activity = [newActivity, ...target.activity];
-  // console.log(target.activity)
   // * removing from original list
   current.splice(source.index, 1);
 
@@ -147,7 +133,6 @@ const onDragEnd = (result, columns, setColumns, setCount, count) => {
   next.splice(destination.index, 0, target);
 
   // * merging the updated task in list
-  // console.log(current)
   const updatedLists = columns.map((list) => {
     if (list.ListId == source.droppableId) {
       return {
@@ -168,5 +153,3 @@ const onDragEnd = (result, columns, setColumns, setCount, count) => {
   setColumns([...updatedLists]);
   setCount(count + 1);
 };
-
-//? completion drag and drop

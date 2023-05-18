@@ -1,5 +1,3 @@
-//Chandra Bhan
-
 import React, { useEffect, useState, useRef } from "react";
 import style from "./AddTodo.module.css";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,10 +6,8 @@ import AddItem from "../../atoms/add_item/AddItem";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { v4 as uuid } from "uuid";
 import Popup from "reactjs-popup";
-import CustomizedDialogs from "../Description/Description";
 import { useNavigate } from "react-router-dom";
 import {
-  showDialog,
   uidOfListItem,
   atomListUid,
   atomCardName,
@@ -21,24 +17,16 @@ import { list } from "../../recoil/description_atoms/DescriptionAtoms";
 import { getData } from "../../utils/Services";
 import MorePopOver from "./more/More";
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import Moment from "react-moment";
-// import moment from 'moment';
-// moment().format();
 
 function AddTodo({ listName, listId, handleDelete, index }) {
   const [listData, setListData] = useRecoilState(list);
-  // const [tasks, setTasks] = useState([]);
 
-  // function AddTodo({ listName, listId, handleDelete, handleListNameChange }) {
   let data = getData();
   let tasks = [];
-  // useEffect(() => {
   let currentList = listData.find((ele) => ele.ListId == listId);
   if (currentList != undefined) {
     tasks = currentList.tasks ? currentList.tasks : [];
-    // setTasks(currentList.tasks ? currentList.tasks : []);
   }
-  // }, [listData]);
 
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -50,9 +38,6 @@ function AddTodo({ listName, listId, handleDelete, index }) {
   const [todoList, setTodoList] = useState(tasks);
   const [cardName, setCardName] = useRecoilState(atomCardName);
   const [currentListUid, setCurrentListUid] = useRecoilState(atomListUid);
-
-  // const timestamp = new Date().toLocaleString();
-  // const timestamp=moment().startOf('day').fromNow();
 
   useEffect(() => {
     setTodoList(tasks);
@@ -72,13 +57,10 @@ function AddTodo({ listName, listId, handleDelete, index }) {
           text: `${nameOfCardItem} added to ${listName}`,
           time: currentTime,
         },
-
-        // `${nameOfCardItem} added to ${listName} at ${ timestamp}`
-      ], // task1 added to card1 at  `${nameOfCardItem} added to ${listName} at timeVariable`
+      ],
     };
     let tempListData = listData.map((list) => {
       if (list.ListId == listId) {
-        // console.log(listId);
         return {
           ListId: list.ListId,
           nameOfList: list.nameOfList,
@@ -105,10 +87,8 @@ function AddTodo({ listName, listId, handleDelete, index }) {
         return item;
       });
 
-      // console.log("tasks: ", tempTodoItem);
       let tempListData = listData.map((list) => {
         if (list.ListId == listId) {
-          // console.log(listId);
           return {
             ListId: list.ListId,
             nameOfList: list.nameOfList,
@@ -117,7 +97,6 @@ function AddTodo({ listName, listId, handleDelete, index }) {
         }
         return list;
       });
-      // console.log("tasks: ", tempListData);
       setTodoList([...tempTodoItem]);
       setListData([...tempListData]);
       close();
@@ -149,27 +128,21 @@ function AddTodo({ listName, listId, handleDelete, index }) {
     updateList[index] = currentList;
     setListData(updateList);
     setTodoList(updatedTasks);
-
-    // console.log(updateList);
   }
   return (
     <Draggable
-      // key={todoList.cardItemId}
       draggableId={listId}
       index={index}
       key={listId}
     >
       {(provided, snapshot) => (
         <div
-          // style={{ marginLeft: "20px" }}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           style={{
             userSelect: "none",
             marginLeft: "20px",
-            // backgroundColor: snapshot.isDragging ? "red" : "",
-            // color: "white",
             ...provided.draggableProps.style,
           }}
         >
@@ -231,7 +204,6 @@ function AddTodo({ listName, listId, handleDelete, index }) {
                               );
                               const test = todoList.cardItemId;
                               setCardName(todoList.nameOfCardItem);
-                              console.log(cardName);
                               navigate(`/task/:${test}`);
                             }}
                           >
