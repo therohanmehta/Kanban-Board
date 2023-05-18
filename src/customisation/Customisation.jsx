@@ -79,7 +79,7 @@ function Customisation() {
 
 <a href="https://github.com/therohanmehta/Kanban-Board/" target='_blank'><Button variant='contained' endIcon={<GitHubIcon/>} >Resources </Button> </a>
 <Button id={style.introNavBlankButtons} variant='contained'/>
-<Button variant='contained' endIcon={<CurrencyRupeeIcon/>} onClick={()=>{alert('Bhaiyo se paise thore lete ha ❤️')}} >Pricing</Button>
+<a href="#pricing"  ><Button variant='contained' endIcon={<CurrencyRupeeIcon/>} >Pricing</Button></a>
 <Button onClick={()=>navigate('/kanban')} id={style.introNavGreenButtons} color='success' variant='contained' endIcon={<MoneyOffIcon/>} >Start For Free</Button>
 
 </div>
@@ -175,34 +175,38 @@ function Customisation() {
 
         {image.map((ele,index)=><img className={style.perImg} key={index} onClick={()=>{handleBackground(ele)}} src={ele}/>)}
         </div>
+<div id='pricing' className={style.pricing}>
 
-    <div className={style.pricing}>
-      <PricingCard/>
-      <PricingCard/>
-      <PricingCard/>
+      <h1>.</h1>
+      <h1>.</h1>
+    <div >
+      <PricingCard plan='Professional '  price='69₹/M' desc='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.'/>
+      <PricingCard plan='Bussiness'  price='169₹/M' desc='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.'/>
+      <PricingCard plan='Elite'  price='696₹/M' desc='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus.'/>
+</div>
     
     </div>
 
 <footer className={style.footer}>
   {/* <h3>Made with ❤️  by Chandra Lakhsmi Samad Rohan </h3> */}
   <div className="cards">
-      <div className="card blue">
-        <p className="tip">Made with ❤️ by</p>
+      <div className="card madewith">
+        <p onClick={()=>{alert('hey')}} className="tip">Made with ❤️ by</p>
 
       </div>
-      <div className="card red">
+      <div className="card laxmi">
         <p className="tip">Lakshmi</p>
       
       </div>
-      <div className="card green">
+      <div className="card chandra">
         <p className="tip">Chandra</p>
   
       </div>
-      <div className="card pink">
+      <div className="card samad">
         <p className="tip">Samad</p>
 
       </div>
-      <div className="card black">
+      <div className="card rohan">
         <p className="tip">Rohan</p>
 
       </div>
