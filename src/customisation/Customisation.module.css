@@ -217,4 +217,10 @@ display: flex;
     
 }
 
-  
+  .footer a{
+    text-decoration: none;
+    color: black;
+  }
+  .footer{
+    cursor: pointer;
+  }
