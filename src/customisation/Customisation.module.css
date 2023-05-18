@@ -129,6 +129,26 @@ padding: 80px;
 .features img{
     height: 50vh;
 }
+.features:hover img{
+    animation-name: featureAnimation;
+    animation-duration: 4s;
+}
+@keyframes featureAnimation {
+    0%   {margin-left:-1000px;}
+    25%  {margin-left:-1000px;}
+    50%  {margin-left:-500px;}
+    100% {margin-left:0px;}
+  }
+.descDiv:hover img{
+    animation-name: DescAnimation;
+    animation-duration: 4s;
+}
+@keyframes DescAnimation {
+    0%   {margin-left:-1000px;}
+    25%  {margin-left:-1000px;}
+    50%  {margin-left:-500px;}
+    100% {margin-left:0px;}
+  }
 
 .descDiv{
     display: flex;
