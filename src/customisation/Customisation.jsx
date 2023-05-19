@@ -22,7 +22,7 @@ import {
   BGimage,
 } from "./customisationData";
 import PricingCard from "./PricingCard";
-import ReactPlayer from 'react-player'
+
 function Customisation() {
   let location = useLocation();
   const [listData, setListData] = useRecoilState(list);
