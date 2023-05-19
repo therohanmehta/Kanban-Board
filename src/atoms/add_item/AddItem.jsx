@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import style from "./AddItem.module.css";
+import Swal from "sweetalert2";
 
 function AddItem({ setAddItem, handleAddCardItem }) {
   const [titleForCard, setTitleForCard] = useState("");
@@ -10,9 +11,13 @@ function AddItem({ setAddItem, handleAddCardItem }) {
     setAddItem(false);
   };
   const AddCardItem = () => {
+    
     if (titleForCard != "") {
       handleAddCardItem(titleForCard);
       setTitleForCard("");
+    }
+    else {
+      Swal.fire("Please enter a task")
     }
   };
 
