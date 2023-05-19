@@ -49,7 +49,7 @@ function Customisation() {
 
   useEffect(() => {
     if (location.hash === "#customisation") {
-      window.scroll(0, 4850);
+      window.scroll(0, 4600);
     }
   }, []);
 
