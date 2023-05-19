@@ -14,7 +14,7 @@
 ![Kanban Board UI.](https://monday-com.vercel.app/home.png)
 
 ### **Description :**
-![Kanban Board UI.](http://localhost:3000/Desc.png)
+![Kanban Board UI.](https://monday-com.vercel.app/Desc.png)
 
 ### **Change Background:**
 ![Kanban Board UI.](https://monday-com.vercel.app/chooseBG.png)
@@ -40,17 +40,7 @@ KanbanData =
                     }
                 ]
             },
-            {
-                "cardItemId": "82657f98-11d1-4aed-ae63-f8760f569ea5",
-                "nameOfCardItem": "Create React components",
-                "description": "",
-                "activity": [
-                    {
-                        "text": "Create React components added to PRD",
-                        "time": ""
-                    }
-                ]
-            },
+            
             {
                 "cardItemId": "754f5106-f0f3-4aa2-b252-bece3192253a",
                 "nameOfCardItem": "Implement drag and drop functionality",
@@ -84,17 +74,7 @@ KanbanData =
                     }
                 ]
             },
-            {
-                "cardItemId": "eb228c3d-a031-420a-a05a-5f3e1b74d654",
-                "nameOfCardItem": "Implement customizations",
-                "description": "",
-                "activity": [
-                    {
-                        "text": "Implement customizations added to PRD",
-                        "time": ""
-                    }
-                ]
-            },
+            
             {
                 "cardItemId": "56e56554-88d7-46bb-906d-9ffed4fccd1c",
                 "nameOfCardItem": "Test and deploy",
@@ -118,32 +98,8 @@ KanbanData =
         "nameOfList": "Yet to be debugged",
         "tasks": []
     },
-    {
-        "ListId": "7929da86-0400-4191-bfe6-8c5cba17e335",
-        "nameOfList": "Completed",
-        "tasks": [
-            {
-                "cardItemId": "a6a1fc7a-a167-4490-8771-7a29b2d7f47f",
-                "nameOfCardItem": "Set up the React development environment",
-                "description": "",
-                "activity": [
-                    {
-                        "text": "Moved from PRD to Completed",
-                        "time": ""
-                    },
-                    {
-                        "text": "Set up the React development environment added to PRD",
-                        "time": ""
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "ListId": "9e30c21f-ace0-41d8-b183-fde7f82058d7",
-        "nameOfList": "Tested",
-        "tasks": []
-    }
+    
+   
 ]
 
 ```
