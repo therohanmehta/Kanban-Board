@@ -10,7 +10,7 @@
 
 
 
-### **Kanban Board UI :**
+### **Kanban Board UI:**
 
 ### **Description :**
 ![Kanban Board UI.](https://monday-com.vercel.app/Desc.png)
