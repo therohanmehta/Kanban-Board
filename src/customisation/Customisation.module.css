@@ -1,6 +1,6 @@
 * {
 
-  -ms-transform: scale(0.8);
+
   scroll-behavior: smooth;
 }
 .mainDiv {
@@ -36,8 +36,10 @@
   overflow: auto;
   display: flex;
   justify-content: space-around;
+
   background-color: #eaf1ff;
   max-height: 40vh;
+
 }
 .imageDiv::-webkit-scrollbar {
   /* width: 1px; /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
