@@ -51,65 +51,21 @@ KanbanData =
                     }
                 ]
             },
-            {
-                "cardItemId": "6d643f0f-b511-4835-b3a3-8cf1f1b65680",
-                "nameOfCardItem": "Manage the state of the application",
-                "description": "",
-                "activity": [
-                    {
-                        "text": "Manage the state of the application added to PRD",
-                        "time": ""
-                    }
-                ]
-            },
-            {
-                "cardItemId": "1a7cb24c-920d-4cff-b284-fa824931591a",
-                "nameOfCardItem": "Add functionality for adding and editing tasks",
-                "description": "",
-                "activity": [
-                    {
-                        "text": "Add functionality for adding and editing tasks added to PRD",
-                        "time": ""
-                    }
-                ]
-            },
-            
-            {
-                "cardItemId": "56e56554-88d7-46bb-906d-9ffed4fccd1c",
-                "nameOfCardItem": "Test and deploy",
-                "description": "",
-                "activity": [
-                    {
-                        "text": "Test and deploy added to PRD",
-                        "time": ""
-                    }
-                ]
-            }
         ]
-    },
-    {
-        "ListId": "7b6cf0a9-d8c0-4d08-bfeb-4068141a823f",
-        "nameOfList": "In-Process",
-        "tasks": []
-    },
-    {
-        "ListId": "fcdcfddb-73ee-4b40-9ea5-988529679bac",
-        "nameOfList": "Yet to be debugged",
-        "tasks": []
-    },
-    
-   
+    },  
 ]
 
 ```
 
 ### **3rd Party Libraries used in this project:**
 
-1. recoil.
-2. material UI and icons.
+1. recoil
+2. material UI and icons
 3. react-beautiful-dnd
-4. moment
-5. nanoid
+4. react-moment
+5. uuid
+6. sweetalert2
+7. reactjs-popup
 
 ### **Collaborators:**
 
