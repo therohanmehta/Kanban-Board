@@ -15,6 +15,18 @@ export const instituteImg=['https://www.pngkit.com/png/detail/802-8025099_advert
 'https://scontent.fccu11-1.fna.fbcdn.net/v/t39.30808-6/307013441_409230498059060_7246421584392431890_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=m7kOlGmlB0cAX-RoV6N&_nc_ht=scontent.fccu11-1.fna&oh=00_AfDZEqJzlqtIfkYgcUpegRo0XhhRhCAfgQunM26CYT9YXw&oe=646A3CE6',
 'https://yt3.googleusercontent.com/ytc/AGIKgqOqarQhLLIsoTy8iDPnFETYhrCQjKjprh-be0gx=s900-c-k-c0x00ffffff-no-rj'
 ]
+
+export const BGimage = [
+    "https://wallpaperaccess.com/full/4545909.jpg",'https://cdn.pixabay.com/photo/2017/05/11/11/15/workplace-2303851_1280.jpg',
+    "https://wallpaperaccess.com/full/4545909.jpg",'https://cdn.pixabay.com/photo/2017/05/11/11/15/workplace-2303851_1280.jpg',
+    "https://wallpapercave.com/wp/wp6940885.jpg",
+    "https://a-static.besthdwallpaper.com/fantasy-world-wallpaper-2880x1620-29897_52.jpg",
+    "https://static1.squarespace.com/static/5fe4caeadae61a2f19719512/5fe5c3a9d85eb525301180ed/5ff082ae17af6f5d1930e6bf/1610530333403/Wallpaper+engine+4k.png?format=1500w",
+    "https://downloadhdwallpapers.in/wp-content/uploads/2017/12/Code-in-Laptop-Computer-1366x768.jpg",
+    "https://www.pixelstalk.net/wp-content/uploads/images6/Laptop-Wallpaper-4K-High-Resolution.jpg",
+    "https://www.pixel4k.com/wp-content/uploads/2018/09/minato-japan-night-city-bridge-4k_1538065305.jpg.webp",
+    "https://images.squarespace-cdn.com/content/v1/5fe4caeadae61a2f19719512/1609949775007-FKI50MYWWQG9KZHEA06W/35.jpg",
+  ];
 export const studentPreDefinedData=[
     {
         "ListId": "5e77af99-f99e-446c-a217-ec3b4711e7c2",
