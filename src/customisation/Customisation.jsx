@@ -3,7 +3,6 @@ import { list, wallpaper } from "../recoil/description_atoms/DescriptionAtoms";
 import { useRecoilState } from "recoil";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import GroupsIcon from "@mui/icons-material/Groups";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import PhotoIcon from "@mui/icons-material/Photo";
@@ -12,7 +11,7 @@ import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import style from "./Customisation.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import {
   studentPreDefinedData,
   studentDefaultBG,
@@ -20,6 +19,7 @@ import {
   professionalPreDefinedData,
   companiesImg,
   instituteImg,
+  BGimage,
 } from "./customisationData";
 import PricingCard from "./PricingCard";
 function Customisation() {
@@ -28,17 +28,6 @@ function Customisation() {
   const navigate = useNavigate();
   const [linkOfWallpaper, setLinkOfWallpaper] = useState("");
   const [currentWallpaper, setCurrentWallpaper] = useRecoilState(wallpaper);
-  const image = [
-    "https://wallpaperaccess.com/full/4545909.jpg",'https://cdn.pixabay.com/photo/2017/05/11/11/15/workplace-2303851_1280.jpg',
-    "https://wallpaperaccess.com/full/4545909.jpg",'https://cdn.pixabay.com/photo/2017/05/11/11/15/workplace-2303851_1280.jpg',
-    "https://wallpapercave.com/wp/wp6940885.jpg",
-    "https://a-static.besthdwallpaper.com/fantasy-world-wallpaper-2880x1620-29897_52.jpg",
-    "https://static1.squarespace.com/static/5fe4caeadae61a2f19719512/5fe5c3a9d85eb525301180ed/5ff082ae17af6f5d1930e6bf/1610530333403/Wallpaper+engine+4k.png?format=1500w",
-    "https://downloadhdwallpapers.in/wp-content/uploads/2017/12/Code-in-Laptop-Computer-1366x768.jpg",
-    "https://www.pixelstalk.net/wp-content/uploads/images6/Laptop-Wallpaper-4K-High-Resolution.jpg",
-    "https://www.pixel4k.com/wp-content/uploads/2018/09/minato-japan-night-city-bridge-4k_1538065305.jpg.webp",
-    "https://images.squarespace-cdn.com/content/v1/5fe4caeadae61a2f19719512/1609949775007-FKI50MYWWQG9KZHEA06W/35.jpg",
-  ];
 
   function handleBackground(ele) {
     setCurrentWallpaper(ele);
@@ -81,7 +70,7 @@ function Customisation() {
           <div>
             <img
               className={style.introNavLogo}
-              src="https://cdn.iconscout.com/icon/premium/png-256-thumb/kanban-board-4185955-3461987.png"
+              src="https://d29fhpw069ctt2.cloudfront.net/icon/image/38775/preview.svg"
               alt=""
             />
 
@@ -96,6 +85,11 @@ function Customisation() {
                 Features
               </Button>
             </a>
+            <a href="#videoDiv">
+              <Button variant="contained" endIcon={<YouTubeIcon />}>
+                Tutorial
+              </Button>
+            </a>
             <a href="#teams">
               <Button variant="contained" endIcon={<GroupsIcon />}>
                 For Teams
@@ -106,19 +100,13 @@ function Customisation() {
                 For Students
               </Button>
             </a>
+
             <a href="#customisation">
               <Button variant="contained" endIcon={<PhotoIcon />}>
                 Background
               </Button>
             </a>
 
-            <a
-              href="#videoDiv"
-            >
-              <Button variant="contained" endIcon={<YouTubeIcon />}>
-                Tutorial
-              </Button>
-            </a>
             <Button id={style.introNavBlankButtons} variant="contained" />
             <a href="#pricing">
               <Button variant="contained" endIcon={<CurrencyRupeeIcon />}>
@@ -145,9 +133,8 @@ function Customisation() {
             manager and to-do list website{" "}
           </h2>
         </div>
-
       </div>
-     
+
       <h1 style={{ color: "white" }} id="features">
         .
       </h1>
@@ -179,7 +166,9 @@ function Customisation() {
 
       <div className={style.custShow}>
         <img src="/chooseBG.png " alt="" />
-        <div className={style.custShowText}> <h1>Customisation on the go</h1>
+        <div className={style.custShowText}>
+          {" "}
+          <h1>Customisation on the go</h1>
           <h3>
             Bored of all the old plain boring ToDo-List Websited and KanBan
             board{" "}
@@ -190,6 +179,22 @@ function Customisation() {
             image{" "}
           </h3>
         </div>
+      </div>
+      <div className={style.videoDiv} id="videoDiv">
+        <div></div>
+        <h1>
+          Confused! how to use <span>Kanban Board?</span> Check out our Video
+          below
+        </h1>
+        <iframe
+          width="1100"
+          height="600"
+          src="https://www.youtube.com/embed/6drUzoeHZkg"
+          title="Monday.com"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen="true"
+        ></iframe>
       </div>
 
       <div id="teams" className={style.forTeams}>
@@ -214,8 +219,7 @@ function Customisation() {
       </div>
 
       <div id="students" className={style.forStudent}>
-        <br />
-        <br />
+        
         <h1>Are you a Student?</h1>
         <h2>
           We understand now a days how hard it is for a student to track all the
@@ -235,24 +239,20 @@ function Customisation() {
             <img src={ele} key={i} alt="alt" />
           ))}
 
-          <img src="" alt="" />
-        </div>
-      
-      </div>
-      <div className={style.videoDiv} id="videoDiv">
-        <div>
-          
-       </div>
-        
-        <h1>Confused! how to use <span>Kanban Board?</span> Check out our Video below</h1>
-        <iframe width="1100" height="600" src="https://www.youtube.com/embed/6drUzoeHZkg?start=63" title="Monday.com" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen='true'></iframe>
 
         </div>
+      </div>
+
       <div id="customisation" className={style.heading}>
-        <h1>Choose <span>Background</span> </h1>
+        <h1>
+          Choose <span>Background</span>{" "}
+        </h1>
       </div>
       <div className={style.headingText}>
-        <h2 >Unable to find you perfect background? No worries your board your favourite image</h2>
+        <h2>
+          Unable to find you perfect background? No worries your board your
+          favourite image
+        </h2>
         <h2>Just Copy Any Image URL from the internet(GIF feature added)</h2>
       </div>
       <div className={style.inpDiv}>
@@ -267,9 +267,9 @@ function Customisation() {
           Apply This Image
         </Button>
       </div>
-      
+
       <div className={style.imageDiv}>
-        {image.map((ele, index) => (
+        {BGimage.map((ele, index) => (
           <img
             className={style.perImg}
             key={index}
@@ -280,15 +280,15 @@ function Customisation() {
             src={ele}
           />
         ))}
-     
-
       </div>
       <div id="pricing" className={style.pricing}>
-        <h1 style={{color:'transparent',margin:'0',padding:'0'}}>.</h1>
-        <h1 className={style.pricingText}>Become our <span>Premium</span>  User</h1>
+        <h1 style={{ color: "transparent", margin: "0", padding: "0" }}>.</h1>
+        <h1 className={style.pricingText}>
+          Become our <span>Premium</span> User
+        </h1>
         <div>
           <PricingCard
-            plan="Professional "
+            plan="Standard "
             price="₹69/M"
             desc="Unlimited boards. . . . . . . .
             Advanced checklists . . . . . . . . .
@@ -297,7 +297,7 @@ function Customisation() {
             And more!"
           />
           <PricingCard
-            plan="Bussiness"
+            plan="Premium"
             price="₹169/M"
             desc="Add Pie Chart . . . . . . . . . . . . . . . . .  
             Add Bar Graph. . . . . . . . . . . . . . . . 
@@ -305,7 +305,7 @@ function Customisation() {
             Add Upto 100 members on board"
           />
           <PricingCard
-            plan="Elite"
+            plan="Enterprise"
             price="₹696/M"
             desc="Gareeb ki dua lagegi . . . . . . . . .
             consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
