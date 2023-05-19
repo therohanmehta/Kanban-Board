@@ -22,6 +22,7 @@ import {
   BGimage,
 } from "./customisationData";
 import PricingCard from "./PricingCard";
+import ReactPlayer from 'react-player'
 function Customisation() {
   let location = useLocation();
   const [listData, setListData] = useRecoilState(list);
@@ -193,8 +194,9 @@ function Customisation() {
           title="Monday.com"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen="true"
+          allowFullScreen="true"
         ></iframe>
+
       </div>
 
       <div id="teams" className={style.forTeams}>
@@ -242,8 +244,8 @@ function Customisation() {
 
         </div>
       </div>
-
-      <div id="customisation" className={style.heading}>
+      <div className={style.bcgDiv} id="customisation"></div>
+      <div  className={style.heading}>
         <h1>
           Choose <span>Background</span>{" "}
         </h1>
