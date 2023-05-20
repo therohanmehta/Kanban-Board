@@ -184,7 +184,7 @@ function Customisation() {
       <div className={style.videoDiv} id="videoDiv">
         <div></div>
         <h1>
-          Confused! how to use <span>Kanban Board?</span> Check out our Video
+          Confused! How to use <span>Kanban Board?</span> Checkout our video
           below
         </h1>
         <iframe
@@ -207,7 +207,7 @@ function Customisation() {
         </h2>
         <h2>
           That template is specially designed for the working professionals in
-          that we have special card for arranging task accoring to the required
+          which we have special card for arranging task according to your requirement
         </h2>
         <Button onClick={handleProfessionalBoard} variant="contained">
           Get started{" "}
@@ -224,12 +224,12 @@ function Customisation() {
         
         <h1>Are you a Student?</h1>
         <h2>
-          We understand now a days how hard it is for a student to track all the
-          task they have to complete{" "}
+          We understand nowadays how hard it is for a student to track all the
+          task they have to complete
         </h2>
         <h2>
           We have created a Template for you that is designed specially for
-          students so that it will make it easier for you to manage your tasks,
+          students so that it will make it easier for them to manage their tasks,
           click on the button below to get started.
         </h2>
         <Button onClick={handleStudentBoard} variant="contained">
