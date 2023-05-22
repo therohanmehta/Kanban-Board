@@ -34,11 +34,11 @@ export const studentPreDefinedData=[
         "tasks": [
             {
                 "cardItemId": "9fc904e8-2ad9-4add-8549-a5ff1a2c5356",
-                "nameOfCardItem": "[Instructions] Binary Search Tree",
+                "nameOfCardItem": "Binary Search Tree",
                 "description": "",
                 "activity": [
                     {
-                        "text": "[Instructions] Binary Search Tree added to Topics 📖",
+                        "text": "Binary Search Tree added to Topics 📖",
                         "time": ""
                     }
                 ]
@@ -51,11 +51,11 @@ export const studentPreDefinedData=[
         "tasks": [
             {
                 "cardItemId": "06f896c7-d9b5-4b20-8ff3-f9a48d504261",
-                "nameOfCardItem": "[Example] Dynamic Programming",
+                "nameOfCardItem": "Dynamic Programming",
                 "description": "",
                 "activity": [
                     {
-                        "text": "[Example] Dynamic Programming added to Focus 🎯",
+                        "text": "Dynamic Programming added to Focus 🎯",
                         "time": ""
                     }
                 ]
@@ -68,11 +68,11 @@ export const studentPreDefinedData=[
         "tasks": [
             {
                 "cardItemId": "3113a80f-a609-4968-9e63-07be847e687f",
-                "nameOfCardItem": "[Example] Graphs",
+                "nameOfCardItem": "Graphs",
                 "description": "",
                 "activity": [
                     {
-                        "text": "[Example] Graphs added to Current👀",
+                        "text": "Graphs added to Current👀",
                         "time": ""
                     }
                 ]
@@ -85,22 +85,22 @@ export const studentPreDefinedData=[
         "tasks": [
             {
                 "cardItemId": "99c6af2f-6147-440e-b816-b540fbc0bc8e",
-                "nameOfCardItem": "[Example] Heaps",
+                "nameOfCardItem": "Heaps",
                 "description": "",
                 "activity": [
                     {
-                        "text": "[Example] Heaps added to Covered ✔️",
+                        "text": "Heaps added to Covered ✔️",
                         "time": ""
                     }
                 ]
             },
             {
                 "cardItemId": "b8b9b4b7-917f-49ab-8f23-9a50f0ffa524",
-                "nameOfCardItem": "[Example] Sorting",
+                "nameOfCardItem": "Sorting ",
                 "description": "",
                 "activity": [
                     {
-                        "text": "[Example] Sorting added to Covered ✔️",
+                        "text": "Sorting added to Covered ✔️",
                         "time": ""
                     }
                 ]
@@ -113,7 +113,7 @@ export const studentPreDefinedData=[
 export const professionalPreDefinedData=[
     {
         "ListId": "94a8040d-3d97-4e2a-ae9e-fea2f81e0882",
-        "nameOfList": "PRD ",
+        "nameOfList": "PRD❓ ",
         "tasks": [
             {
                 "cardItemId": "5faebde0-7579-457d-8c40-327ac9a5871d",
@@ -121,7 +121,7 @@ export const professionalPreDefinedData=[
                 "description": "",
                 "activity": [
                     {
-                        "text": "Define the Kanban Board layout added to PRD",
+                        "text": "Define the Kanban Board layout added to ❓",
                         "time": ""
                     }
                 ]
@@ -196,17 +196,17 @@ export const professionalPreDefinedData=[
     },
     {
         "ListId": "7b6cf0a9-d8c0-4d08-bfeb-4068141a823f",
-        "nameOfList": "In-Process",
+        "nameOfList": "In-Process📈",
         "tasks": []
     },
     {
         "ListId": "fcdcfddb-73ee-4b40-9ea5-988529679bac",
-        "nameOfList": "Yet to be debugged",
+        "nameOfList": "Yet to be debugged 🪲",
         "tasks": []
     },
     {
         "ListId": "7929da86-0400-4191-bfe6-8c5cba17e335",
-        "nameOfList": "Completed",
+        "nameOfList": "Completed ✔️",
         "tasks": [
             {
                 "cardItemId": "a6a1fc7a-a167-4490-8771-7a29b2d7f47f",

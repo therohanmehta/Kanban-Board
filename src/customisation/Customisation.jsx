@@ -131,7 +131,7 @@ function Customisation() {
           </h1>
           <h2>
             Become focused , organized and calm with Todoist. The worlds #1 task
-            manager and to-do list website{" "}
+            manager and to-do list website
           </h2>
         </div>
       </div>
@@ -144,9 +144,9 @@ function Customisation() {
         <div>
           <img src="/home.png " alt="" />
           <div className={style.featureText}>
-            <h1>The KanBan Board </h1>
+            <h1 >The <span style={{backgroundColor:'#7fa0d2',color:'white',display:'inline'}}>KanBan</span>  Board </h1>
             <h3>
-              Here you can add Cards Task and also you can drag and drop froom
+              Here you can Create Cards and inside cards you can Add Task and also you can drag and drop from
               card to another card
             </h3>
           </div>
@@ -155,7 +155,7 @@ function Customisation() {
 
       <div className={style.descDiv}>
         <div className={style.DecpText}>
-          <h1>The Description</h1>
+          <h1>Add <span style={{backgroundColor:'#7fa0d2',color:'white',display:'inline'}}>Description</span>to Your Task</h1>
           <h3>
             Worry about the minor details or pinpoint to be added to the task
             here is the Description for you to add any details
@@ -169,7 +169,7 @@ function Customisation() {
         <img src="/chooseBG.png " alt="" />
         <div className={style.custShowText}>
           {" "}
-          <h1>Customisation on the go</h1>
+          <h1><span style={{backgroundColor:'#7fa0d2',color:'white',display:'inline'}}>Customisation</span> on the go</h1>
           <h3>
             Bored of all the old plain boring ToDo-List Websited and KanBan
             board{" "}
@@ -301,16 +301,20 @@ function Customisation() {
           <PricingCard
             plan="Premium"
             price="₹169/M"
-            desc="Add Pie Chart . . . . . . . . . . . . . . . . .  
-            Add Bar Graph. . . . . . . . . . . . . . . . 
-            Prebuilt mail manager. . . . . . . . . . . .
-            Add Upto 100 members on board"
+            desc="Unlimited boards. . . . . . . .
+            Advanced checklists . . . . . . . . .
+            Admin and security features . . . .
+            Unlimited automations
+            And more!"
           />
           <PricingCard
             plan="Enterprise"
             price="₹696/M"
-            desc="Gareeb ki dua lagegi . . . . . . . . .
-            consectetur adipiscing elit. Curabitur at posuere eros. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+            desc="Unlimited boards. . . . . . . .
+            Advanced checklists . . . . . . . . .
+            Admin and security features . . . .
+            Unlimited automations
+            And more!"
           />
         </div>
       </div>

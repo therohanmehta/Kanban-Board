@@ -44,6 +44,11 @@
 .imageDiv::-webkit-scrollbar {
   /* width: 1px; /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
   /* display:flex;  */
+  /* background-color: red;
+  color: white;
+  display: flex;
+  background-position: 0%;
+  display: none; */
 }
 .perImg {
   /* border: 2px solid; */
